@@ -96,3 +96,11 @@ title: Experience
     </div>
   </div>
 </section>
+
+<section class="block experience-download-cv">
+  <div class="contact-cta">
+    <h2>Explore my experience in more detail</h2>
+    <p>Download my CV for a concise overview of my Salesforce skills, projects and professional experience.</p>
+    {% if site.author.cv_file != "" %}<a class="btn primary" href="{{ site.author.cv_file | relative_url }}" download>Download CV (PDF)</a>{% endif %}
+  </div>
+</section>
