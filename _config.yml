@@ -8,8 +8,8 @@ description: Salesforce Certified Platform Administrator in Liverpool, UK. Sales
 
 # Leave baseurl empty if your repository is called yourusername.github.io.
 # If the repository has another name, for example "portfolio", write: baseurl: "/portfolio"
-baseurl: "https://serapozturkkucuk.github.io"
-url: ""
+baseurl: ""
+url: "https://serapozturkkucuk.github.io"
 
 author:
   name: Serap Ozturk-Kucuk
