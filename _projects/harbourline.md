@@ -6,7 +6,7 @@ status: completed
 status_label: Self-directed practice org · 2026
 featured: true
 order: 1
-card_image: /assets/img/harbourline/flow.png
+card_image: /assets/img/harbourline/flow.webp
 card_alt: Harbourline Salesforce record-triggered Flow showing decisions and record creation
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
 role: Salesforce Administrator — requirements, configuration, testing and documentation
@@ -14,17 +14,17 @@ org: Salesforce Developer Edition · fictional business and test data
 period: August 2026 – present
 tools: Flow Builder, Schema Builder, Lightning App Builder, Data Loader, dataloader.io
 showcase_images:
-  - image: /assets/img/harbourline/flow.png
+  - image: /assets/img/harbourline/flow.webp
     alt: Create HQ Building Flow showing Get Records, a decision, and Create Records in Salesforce Flow Builder
     title: Designing for the exception
     caption: Check whether a Headquarters Building exists before creating one
     anchor: "#decisions"
-  - image: /assets/img/harbourline/validation.png
+  - image: /assets/img/harbourline/validation.webp
     alt: Salesforce validation error preventing an unapproved discount from advancing to Proposal
     title: A control that actually stops the record
     caption: Unapproved discounts cannot move into price stages
     anchor: "#solutions"
-  - image: /assets/img/harbourline/kanban.png
+  - image: /assets/img/harbourline/kanban.webp
     alt: Harbourline Admin Request tracker Kanban board grouped by status
     title: Turning requests into a visible queue
     caption: Admin work tracked by priority and status
@@ -93,7 +93,7 @@ contents:
   <h3>Why Building is a child of Account</h3>
   <p>A Building record depends on its customer, so the relationship to Account uses master-detail. This also allows the site count to roll up to Account. Site Contact uses a lookup because a building does not always have a named contact.</p>
   <figure class="shot">
-    <img src="{{ '/assets/img/harbourline/schema.png' | relative_url }}" alt="Salesforce Schema Builder showing Account, Building, Contact and Training Session object relationships" loading="lazy" width="1000" height="650">
+    <img src="{{ '/assets/img/harbourline/schema.webp' | relative_url }}" alt="Salesforce Schema Builder showing Account, Building, Contact and Training Session object relationships" loading="lazy" width="1000" height="650">
     <figcaption>Actual Schema Builder view from the practice org, including the Building relationship and Session Attendee junction.</figcaption>
   </figure>
 </div>

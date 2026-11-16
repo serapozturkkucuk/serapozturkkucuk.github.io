@@ -267,7 +267,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
         </tbody>
       </table>
     </div>
-    <figure class="shot narrow"><img src="/assets/img/harbourline/schema.png" loading="lazy" decoding="async" alt="Schema Builder showing Building, Contact, Account, Session Attendee and Training Session with their relationships"><figcaption>Schema Builder in the Harbourline org: Building (master-detail to Account, lookup to Contact) and the Session Attendee junction between Contact and Training Session.</figcaption></figure>
+    <figure class="shot narrow"><img src="/assets/img/harbourline/schema.webp" loading="lazy" decoding="async" alt="Schema Builder showing Building, Contact, Account, Session Attendee and Training Session with their relationships"><figcaption>Schema Builder in the Harbourline org: Building (master-detail to Account, lookup to Contact) and the Session Attendee junction between Contact and Training Session.</figcaption></figure>
     <p class="note">Other types: hierarchical (User to User, like the Manager field), external lookup (the parent is an external object) and indirect lookup (the child is external, matched on an External ID field).</p>
   </section>
 
@@ -421,7 +421,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <li>Only the main path is tested so far. Not yet tested: emails from senders who aren't Contacts, replies threading into the same Case, and duplicate Cases from repeated emails</li>
       <li>Shown in the map but studied only: Web-to-Case, entitlements and milestones, knowledge, macros</li>
     </ul></div>
-    <figure class="shot"><img src="/assets/img/harbourline/service.png" loading="lazy" decoding="async" alt="Harbourline Service Home page with a team rule banner, the Support Queue list and My Open Cases"><figcaption>Service Home as Ada, the service manager: the Support Queue first. The red flag on case 00001026 is the escalation rule.</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/harbourline/service.webp" loading="lazy" decoding="async" alt="Harbourline Service Home page with a team rule banner, the Support Queue list and My Open Cases"><figcaption>Service Home as Ada, the service manager: the Support Queue first. The red flag on case 00001026 is the escalation rule.</figcaption></figure>
     <div class="figure">
       <svg viewBox="0 0 900 920" role="img" aria-labelledby="cm-t cm-d">
         <title id="cm-t">Case management</title>
@@ -700,7 +700,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <span><i class="sw" style="background:var(--accent-soft);border-color:var(--accent)"></i>Answer</span>
       <span><i class="sw" style="background:var(--tip-soft);border-color:var(--tip-line);border-style:dashed"></i>Good to know</span>
     </div>
-    <figure class="shot narrow"><img src="/assets/img/harbourline/flow.png" loading="lazy" decoding="async" alt="Flow Builder showing the Create HQ Building flow: trigger, Get HQ Building, decision HQ exists, Create HQ Building"><figcaption>The Create HQ Building flow in Flow Builder: Get Records, a Decision, then Create Records only on the "No HQ" path.</figcaption></figure>
+    <figure class="shot narrow"><img src="/assets/img/harbourline/flow.webp" loading="lazy" decoding="async" alt="Flow Builder showing the Create HQ Building flow: trigger, Get HQ Building, decision HQ exists, Create HQ Building"><figcaption>The Create HQ Building flow in Flow Builder: Get Records, a Decision, then Create Records only on the "No HQ" path.</figcaption></figure>
     <p class="note">The record that starts a record-triggered flow is already in the flow with all its fields, so Get Records is only needed for other records. Every flow was tested on the path where it should act and the path where it shouldn't: a second won deal for Northgate created no duplicate Building, and 100 test Cases for Standard customers sent no alerts.</p>
     <span class="eyebrow">The four flows in the Harbourline org, through the four questions</span>
     <div class="table-wrap">
@@ -761,7 +761,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <li class="st"><span class="n">13</span><div class="do"><strong>Make the approval impossible to skip</strong><p>On its own, an approval process is optional: a rep can simply not submit. A validation rule blocks the price stages until the discount is approved.</p><small>Where: Object Manager &gt; Opportunity &gt; Validation Rules</small></div><div class="ex"><b>Example</b><span>Discount_Needs_Approval: blocks Proposal/Price Quote, Negotiation/Review and Closed Won when the discount is over 15% and Approval Status isn't Approved</span></div></li>
       <li class="st"><span class="n">14</span><div class="do"><strong>Activate it and test every path</strong><p>Click Activate, then log in as the rep and submit test records. After activation you can't add or remove steps, so clone the process if the steps need to change.</p><small>Where: The process detail page</small></div><div class="ex"><b>Example</b><span>20%, approved by the manager: the deal moves to Proposal</span><span>45%, not submitted: blocked at Proposal, saves at Site Survey</span></div></li>
     </ol>
-    <figure class="shot"><img src="/assets/img/harbourline/validation.png" loading="lazy" decoding="async" alt="An opportunity with a 45 percent discount blocked from moving to Proposal/Price Quote by a validation rule error"><figcaption>The validation rule at work: a deal with an unapproved discount can't move to Proposal/Price Quote.</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/harbourline/validation.webp" loading="lazy" decoding="async" alt="An opportunity with a 45 percent discount blocked from moving to Proposal/Price Quote by a validation rule error"><figcaption>The validation rule at work: a deal with an unapproved discount can't move to Proposal/Price Quote.</figcaption></figure>
     <span class="eyebrow">If something goes wrong</span>
     <div class="table-wrap">
       <table>
@@ -879,7 +879,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
         </tbody>
       </table>
     </div>
-    <figure class="shot narrow"><img src="/assets/img/harbourline/sales.png" loading="lazy" decoding="async" alt="Harbourline Sales dashboard showing discounts awaiting approval, open pipeline by stage and won revenue by customer tier"><figcaption>The Harbourline Sales dashboard: discounts waiting for approval, open pipeline by stage, and won revenue by customer tier.</figcaption></figure>
+    <figure class="shot narrow"><img src="/assets/img/harbourline/sales.webp" loading="lazy" decoding="async" alt="Harbourline Sales dashboard showing discounts awaiting approval, open pipeline by stage and won revenue by customer tier"><figcaption>The Harbourline Sales dashboard: discounts waiting for approval, open pipeline by stage, and won revenue by customer tier.</figcaption></figure>
     <h3 class="sub">Things that caught me out</h3>
     <ol class="checks">
       <li><b>Viewer's access</b>A report chart on a Home page runs as the viewer. A rep with Private deals sees an empty chart; a dashboard running as a fixed user shows team totals.</li>
@@ -952,7 +952,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <span><i class="sw" style="background:var(--surface);border-color:var(--q-line)"></i>Stopped</span>
       <span><i class="sw" style="background:var(--tip-soft);border-color:var(--tip-line);border-style:dashed"></i>Automation and rules</span>
     </div>
-    <figure class="shot"><img src="/assets/img/harbourline/kanban.png" loading="lazy" decoding="async" alt="Kanban board of open admin requests grouped by status, each card showing number, subject, priority and team"><figcaption>All Open Requests as a Kanban board: everyone can see it; only the Admin Team can move cards.</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/harbourline/kanban.webp" loading="lazy" decoding="async" alt="Kanban board of open admin requests grouped by status, each card showing number, subject, priority and team"><figcaption>All Open Requests as a Kanban board: everyone can see it; only the Admin Team can move cards.</figcaption></figure>
     <h3 class="sub">Fair priority: nobody picks their own</h3>
     <p>The requester chooses Impact and Urgency. A formula gives High 3 points, Medium 2 and Low 1, adds them up, and turns the total into a priority.</p>
     <div class="table-wrap">
@@ -986,7 +986,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <li class="st"><span class="n">12</span><div class="do"><strong>Build the reports and dashboard</strong><p>Shows whether the admin is keeping up, and gives evidence for the weekly update.</p><small>Where: Reports, Dashboards</small></div><div class="ex"><b>Example</b><span>Open by Status, Open by Priority, Closed This Month, Average Days Open by Team</span></div></li>
       <li class="st"><span class="n">13</span><div class="do"><strong>Test as a requester</strong><p>Check what a normal user can and can't do.</p><small>Where: Log in as the user</small></div><div class="ex"><b>Example</b><span>Priya raised a request with the + button: owner Admin Team, Priority P2; no Edit button; she sees the board but can't move cards</span></div></li>
     </ol>
-    <figure class="shot"><img src="/assets/img/harbourline/admindash.png" loading="lazy" decoding="async" alt="Admin Work dashboard row: closed this month metric, open requests by status donut, open requests by priority bar chart"><figcaption>The Admin Work dashboard: requests closed this month, open requests by status, and by priority.</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/harbourline/admindash.webp" loading="lazy" decoding="async" alt="Admin Work dashboard row: closed this month metric, open requests by status donut, open requests by priority bar chart"><figcaption>The Admin Work dashboard: requests closed this month, open requests by status, and by priority.</figcaption></figure>
     <p class="note">Duplicate rules can't catch two requests worded differently, so duplicates are caught at Triage and rejected as "Duplicate of REQ-xxxx". A possible improvement is a "Duplicate Of" lookup.</p>
   </section>
 
