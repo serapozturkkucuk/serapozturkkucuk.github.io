@@ -1,7 +1,7 @@
 ---
 title: Harbourline Security
 subtitle: Salesforce CRM implementation in a practice org
-summary: A complete Salesforce org for a company that sells, installs and maintains CCTV and access-control systems, covering sales, service and admin processes, configured and tested by me.
+summary: A self-directed Salesforce Developer Edition practice org for a fictional company that sells, installs and maintains CCTV and access-control systems, covering sales, service and admin processes, configured and tested by me.
 status: completed
 status_label: Practice org · 2026
 featured: true
