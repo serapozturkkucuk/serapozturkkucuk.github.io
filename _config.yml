@@ -8,22 +8,22 @@ description: Salesforce Certified Platform Administrator in Liverpool, UK. Sales
 
 # Leave baseurl empty if your repository is called yourusername.github.io.
 # If the repository has another name, for example "portfolio", write: baseurl: "/portfolio"
-baseurl: ""
+baseurl: "https://serapozturkkucuk.github.io"
 url: ""
 
 author:
   name: Serap Ozturk-Kucuk
   role: Salesforce Administrator · CRM & Business Systems · Process Improvement
   location: Liverpool, UK
-  summary: Experienced professional with leadership, testing and data skills, now certified in Salesforce, who built a complete org to prove it.
+  summary: Salesforce Certified Platform Administrator with experience in CRM and product databases, data quality, reporting, UAT and process improvement. I build and test practical Salesforce solutions.
   linkedin: https://www.linkedin.com/in/serap-ozturk-kucuk-ab6385104
   trailhead: https://www.salesforce.com/trailblazer/serapozturkkucuk
   # Add a job-search email address between the quotes, or leave it empty to hide it.
-  email: ""
+  email: "serap.uk@outlook.com"
   # Put your CV PDF in assets/files/ and write its path, for example:
   # cv_file: /assets/files/Serap_Ozturk-Kucuk_CV.pdf
   # While it is empty, the Download CV buttons are hidden.
-  cv_file: /assets/files/Serap_Ozturk-Kucuk_CV_Salesforce_Admin.pdf
+  cv_file: ""
 
 collections:
   projects:
