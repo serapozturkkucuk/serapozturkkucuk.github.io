@@ -8,6 +8,9 @@ featured: true
 order: 1
 card_image: /assets/img/harbourline/flow.webp
 card_alt: Harbourline Salesforce record-triggered Flow showing decisions and record creation
+card_date: August 2026
+card_date_label: Started
+card_description: Salesforce CRM practice build connecting sales approvals, service cases, customer sites and admin requests.
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
 role: Salesforce Administrator — requirements, configuration, testing and documentation
 org: Salesforce Developer Edition · fictional business and test data
