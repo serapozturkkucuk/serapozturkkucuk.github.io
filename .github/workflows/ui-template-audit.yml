@@ -35,6 +35,7 @@ jobs:
             for(const width of sizes)for(const route of pages){
               const page=await b.newPage({viewport:{width,height:850}});
               const result=await page.goto('http://127.0.0.1:8765'+route,{waitUntil:'networkidle'});
+              await page.evaluate(async()=>{ const imgs=[...document.images]; imgs.forEach(img=>{img.loading='eager'}); await Promise.all(imgs.map(img=>img.decode().catch(()=>{}))); });
               const info=await page.evaluate(()=>({
                 scrollWidth:document.documentElement.scrollWidth,
                 bodyWidth:document.body.scrollWidth,
