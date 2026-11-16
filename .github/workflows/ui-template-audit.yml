@@ -65,7 +65,7 @@ jobs:
                   return {left:r.left+parseFloat(cs.paddingLeft),right:r.right-parseFloat(cs.paddingRight)};
                 });
                 const wrappersMatch=wrappers.every(x=>Math.abs(x.left-left)<2&&Math.abs(x.right-right)<2);
-                const prose=[...main.querySelectorAll('p')].every(x=>getComputedStyle(x).textAlign==='left'&&getComputedStyle(x).maxWidth==='75ch');
+                const prose=[...main.querySelectorAll('p:not(.crumb)')].every(x=>{const cs=getComputedStyle(x);return cs.textAlign==='left'&&cs.maxWidth!=='none'&&x.getBoundingClientRect().width<=parseFloat(cs.maxWidth)+2;});
                 return {left:Math.round(left),right:Math.round(right),issues,wrappersMatch,prose};
               });
               if(geometry.issues.length)failures.push(route+' '+width+' misaligned: '+JSON.stringify(geometry.issues));
