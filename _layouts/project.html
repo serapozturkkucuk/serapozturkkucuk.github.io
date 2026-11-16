@@ -20,7 +20,7 @@ layout: default
   <div class="showcase-gallery">
     {% for shot in page.showcase_images %}
       <a class="showcase-shot" href="{{ shot.anchor }}">
-        <span class="showcase-img"><img src="{{ shot.image | relative_url }}" alt="{{ shot.alt | escape }}" {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}></span>
+        <span class="showcase-img"><img src="{{ shot.image | relative_url }}" alt="{{ shot.alt | escape }}" {% if forloop.first %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></span>
         <span class="showcase-copy"><strong>{{ shot.title }}</strong><small>{{ shot.caption }}</small></span>
       </a>
     {% endfor %}
