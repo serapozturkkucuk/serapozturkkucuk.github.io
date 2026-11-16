@@ -3,6 +3,7 @@
 # status: earned, studying or planned
 # code: 2-4 letters shown in the circle
 # verify_url: a link where people can check it (delete the line if there is none)
+# note: optional short text shown instead of the standard label, e.g. "Training starts 23 November 2026"
 
 - name: Salesforce Certified Platform Administrator
   issuer: Salesforce
@@ -35,3 +36,15 @@
   code: ADS
   status: earned
   year: 2016
+
+- name: Salesforce Platform App Builder
+  issuer: Salesforce
+  code: PAB
+  status: studying
+  note: Training starts 23 November 2026
+
+- name: Salesforce Agentforce Specialist
+  issuer: Salesforce
+  code: AI
+  status: planned
+  note: Next, after App Builder
