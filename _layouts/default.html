@@ -6,7 +6,7 @@
 <title>{% if page.title and page.url != "/" %}{{ page.title }} · {% endif %}{{ site.author.name }}</title>
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | escape }}{% else %}{{ site.description | escape }}{% endif %}">
 <meta name="theme-color" content="#F8F7F4">
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=3">
 </head>
 <body>
 {% include nav.html %}
