@@ -40,7 +40,7 @@ jobs:
                   if ".git" in path.parts or "_site" in path.parts:
                       continue
                   old = path.read_text(encoding="utf-8")
-                  new = re.sub(r"(/assets/img/harbourline/[A-Za-z0-9_-]+)\\.png", r"\\1.webp", old)
+                  new = re.sub(r"(/assets/img/harbourline/[A-Za-z0-9_-]+)\.png", r"\1.webp", old)
                   if old != new:
                       path.write_text(new, encoding="utf-8")
           before = sum(x for x, y in sizes)
