@@ -1,22 +1,25 @@
 {% assign p = include.project %}
 {% if p.status == "planned" %}
-<div class="card project planned">
-  <div class="pic empty"><span>Next project</span></div>
-  <div class="txt">
-    <span class="pill quiet">Planned</span>
+<div class="project-tile project-tile-planned">
+  <div class="project-tile-media project-tile-empty"><span>Coming soon</span></div>
+  <div class="project-tile-body">
     <h3>{{ p.title }}</h3>
-    <p>{{ p.summary }}</p>
+    <p>{{ p.card_description | default: p.summary }}</p>
+    <span class="project-tile-date">Planned</span>
   </div>
 </div>
 {% else %}
-<a class="card project" href="{{ p.url | relative_url }}">
-  <div class="pic"><img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt }}" loading="lazy" decoding="async"></div>
-  <div class="txt">
-    <span class="pill">{{ p.status_label }}</span>
+<a class="project-tile" href="{{ p.url | relative_url }}" aria-label="View {{ p.title }} case study">
+  <div class="project-tile-media">
+    {% if p.card_image %}<img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt | default: p.title | escape }}" loading="lazy" decoding="async">{% endif %}
+  </div>
+  <div class="project-tile-body">
     <h3>{{ p.title }}</h3>
-    <p>{{ p.summary }}</p>
-    {% if p.tags %}<ul class="tags">{% for t in p.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
-    <span class="more">View case study →</span>
+    <p>{{ p.card_description | default: p.summary }}</p>
+    <div class="project-tile-footer">
+      {% if p.card_date %}<span class="project-tile-date">{{ p.card_date_label | default: 'Project' }} · {{ p.card_date }}</span>{% else %}<span class="project-tile-date">{{ p.status_label }}</span>{% endif %}
+      <span class="project-tile-link" aria-hidden="true">View project ↗</span>
+    </div>
   </div>
 </a>
 {% endif %}
