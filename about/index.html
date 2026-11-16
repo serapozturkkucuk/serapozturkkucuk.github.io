@@ -37,24 +37,7 @@ title: Experience
 
 <section class="block">
   <h2>Technology &amp; tools</h2>
-  <div class="tool-groups" aria-label="Technology skills by category">
-    <div class="tool-group">
-      <h3>Salesforce &amp; data management</h3>
-      <ul class="chips"><li>Salesforce Lightning Experience</li><li>Data Loader</li><li>dataloader.io</li></ul>
-    </div>
-    <div class="tool-group">
-      <h3>Data &amp; reporting</h3>
-      <ul class="chips"><li>Power BI</li><li>Google Looker Studio</li><li>SQL (basic)</li><li>DAX (basic)</li></ul>
-    </div>
-    <div class="tool-group">
-      <h3>Business systems &amp; digital platforms</h3>
-      <ul class="chips"><li>SAP</li><li>SinglePoint</li><li>Seamcor</li><li>Adobe Experience Manager</li></ul>
-    </div>
-    <div class="tool-group">
-      <h3>Collaboration &amp; delivery</h3>
-      <ul class="chips"><li>Jira</li><li>GitHub</li><li>Microsoft 365 &amp; SharePoint</li><li>Trello, Planner &amp; Loop</li></ul>
-    </div>
-  </div>
+  <ul class="chips">{% for t in site.data.profile.tools %}<li>{{ t }}</li>{% endfor %}</ul>
 </section>
 
 <section class="block">
@@ -90,17 +73,27 @@ title: Experience
   </ol>
 </section>
 
-<section class="block experience-details">
-  <h2>Education, languages &amp; additional details</h2>
-  <div class="experience-details-grid">
-    <div class="card experience-detail-card">
-      <h3>Education</h3>
-      {% for e in site.data.profile.education %}<p><strong>{{ e.title }}</strong></p><p class="muted">{{ e.place }} · {{ e.dates }}</p>{% endfor %}
-    </div>
-    <div class="card experience-detail-card">
-      <h3>Languages &amp; additional details</h3>
-      <p>{{ site.data.profile.languages }}</p>
-    </div>
+<section class="block experience-detail-sections">
+  <h2>Education</h2>
+  <div class="card experience-detail-card">
+    {% for e in site.data.profile.education %}
+    <p><strong>{{ e.title }}</strong></p>
+    <p class="muted">{{ e.place }} · {{ e.dates }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="block experience-detail-sections">
+  <h2>Languages</h2>
+  <div class="card experience-detail-card">
+    <p>English (Business Level) · Turkish (Native)</p>
+  </div>
+</section>
+
+<section class="block experience-detail-sections">
+  <h2>Additional details</h2>
+  <div class="card experience-detail-card">
+    <p>Right to work in the UK · Full UK driving licence</p>
   </div>
 </section>
 
