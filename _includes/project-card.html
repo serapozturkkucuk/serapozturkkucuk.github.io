@@ -10,7 +10,7 @@
 </div>
 {% else %}
 <a class="card project" href="{{ p.url | relative_url }}">
-  <div class="pic"><img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt }}" loading="lazy"></div>
+  <div class="pic"><img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt }}" loading="lazy" decoding="async"></div>
   <div class="txt">
     <span class="pill">{{ p.status_label }}</span>
     <h3>{{ p.title }}</h3>
