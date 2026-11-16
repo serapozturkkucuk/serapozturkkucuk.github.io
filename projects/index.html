@@ -9,6 +9,6 @@ title: Projects
 </header>
 
 {% assign all = site.projects | sort: "order" %}
-<div class="grid two">
+<div class="project-gallery" aria-label="Completed Salesforce projects">
   {% for p in all %}{% if p.status == "completed" %}{% include project-card.html project=p %}{% endif %}{% endfor %}
 </div>
