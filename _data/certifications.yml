@@ -14,7 +14,7 @@
   verify_label: View Trailhead profile
 
 - name: Leadership and Management
-  issuer: Professional development
+  issuer: High Speed Training
   code: LM
   status: earned
   year: 2026
@@ -30,6 +30,12 @@
   code: GDPR
   status: earned
   year: 2025
+
+- name: Graphic & Web Design – Adobe Photoshop, Illustrator, InDesign, Premiere Pro
+  issuer: Graphic & Web Design
+  code: DES
+  status: earned
+  year: 2018
 
 - name: Google Ads & Analytics
   issuer: Google
