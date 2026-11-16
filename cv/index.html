@@ -1,0 +1,20 @@
+---
+layout: default
+title: CV
+---
+<header class="page-head">
+  <h1>CV</h1>
+  <p class="lede">My CV covers my Salesforce skills, the Harbourline project, and my experience across agri-tech and food manufacturing.</p>
+</header>
+
+<section class="block">
+  {% if site.author.cv_file != "" %}
+  <div class="actions">
+    <a class="btn primary" href="{{ site.author.cv_file | relative_url }}">Download CV (PDF)</a>
+  </div>
+  {% else %}
+  <div class="card notice">
+    <p>My CV is available on request. You can reach me on <a href="{{ site.author.linkedin }}">LinkedIn</a>, or read my background on the <a href="{{ '/about/' | relative_url }}">About</a> page.</p>
+  </div>
+  {% endif %}
+</section>

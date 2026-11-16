@@ -1,0 +1,47 @@
+# Certifications, newest first.
+# To add one: copy a block (from "- name:" down to the next blank line), paste it, and change the values.
+# status: earned, studying or planned
+# code: 2-4 letters shown in the circle
+# verify_url: a link where people can check it (delete the line if there is none)
+
+- name: Salesforce Certified Platform Administrator
+  issuer: Salesforce
+  code: ADM
+  status: earned
+  year: 2026
+  verify_url: https://www.salesforce.com/trailblazer/serapozturkkucuk
+  verify_label: Verify on Trailhead
+
+- name: Leadership and Management
+  issuer: Professional development
+  code: LM
+  status: earned
+  year: 2026
+
+- name: Seamcor System Administrator
+  issuer: Seamcor
+  code: SYS
+  status: earned
+  year: 2025
+
+- name: GDPR & Data Protection
+  issuer: Internal training, Puratos
+  code: GDPR
+  status: earned
+  year: 2025
+
+- name: Google Ads & Analytics
+  issuer: Google
+  code: ADS
+  status: earned
+  year: 2016
+
+- name: Salesforce Platform App Builder
+  issuer: Salesforce
+  code: PAB
+  status: studying
+
+- name: Salesforce Agentforce Specialist
+  issuer: Salesforce
+  code: AI
+  status: planned

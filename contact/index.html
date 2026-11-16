@@ -1,0 +1,17 @@
+---
+layout: default
+title: Contact
+---
+<header class="page-head">
+  <h1>Contact</h1>
+  <p class="lede">I'm looking for a Salesforce Administrator or CRM role in Liverpool, the North West, or remote. I'm happy to show my Salesforce work live.</p>
+</header>
+
+<section class="block">
+  <dl class="contact-list">
+    {% if site.author.email != "" %}<dt>Email</dt><dd><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></dd>{% endif %}
+    <dt>LinkedIn</dt><dd><a href="{{ site.author.linkedin }}">{{ site.author.linkedin | remove: "https://www." }}</a></dd>
+    <dt>Trailhead</dt><dd><a href="{{ site.author.trailhead }}">{{ site.author.trailhead | remove: "https://www." }}</a></dd>
+    <dt>Location</dt><dd>{{ site.author.location }}</dd>
+  </dl>
+</section>

@@ -1,0 +1,26 @@
+---
+layout: default
+title: Certifications
+---
+<header class="page-head">
+  <h1>Certifications</h1>
+  <p class="lede">Certificates I hold, with links to check them, and the ones I'm working towards.</p>
+</header>
+
+{% assign earned = site.data.certifications | where: "status", "earned" %}
+<section class="block">
+  <h2>Earned</h2>
+  <ul class="badges">{% for c in earned %}{% include cert-card.html cert=c %}{% endfor %}</ul>
+</section>
+
+{% assign studying = site.data.certifications | where: "status", "studying" %}
+{% assign planned = site.data.certifications | where: "status", "planned" %}
+{% if studying.size > 0 or planned.size > 0 %}
+<section class="block">
+  <h2>Working towards</h2>
+  <ul class="badges">
+    {% for c in studying %}{% include cert-card.html cert=c %}{% endfor %}
+    {% for c in planned %}{% include cert-card.html cert=c %}{% endfor %}
+  </ul>
+</section>
+{% endif %}

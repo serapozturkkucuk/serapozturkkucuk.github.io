@@ -1,0 +1,13 @@
+---
+layout: default
+title: Projects
+---
+<header class="page-head">
+  <h1>Projects</h1>
+  <p class="lede">Each project is built and tested by me. Each case study covers the business problem, what I configured, how I tested it and what I learned.</p>
+</header>
+
+{% assign all = site.projects | sort: "order" %}
+<div class="grid two">
+  {% for p in all %}{% include project-card.html project=p %}{% endfor %}
+</div>

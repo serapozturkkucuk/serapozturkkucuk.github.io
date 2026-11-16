@@ -1,0 +1,67 @@
+---
+layout: default
+title: About
+---
+<header class="page-head">
+  <h1>About me</h1>
+  <p class="lede">{{ site.author.summary }}</p>
+</header>
+
+<section class="block prose">
+  <p>I spent twelve years at Doktar Technologies, an agri-tech start-up in Turkey, where I was one of the first employees. I built the company's customer database from day one, helped develop its CRM and product database, ran digital marketing, and built dashboards for senior teams.</p>
+  <p>In the UK I moved into quality assurance at Puratos, a food manufacturer, and was promoted to QA Team Leader. That work was about accurate data, clear procedures and testing before anything reaches people.</p>
+  <p>Salesforce brings these together. I passed the Salesforce Certified Platform Administrator exam in 2026 and built a complete practice org to show what I can do.</p>
+</section>
+
+<section class="block">
+  <h2>Experience</h2>
+  <ol class="jobs">
+    {% for j in site.data.experience %}
+    <li class="card">
+      <div class="when">
+        <b>{{ j.company }}</b>
+        <span>{{ j.location }}</span>
+        <span>{{ j.dates }}</span>
+      </div>
+      <div class="what">
+        <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b> <span>{{ r.dates }}</span></li>{% endfor %}</ul>
+        <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
+        {% if j.for_salesforce %}<p class="so">For Salesforce: {{ j.for_salesforce }}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="block">
+  <h2>Salesforce skills</h2>
+  <dl class="skill-table">
+    {% for s in site.data.profile.skills %}<dt>{{ s.group }}</dt><dd>{{ s.text }}</dd>{% endfor %}
+  </dl>
+</section>
+
+<section class="block">
+  <h2>Tools</h2>
+  <ul class="chips">{% for t in site.data.profile.tools %}<li>{{ t }}</li>{% endfor %}</ul>
+</section>
+
+<section class="block split">
+  <div>
+    <h2>Education</h2>
+    {% for e in site.data.profile.education %}<p><b>{{ e.title }}</b><br><span class="muted">{{ e.place }} · {{ e.dates }}</span></p>{% endfor %}
+  </div>
+  <div>
+    <h2>Languages and details</h2>
+    <p class="muted">{{ site.data.profile.languages }}</p>
+  </div>
+</section>
+
+<section class="block">
+  <h2>How I'd start in a new org</h2>
+  <ol class="phases">
+    {% for a in site.data.profile.approach %}
+    <li class="card"><span class="label">{{ a.when }}</span><h3>{{ a.title }}</h3><p>{{ a.text }}</p></li>
+    {% endfor %}
+  </ol>
+  <p class="note-strong">I have a written playbook for learning an existing org before changing it.</p>
+</section>

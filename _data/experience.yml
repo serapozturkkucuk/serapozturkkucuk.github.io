@@ -1,0 +1,34 @@
+# Work experience, newest first. Keep it the same as your CV.
+
+- company: Puratos UK
+  location: Liverpool, UK
+  dates: October 2023 – August 2026
+  roles:
+    - title: Quality Assurance Team Leader
+      dates: 2024 – 2026
+    - title: QA Technician
+      dates: 2023 – 2024
+  points:
+    - Monitored daily quality and food safety KPIs and produced corrective action reports
+    - Kept data consistent for 100+ active products across SAP, product cards and packaging labels
+    - Improved SOPs and workflows, and trained 20+ permanent and agency staff on them
+    - Delivered £80,000 in annual cost reductions through process improvements
+    - Configured business tools including SinglePoint, Seamcor, Microsoft Planner and Loop
+  for_salesforce: I keep data accurate, document processes, and test changes before they reach people.
+
+- company: Doktar Technologies
+  location: Izmir, Turkey
+  dates: 2011 – 2023
+  roles:
+    - title: Digital Marketing Manager
+      dates: 2018 – 2023
+    - title: Social Media Manager
+      dates: 2014 – 2018
+    - title: Agronomist & Copywriter
+      dates: 2011 – 2014
+  points:
+    - Built the company's customer database from day one, then helped develop its CRM and product database - data structure, segmentation rules, data-quality controls and reporting
+    - Built Power BI and Looker Studio dashboards and presented findings to senior teams
+    - Ran user acceptance testing (UAT) on the company's app with product and marketing teams
+    - Managed paid campaigns with A/B testing, cutting campaign costs by 50%
+  for_salesforce: I know what sales and marketing teams need from a CRM and its data.

@@ -1,0 +1,50 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+  <span class="pill">Salesforce Certified Platform Administrator</span>
+  <h1>{{ site.author.name }}</h1>
+  <p class="role">{{ site.author.role }}</p>
+  <p class="lede">{{ site.author.summary }}</p>
+  <p class="muted">{{ site.author.location }} · 12 years at an agri-tech start-up in Turkey, then quality assurance in UK food manufacturing.</p>
+  <div class="actions">
+    <a class="btn primary" href="{{ '/projects/' | relative_url }}">Explore my work</a>
+    {% if site.author.cv_file != "" %}<a class="btn" href="{{ site.author.cv_file | relative_url }}">Download CV</a>{% else %}<a class="btn" href="{{ '/about/' | relative_url }}">About me</a>{% endif %}
+  </div>
+</section>
+
+<section class="block">
+  <div class="block-head">
+    <h2>Featured projects</h2>
+    <a class="see-all" href="{{ '/projects/' | relative_url }}">All projects →</a>
+  </div>
+  {% assign featured = site.projects | where: "featured", true | sort: "order" %}
+  <div class="grid two">
+    {% for p in featured limit: 3 %}{% include project-card.html project=p %}{% endfor %}
+  </div>
+</section>
+
+<section class="block">
+  <div class="block-head">
+    <h2>Certifications</h2>
+    <a class="see-all" href="{{ '/certifications/' | relative_url }}">All certifications →</a>
+  </div>
+  {% assign earned = site.data.certifications | where: "status", "earned" %}
+  <ul class="badges">
+    {% for c in earned limit: 2 %}{% include cert-card.html cert=c %}{% endfor %}
+  </ul>
+</section>
+
+<section class="block split">
+  <div>
+    <h2>Background</h2>
+    <p>Before Salesforce, I built a customer database and helped develop a CRM at an agri-tech start-up, ran digital marketing and dashboards, then led quality assurance in food manufacturing. I bring a tester's eye and a habit of documenting every change.</p>
+    <a class="see-all" href="{{ '/about/' | relative_url }}">More about me →</a>
+  </div>
+  <div class="contact-cta">
+    <h2>Get in touch</h2>
+    <p>Happy to show my Salesforce work live and talk it through.</p>
+    <a class="btn primary" href="{{ '/contact/' | relative_url }}">Contact me</a>
+  </div>
+</section>

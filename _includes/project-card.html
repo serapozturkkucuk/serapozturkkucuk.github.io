@@ -1,0 +1,22 @@
+{% assign p = include.project %}
+{% if p.status == "planned" %}
+<div class="card project planned">
+  <div class="pic empty"><span>Next project</span></div>
+  <div class="txt">
+    <span class="pill quiet">Planned</span>
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.summary }}</p>
+  </div>
+</div>
+{% else %}
+<a class="card project" href="{{ p.url | relative_url }}">
+  <div class="pic"><img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt }}" loading="lazy"></div>
+  <div class="txt">
+    <span class="pill">{{ p.status_label }}</span>
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.summary }}</p>
+    {% if p.tags %}<ul class="tags">{% for t in p.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+    <span class="more">View case study →</span>
+  </div>
+</a>
+{% endif %}

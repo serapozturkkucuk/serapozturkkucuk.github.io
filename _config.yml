@@ -1,0 +1,42 @@
+# ------------------------------------------------------------
+# Site settings. Change the values after the colons.
+# After editing this file on GitHub, the site rebuilds in 1-2 minutes.
+# ------------------------------------------------------------
+
+title: Serap Ozturk-Kucuk
+description: Salesforce Certified Platform Administrator in Liverpool, UK. Salesforce projects I built and tested.
+
+# Leave baseurl empty if your repository is called yourusername.github.io.
+# If the repository has another name, for example "portfolio", write: baseurl: "/portfolio"
+baseurl: ""
+url: ""
+
+author:
+  name: Serap Ozturk-Kucuk
+  role: Salesforce Administrator · CRM & Business Systems · Process Improvement
+  location: Liverpool, UK
+  summary: Experienced professional with leadership, testing and data skills, now certified in Salesforce, who built a complete org to prove it.
+  linkedin: https://www.linkedin.com/in/serap-ozturk-kucuk-ab6385104
+  trailhead: https://www.salesforce.com/trailblazer/serapozturkkucuk
+  # Add a job-search email address between the quotes, or leave it empty to hide it.
+  email: ""
+  # Put your CV PDF in assets/files/ and write its path, for example:
+  # cv_file: /assets/files/Serap_Ozturk-Kucuk_CV.pdf
+  # While it is empty, the Download CV buttons are hidden.
+  cv_file: /assets/files/Serap_Ozturk-Kucuk_CV_Salesforce_Admin.pdf
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
+markdown: kramdown
+exclude:
+  - README.md

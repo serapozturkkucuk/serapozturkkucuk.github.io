@@ -1,0 +1,20 @@
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-name">{{ site.author.name }}</span>
+      <span class="brand-sub">Salesforce portfolio</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        {% assign links = "Home|/,Projects|/projects/,Certifications|/certifications/,About|/about/,CV|/cv/,Contact|/contact/" | split: "," %}
+        {% for l in links %}
+          {% assign parts = l | split: "|" %}
+          {% assign target = parts[1] %}
+          {% assign active = false %}
+          {% if target == "/" %}{% if page.url == "/" or page.url == "/index.html" %}{% assign active = true %}{% endif %}{% else %}{% if page.url contains target %}{% assign active = true %}{% endif %}{% endif %}
+          <li><a href="{{ target | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ parts[0] }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
