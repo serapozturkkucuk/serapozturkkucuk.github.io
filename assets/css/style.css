@@ -162,3 +162,46 @@ figure.shot figcaption { font-size: 0.88rem; color: var(--ink-soft) }
 /* Recruiter-first accessibility and visual polish */
 .case table, .project-content table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 :focus-visible { outline: 3px solid #3C7976; outline-offset: 3px; }
+
+
+/* Experience: recruiter-friendly content hierarchy and responsive alignment */
+.experience-head { max-width: 880px }
+.experience-intro { gap: 22px }
+.experience-story { max-width: 880px; display: grid; gap: 18px; line-height: 1.75; }
+.experience-story p { margin: 0; }
+.experience-story .intro-lead { font-size: clamp(1.09rem, 2vw, 1.25rem); font-weight: 600; color: var(--ink); line-height: 1.6; }
+.experience-value { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden; }
+.experience-value-heading { padding: 26px 28px 20px; display: grid; gap: 7px; background: var(--teal-soft); }
+.experience-value-heading h3 { font-size: clamp(1.14rem, 2.4vw, 1.45rem); }
+.experience-value-heading p { color: var(--ink-soft); max-width: 65ch; }
+.value-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.value-grid li { min-width: 0; display: grid; align-content: start; gap: 6px; padding: 21px 26px; border-top: 1px solid var(--line); }
+.value-grid li:nth-child(even) { border-left: 1px solid var(--line); }
+.value-grid strong { color: var(--ink); }
+.value-grid span { color: var(--ink-soft); font-size: .93rem; line-height: 1.6; }
+.experience-skills { grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.experience-skills dt, .experience-skills dd { padding: 13px 18px; border-bottom: 1px solid var(--line); }
+.experience-skills dt { background: var(--teal-soft); }
+.experience-skills dt:nth-last-of-type(1), .experience-skills dd:last-child { border-bottom: 0; }
+.experience-project { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); align-items: stretch; overflow: hidden; }
+.experience-project > div { padding: 26px; display: grid; justify-items: start; align-content: center; gap: 16px; }
+.experience-project h3 { font-size: 1.3rem; }
+.experience-project p { color: var(--ink-soft); }
+.experience-project img { width: 100%; height: 100%; min-height: 250px; object-fit: cover; object-position: left top; border-left: 1px solid var(--line); }
+.experience-jobs .roles li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.experience-jobs .points { gap: 8px; }
+.experience-details-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.experience-detail-card { display: grid; align-content: start; gap: 10px; padding: 23px; }
+.experience-detail-card p { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .experience-project, .experience-details-grid, .value-grid { grid-template-columns: minmax(0, 1fr); }
+  .experience-project img { border-left: 0; border-top: 1px solid var(--line); max-height: 320px; }
+  .value-grid li:nth-child(even) { border-left: 0; }
+}
+@media (max-width: 560px) {
+  .experience-value-heading, .value-grid li { padding: 18px 20px; }
+  .experience-skills { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .experience-skills dt { border-bottom: 0; padding-bottom: 4px; }
+  .experience-skills dd { padding-top: 3px; margin: 0; }
+  .experience-project > div { padding: 20px; }
+}
