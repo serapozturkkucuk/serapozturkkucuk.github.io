@@ -253,3 +253,52 @@ figure.shot figcaption {font-size:var(--fs-small);color:var(--ink-soft)}
 .hero-proof-foot span {font-size:var(--fs-small);color:var(--ink-soft)}
 @media(max-width:900px){.home-hero{grid-template-columns:minmax(0,1fr);gap:30px}.hero-copy h1{max-width:19ch}.hero-proof{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}.hero-proof-head{grid-column:1/-1}.hero-proof-media{min-height:220px}.hero-proof-foot{align-content:center}}
 @media(max-width:560px){.home-hero{padding-block:25px 34px}.hero-proof{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto}.hero-proof-media{min-height:235px;max-height:280px}}
+
+
+/* Refinement pass: consistent alignment, smaller controls, understated surfaces */
+:root { --radius: 8px; --shadow: 0 3px 14px rgba(29,48,65,.035); }
+main.wrap { gap: 54px; }
+.block { gap: 18px; }
+.btn { min-height: 39px; padding: 8px 14px; border-radius: 6px; font-weight: 650; }
+.actions,.stack { gap: 8px; }
+.pill { padding: 4px 9px; font-weight: 650; }
+.tags li,.chips li { padding: 5px 9px; border-radius: 5px; }
+.card { box-shadow: var(--shadow); }
+.contact-cta,.experience-detail-card { padding: 19px 21px; }
+.project .txt { padding: 17px 19px 20px; }
+.badge { padding: 17px; gap: 13px; grid-template-columns: 44px minmax(0,1fr); }
+.badge .mark { width: 44px; height: 44px; border-radius: 7px; }
+.facts-box { padding: 17px; gap: 14px; }
+.stats li { padding: 11px 12px; }
+
+/* Keep the biography, headline, and 'What I bring' panel on the same column edges */
+.experience-head,.experience-intro { width: 100%; max-width: 890px; }
+.experience-intro { justify-self: start; gap: 19px; }
+.experience-story { width: 100%; max-width: 100%; line-height: 1.68; }
+.experience-story p { max-width: 100%; }
+.experience-value { width: 100%; border: 1px solid var(--line); border-top: 2px solid var(--champagne); border-radius: 7px; box-shadow: none; }
+.experience-value-heading {
+  padding: 19px 23px 17px;
+  background: var(--teal-soft);
+  color: var(--ink);
+  gap: 6px;
+}
+.experience-value-heading .label { color: var(--teal-ink); }
+.experience-value-heading h3 { font-size: var(--fs-body); font-weight: 750; max-width: none; color: var(--ink); }
+.experience-value-heading p { color: var(--ink-soft); line-height: 1.55; }
+.value-grid li { padding: 16px 21px; gap: 5px; }
+.value-grid strong { font-size: var(--fs-body); font-weight: 700; }
+.value-grid span { line-height: 1.55; }
+.experience-skills dt,.experience-skills dd { padding: 10px 14px; }
+.experience-project > div { padding: 22px; gap: 12px; }
+.experience-project img { min-height: 200px; }
+.experience-jobs > li { padding: 21px; gap: 20px; }
+.case-next-step { padding: 19px; }
+.solution-item { padding: 16px 18px; }
+.showcase-copy { padding: 12px 14px; }
+.hero-proof-head { padding: 12px 16px; }
+.hero-proof-foot { padding: 15px 17px; }
+@media (max-width: 760px) {
+  .experience-head,.experience-intro { max-width: 100%; }
+  .value-grid li { padding: 15px 18px; }
+}
