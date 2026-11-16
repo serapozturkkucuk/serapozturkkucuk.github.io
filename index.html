@@ -4,55 +4,37 @@ title: Home
 ---
 <section class="hero home-hero">
   <div class="hero-copy">
-    <span class="label">Serap Ozturk-Kucuk · Liverpool, UK</span>
+    <span class="label">Salesforce administration · CRM &amp; business systems</span>
     <span class="pill">Salesforce Certified Platform Administrator</span>
     <h1>Better systems begin with understanding the business.</h1>
-    <p class="role">Salesforce Administrator · CRM &amp; Business Systems · Process Improvement</p>
-    <p class="lede">{{ site.author.summary }}</p>
+    <p class="lede">Experience in CRM and product databases, data quality, reporting, UAT and process improvement — now applied to Salesforce configuration, automation and testing.</p>
+    <p class="muted home-location">Based in Liverpool, UK · Open to Salesforce, CRM and business systems roles</p>
     <div class="actions">
-      <a class="btn primary" href="{{ '/projects/' | relative_url }}">Explore my work</a>
+      <a class="btn primary" href="{{ '/projects/harbourline/' | relative_url }}">Explore the Salesforce project</a>
       {% if site.author.cv_file != "" %}<a class="btn" href="{{ site.author.cv_file | relative_url }}">Download CV</a>{% endif %}
       <a class="btn" href="{{ site.author.trailhead }}" target="_blank" rel="noopener noreferrer">Trailhead Profile</a>
     </div>
   </div>
-  <a class="hero-proof" href="{{ '/projects/harbourline/' | relative_url }}" aria-label="Explore the Harbourline Security Salesforce practice project">
-    <div class="hero-proof-head"><span class="label">Featured case study / 01</span><span aria-hidden="true">↗</span></div>
-    <div class="hero-proof-media"><img src="{{ '/assets/img/harbourline/flow.webp' | relative_url }}" alt="Salesforce Flow Builder diagram from the Harbourline Security practice org" width="1400" height="1249" fetchpriority="high" decoding="async"></div>
-    <div class="hero-proof-foot"><strong>Harbourline Security</strong><span>Salesforce processes, data access and automation — designed and tested against real-world scenarios.</span></div>
+  <a class="hero-proof" href="{{ '/projects/harbourline/' | relative_url }}" aria-label="Read the Harbourline Security Salesforce practice case study">
+    <div class="hero-proof-head"><span class="label">Featured project</span><span aria-hidden="true">↗</span></div>
+    <div class="hero-proof-media"><img src="{{ '/assets/img/harbourline/flow.webp' | relative_url }}" alt="Salesforce Flow Builder decision and record creation diagram from the Harbourline Security practice org" width="1400" height="1249" fetchpriority="high" decoding="async"></div>
+    <div class="hero-proof-foot"><strong>Harbourline Security</strong><span>A fictional business. A configured and tested Salesforce practice org covering sales, service, access and automation.</span></div>
   </a>
 </section>
 
-<section class="block">
+<section class="block home-capabilities" aria-labelledby="home-capabilities-heading">
   <div class="block-head">
-    <h2>Featured projects</h2>
-    <a class="see-all" href="{{ '/projects/' | relative_url }}">All projects →</a>
+    <h2 id="home-capabilities-heading">Core capabilities</h2>
+    <a class="see-all" href="{{ '/about/' | relative_url }}">Experience &amp; full skill set →</a>
   </div>
-  {% assign featured = site.projects | where: "featured", true | sort: "order" %}
-  <div class="grid two">
-    {% for p in featured limit: 3 %}{% include project-card.html project=p %}{% endfor %}
-  </div>
-</section>
-
-<section class="block">
-  <div class="block-head">
-    <h2>Certifications</h2>
-    <a class="see-all" href="{{ '/certifications/' | relative_url }}">All certifications →</a>
-  </div>
-  {% assign earned = site.data.certifications | where: "status", "earned" %}
-  <ul class="badges">
-    {% for c in earned limit: 2 %}{% include cert-card.html cert=c %}{% endfor %}
+  <ul class="home-skill-grid">
+    <li><strong>Platform configuration</strong><span>Objects, fields, record types, page layouts</span></li>
+    <li><strong>Automation &amp; controls</strong><span>Record-triggered Flow, validation and approvals</span></li>
+    <li><strong>Data &amp; reporting</strong><span>Imports, duplicate rules, reports and dashboards</span></li>
+    <li><strong>Security &amp; testing</strong><span>Permission sets, sharing, UAT and access checks</span></li>
   </ul>
 </section>
 
-<section class="block split">
-  <div>
-    <h2>Background</h2>
-    <p>My background spans CRM and product databases, reporting, UAT, digital marketing and quality assurance. At Puratos, I delivered £80,000 in annual cost reductions through process improvements. My Salesforce practice project demonstrates how I apply that experience to configuration and testing.</p>
-    <a class="see-all" href="{{ '/about/' | relative_url }}">Explore my experience →</a>
-  </div>
-  <div class="contact-cta">
-    <h2>Get in touch</h2>
-    <p>Happy to show my Salesforce work live and talk it through.</p>
-    <a class="btn primary" href="{{ '/contact/' | relative_url }}">Contact me</a>
-  </div>
+<section class="home-end-links" aria-label="Continue exploring">
+  <p>See the <a href="{{ '/projects/' | relative_url }}">project portfolio</a>, <a href="{{ '/certifications/' | relative_url }}">certifications</a> or <a href="{{ '/contact/' | relative_url }}">get in touch</a>.</p>
 </section>
