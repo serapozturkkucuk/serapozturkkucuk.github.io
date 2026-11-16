@@ -10,7 +10,7 @@
   status: earned
   year: 2026
   verify_url: https://www.salesforce.com/trailblazer/serapozturkkucuk
-  verify_label: Verify on Trailhead
+  verify_label: View Trailhead profile
 
 - name: Leadership and Management
   issuer: Professional development
@@ -35,13 +35,3 @@
   code: ADS
   status: earned
   year: 2016
-
-- name: Salesforce Platform App Builder
-  issuer: Salesforce
-  code: PAB
-  status: studying
-
-- name: Salesforce Agentforce Specialist
-  issuer: Salesforce
-  code: AI
-  status: planned
