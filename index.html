@@ -1,18 +1,21 @@
----
-layout: default
-title: Home
----
-<section class="hero">
-  <span class="pill">Salesforce Certified Platform Administrator</span>
-  <h1>{{ site.author.name }}</h1>
-  <p class="role">{{ site.author.role }}</p>
-  <p class="lede">{{ site.author.summary }}</p>
-  <p class="muted">{{ site.author.location }} · Salesforce Administrator and CRM / Business Systems opportunities.</p>
-  <div class="actions">
-    <a class="btn primary" href="{{ '/projects/' | relative_url }}">Explore my work</a>
-    {% if site.author.cv_file != "" %}<a class="btn" href="{{ site.author.cv_file | relative_url }}">Download CV</a>{% else %}<a class="btn" href="{{ '/about/' | relative_url }}">About me</a>{% endif %}
-    <a class="btn" href="{{ site.author.trailhead }}" target="_blank" rel="noopener noreferrer">Trailhead Profile</a>
+<section class="hero home-hero">
+  <div class="hero-copy">
+    <span class="label">Serap Ozturk-Kucuk · Liverpool, UK</span>
+    <span class="pill">Salesforce Certified Platform Administrator</span>
+    <h1>Better systems begin with understanding the business.</h1>
+    <p class="role">Salesforce Administrator · CRM &amp; Business Systems · Process Improvement</p>
+    <p class="lede">{{ site.author.summary }}</p>
+    <div class="actions">
+      <a class="btn primary" href="{{ '/projects/' | relative_url }}">Explore my work</a>
+      {% if site.author.cv_file != "" %}<a class="btn" href="{{ site.author.cv_file | relative_url }}">Download CV</a>{% endif %}
+      <a class="btn" href="{{ site.author.trailhead }}" target="_blank" rel="noopener noreferrer">Trailhead Profile</a>
+    </div>
   </div>
+  <a class="hero-proof" href="{{ '/projects/harbourline/' | relative_url }}" aria-label="Explore the Harbourline Security Salesforce practice project">
+    <div class="hero-proof-head"><span class="label">Featured case study / 01</span><span aria-hidden="true">↗</span></div>
+    <div class="hero-proof-media"><img src="{{ '/assets/img/harbourline/flow.png' | relative_url }}" alt="Salesforce Flow Builder diagram from the Harbourline Security practice org" width="1400" height="1249" fetchpriority="high" decoding="async"></div>
+    <div class="hero-proof-foot"><strong>Harbourline Security</strong><span>Salesforce processes, data access and automation — designed and tested against real-world scenarios.</span></div>
+  </a>
 </section>
 
 <section class="block">
