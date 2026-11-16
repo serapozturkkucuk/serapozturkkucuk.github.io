@@ -302,3 +302,38 @@ main.wrap { gap: 54px; }
   .experience-head,.experience-intro { max-width: 100%; }
   .value-grid li { padding: 15px 18px; }
 }
+
+
+/* Layout calibration from desktop review: coherent widths, compact details, even dividers */
+main.wrap { gap: 38px; }
+.page-head { padding: 0 0 38px; }
+.page-head + .block { margin-top: 0; }
+main.wrap:has(.experience-head) > .block,
+main.wrap:has(.experience-head) > .page-head { width: 100%; max-width: 890px; }
+main.wrap:has(.experience-head) > .block { justify-self: start; }
+.experience-intro, .experience-story, .experience-value,
+.experience-skills, .experience-project, .experience-jobs,
+.experience-download-cv { width: 100%; max-width: 100%; }
+.experience-detail-row {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  align-items: stretch;
+  gap: 13px;
+}
+.experience-detail-row .experience-detail-card {
+  min-width: 0; padding: 17px 18px;
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-start; gap: 7px;
+  border-radius: 7px; box-shadow: none;
+}
+.experience-detail-row h2 { font-size: var(--fs-body); font-weight: 750; margin: 0 0 7px; }
+.experience-detail-row p { font-size: var(--fs-small); line-height: 1.55; }
+.experience-detail-row strong { color: var(--ink); }
+@media (max-width: 760px) {
+  .experience-detail-row { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .page-head { padding-bottom: 28px; }
+  main.wrap { gap: 28px; }
+}
+@media (max-width: 560px) {
+  .experience-detail-row { grid-template-columns: minmax(0,1fr); gap: 10px; }
+}
