@@ -11,7 +11,7 @@ title: Experience
 <section class="block experience-intro">
   <h2>About me</h2>
   <div class="experience-story">
-    <p>The career started as an agronomist and copywriter at Doktar Technologies, an agri-tech start-up in Turkey, as one of its first employees. Built the customer database from day one, then grew the company’s social media audience by 50,000 in a year, which turned into a paid service and became the company’s main source of income. Went on to lead digital marketing, help develop the CRM and product database, and build dashboards for senior teams. After moving to the UK, joined Puratos in quality assurance, was promoted to QA Team Leader within a year, and delivered £80,000 in annual savings through process improvements. When the company relocated in 2026, that change became the starting point for the next step: Salesforce, where data, systems and process skills come together.</p>
+    <p>I started as an agronomist and copywriter at Doktar Technologies, an agri-tech start-up in Turkey, where I was one of the first employees. I built the customer database from day one and grew its social media audience by 50,000 in one year, helping establish a paid service that became the company’s main source of income. I later led digital marketing, helped develop the CRM and product database, and created dashboards for senior teams. After moving to the UK, I joined Puratos in quality assurance, was promoted to QA Team Leader within a year, and delivered £80,000 in annual savings through process improvements. When the company relocated in 2026, I chose Salesforce as my next step, bringing together my experience in data, systems and processes.</p>
   </div>
   <div class="experience-value">
     <div class="experience-value-heading">
@@ -37,7 +37,24 @@ title: Experience
 
 <section class="block">
   <h2>Technology &amp; tools</h2>
-  <ul class="chips">{% for t in site.data.profile.tools %}<li>{{ t }}</li>{% endfor %}</ul>
+  <div class="tool-groups" aria-label="Technology skills by category">
+    <div class="tool-group">
+      <h3>Salesforce &amp; data management</h3>
+      <ul class="chips"><li>Salesforce Lightning Experience</li><li>Data Loader</li><li>dataloader.io</li></ul>
+    </div>
+    <div class="tool-group">
+      <h3>Data &amp; reporting</h3>
+      <ul class="chips"><li>Power BI</li><li>Google Looker Studio</li><li>SQL (basic)</li><li>DAX (basic)</li></ul>
+    </div>
+    <div class="tool-group">
+      <h3>Business systems &amp; digital platforms</h3>
+      <ul class="chips"><li>SAP</li><li>SinglePoint</li><li>Seamcor</li><li>Adobe Experience Manager</li></ul>
+    </div>
+    <div class="tool-group">
+      <h3>Collaboration &amp; delivery</h3>
+      <ul class="chips"><li>Jira</li><li>GitHub</li><li>Microsoft 365 &amp; SharePoint</li><li>Trello, Planner &amp; Loop</li></ul>
+    </div>
+  </div>
 </section>
 
 <section class="block">
@@ -57,28 +74,18 @@ title: Experience
   <h2>Professional experience</h2>
   <ol class="jobs experience-jobs">
     {% for j in site.data.experience %}
-      {% if j.company contains 'Doktar' %}
     <li class="card">
-      <div class="when"><b>{{ j.company }}</b><span>{{ j.location }}</span><span>{{ j.dates }}</span></div>
+      <div class="when">
+        <b>{{ j.company }}</b>
+        <span>{{ j.location }}</span>
+        <span>{{ j.dates }}</span>
+      </div>
       <div class="what">
         <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b><span>{{ r.dates }}</span></li>{% endfor %}</ul>
         <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
         {% if j.for_salesforce %}<p class="so">Relevant to Salesforce: {{ j.for_salesforce }}</p>{% endif %}
       </div>
     </li>
-      {% endif %}
-    {% endfor %}
-    {% for j in site.data.experience %}
-      {% unless j.company contains 'Doktar' %}
-    <li class="card">
-      <div class="when"><b>{{ j.company }}</b><span>{{ j.location }}</span><span>{{ j.dates }}</span></div>
-      <div class="what">
-        <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b><span>{{ r.dates }}</span></li>{% endfor %}</ul>
-        <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
-        {% if j.for_salesforce %}<p class="so">Relevant to Salesforce: {{ j.for_salesforce }}</p>{% endif %}
-      </div>
-    </li>
-      {% endunless %}
     {% endfor %}
   </ol>
 </section>
