@@ -73,27 +73,25 @@ title: Experience
   </ol>
 </section>
 
-<section class="block experience-detail-sections">
-  <h2>Education</h2>
-  <div class="card experience-detail-card">
-    {% for e in site.data.profile.education %}
-    <p><strong>{{ e.title }}</strong></p>
-    <p class="muted">{{ e.place }} · {{ e.dates }}</p>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="block experience-detail-sections">
-  <h2>Languages</h2>
-  <div class="card experience-detail-card">
-    <p>English (Business Level) · Turkish (Native)</p>
-  </div>
-</section>
-
-<section class="block experience-detail-sections">
-  <h2>Additional details</h2>
-  <div class="card experience-detail-card">
-    <p>Right to work in the UK · Full UK driving licence</p>
+<section class="block experience-detail-sections" aria-label="Education, languages and additional details">
+  <div class="experience-detail-row">
+    <div class="card experience-detail-card">
+      <h2>Education</h2>
+      {% for e in site.data.profile.education %}
+      <p><strong>{{ e.title }}</strong></p>
+      <p class="muted">{{ e.place }} · {{ e.dates }}</p>
+      {% endfor %}
+    </div>
+    <div class="card experience-detail-card">
+      <h2>Languages</h2>
+      <p>English (Business Level)</p>
+      <p>Turkish (Native)</p>
+    </div>
+    <div class="card experience-detail-card">
+      <h2>Additional details</h2>
+      <p>Right to work in the UK</p>
+      <p>Full UK driving licence</p>
+    </div>
   </div>
 </section>
 
