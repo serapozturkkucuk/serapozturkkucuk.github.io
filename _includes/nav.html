@@ -6,7 +6,7 @@
     </a>
     <nav aria-label="Main">
       <ul>
-        {% assign links = "Home|/,Projects|/projects/,Certifications|/certifications/,Experience|/about/,CV|/cv/,Contact|/contact/" | split: "," %}
+        {% assign links = "Home|/,Projects|/projects/,Certifications|/certifications/,Experience|/about/,Contact|/contact/" | split: "," %}
         {% for l in links %}
           {% assign parts = l | split: "|" %}
           {% assign target = parts[1] %}
