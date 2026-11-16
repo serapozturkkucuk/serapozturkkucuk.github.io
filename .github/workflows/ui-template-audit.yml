@@ -1,7 +1,9 @@
 name: UI template audit
 on:
+  pull_request:
+    branches: [main]
   push:
-    branches: [ui-system-refinement-2026]
+    branches: [main]
 permissions:
   contents: read
 jobs:
