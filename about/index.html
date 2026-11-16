@@ -1,67 +1,99 @@
 ---
 layout: default
-title: About
+title: Experience
 ---
-<header class="page-head">
-  <h1>About me</h1>
-  <p class="lede">{{ site.author.summary }}</p>
+<header class="page-head experience-head">
+  <span class="label">Professional background</span>
+  <h1>Experience</h1>
+  <p class="lede">Salesforce administration, CRM and data systems, testing and process improvement.</p>
 </header>
 
-<section class="block prose">
-  <p>I spent twelve years at Doktar Technologies, an agri-tech start-up in Turkey, where I was one of the first employees. I built the company's customer database from day one, helped develop its CRM and product database, ran digital marketing, and built dashboards for senior teams.</p>
-  <p>In the UK I moved into quality assurance at Puratos, a food manufacturer, and was promoted to QA Team Leader. That work was about accurate data, clear procedures and testing before anything reaches people.</p>
-  <p>Salesforce brings these together. I passed the Salesforce Certified Platform Administrator exam in 2026 and built a complete practice org to show what I can do.</p>
-</section>
-
-<section class="block">
-  <h2>Experience</h2>
-  <ol class="jobs">
-    {% for j in site.data.experience %}
-    <li class="card">
-      <div class="when">
-        <b>{{ j.company }}</b>
-        <span>{{ j.location }}</span>
-        <span>{{ j.dates }}</span>
-      </div>
-      <div class="what">
-        <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b> <span>{{ r.dates }}</span></li>{% endfor %}</ul>
-        <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
-        {% if j.for_salesforce %}<p class="so">For Salesforce: {{ j.for_salesforce }}</p>{% endif %}
-      </div>
-    </li>
-    {% endfor %}
-  </ol>
+<section class="block experience-intro">
+  <h2>About me</h2>
+  <div class="experience-story">
+    <p class="intro-lead">Salesforce Certified Platform Administrator with experience in CRM and product databases, data quality, reporting, UAT and process improvement.</p>
+    <p>The career started as an agronomist and copywriter at Doktar Technologies, an agri-tech start-up in Turkey, as one of its first employees. Built the customer database from day one, then grew the company’s social media audience by 50,000 in a year, which turned into a paid service and became the company’s main source of income. Went on to lead digital marketing, help develop the CRM and product database, and build dashboards for senior teams. After moving to the UK, joined Puratos in quality assurance, was promoted to QA Team Leader within a year, and delivered £80,000 in annual savings through process improvements. When the company relocated in 2026, that change became the starting point for the next step: Salesforce, where data, systems and process skills come together.</p>
+  </div>
+  <div class="experience-value">
+    <div class="experience-value-heading">
+      <span class="label">What I bring</span>
+      <h3>Business understanding backed by hands-on systems work</h3>
+      <p>Experience turning operational needs into accurate data, usable processes and tested improvements.</p>
+    </div>
+    <ul class="value-grid">
+      <li><strong>CRM &amp; business systems</strong><span>Helped develop a CRM and product database, including data structure, segmentation and reporting.</span></li>
+      <li><strong>Data quality &amp; reporting</strong><span>Maintained records across 100+ products and built Power BI and Looker Studio dashboards.</span></li>
+      <li><strong>Testing &amp; process improvement</strong><span>Applied UAT, documentation and practical workflow improvements across different teams.</span></li>
+      <li><strong>Measurable operational impact</strong><span>Delivered £80,000 in annual savings and trained 20+ colleagues on processes and standards.</span></li>
+    </ul>
+  </div>
 </section>
 
 <section class="block">
   <h2>Salesforce skills</h2>
-  <dl class="skill-table">
+  <dl class="skill-table experience-skills">
     {% for s in site.data.profile.skills %}<dt>{{ s.group }}</dt><dd>{{ s.text }}</dd>{% endfor %}
   </dl>
 </section>
 
 <section class="block">
-  <h2>Tools</h2>
+  <h2>Technology &amp; tools</h2>
   <ul class="chips">{% for t in site.data.profile.tools %}<li>{{ t }}</li>{% endfor %}</ul>
 </section>
 
-<section class="block split">
-  <div>
-    <h2>Education</h2>
-    {% for e in site.data.profile.education %}<p><b>{{ e.title }}</b><br><span class="muted">{{ e.place }} · {{ e.dates }}</span></p>{% endfor %}
-  </div>
-  <div>
-    <h2>Languages and details</h2>
-    <p class="muted">{{ site.data.profile.languages }}</p>
+<section class="block">
+  <h2>Harbourline Security (Salesforce Practice Org)</h2>
+  <div class="experience-project card">
+    <div>
+      <span class="pill">Self-directed practice project · 2026</span>
+      <h3>From business requirements to a tested Salesforce solution</h3>
+      <p>Designed, configured, tested and documented a Developer Edition practice org for a fictional security company. The project covers sales and service processes, record access, approval controls, data management, automation and reporting.</p>
+      <a class="btn primary" href="{{ '/projects/harbourline/' | relative_url }}">Explore Harbourline case study</a>
+    </div>
+    <img src="{{ '/assets/img/harbourline/kanban.png' | relative_url }}" alt="Salesforce Admin Request tracker Kanban view in Harbourline Security" loading="lazy">
   </div>
 </section>
 
 <section class="block">
-  <h2>How I'd start in a new org</h2>
-  <ol class="phases">
-    {% for a in site.data.profile.approach %}
-    <li class="card"><span class="label">{{ a.when }}</span><h3>{{ a.title }}</h3><p>{{ a.text }}</p></li>
+  <h2>Professional experience</h2>
+  <ol class="jobs experience-jobs">
+    {% for j in site.data.experience %}
+      {% if j.company contains 'Doktar' %}
+    <li class="card">
+      <div class="when"><b>{{ j.company }}</b><span>{{ j.location }}</span><span>{{ j.dates }}</span></div>
+      <div class="what">
+        <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b><span>{{ r.dates }}</span></li>{% endfor %}</ul>
+        <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
+        {% if j.for_salesforce %}<p class="so">Relevant to Salesforce: {{ j.for_salesforce }}</p>{% endif %}
+      </div>
+    </li>
+      {% endif %}
+    {% endfor %}
+    {% for j in site.data.experience %}
+      {% unless j.company contains 'Doktar' %}
+    <li class="card">
+      <div class="when"><b>{{ j.company }}</b><span>{{ j.location }}</span><span>{{ j.dates }}</span></div>
+      <div class="what">
+        <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b><span>{{ r.dates }}</span></li>{% endfor %}</ul>
+        <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
+        {% if j.for_salesforce %}<p class="so">Relevant to Salesforce: {{ j.for_salesforce }}</p>{% endif %}
+      </div>
+    </li>
+      {% endunless %}
     {% endfor %}
   </ol>
-  <p class="note-strong">I have a written playbook for learning an existing org before changing it.</p>
+</section>
+
+<section class="block experience-details">
+  <h2>Education, languages &amp; additional details</h2>
+  <div class="experience-details-grid">
+    <div class="card experience-detail-card">
+      <h3>Education</h3>
+      {% for e in site.data.profile.education %}<p><strong>{{ e.title }}</strong></p><p class="muted">{{ e.place }} · {{ e.dates }}</p>{% endfor %}
+    </div>
+    <div class="card experience-detail-card">
+      <h3>Languages &amp; additional details</h3>
+      <p>{{ site.data.profile.languages }}</p>
+    </div>
+  </div>
 </section>
