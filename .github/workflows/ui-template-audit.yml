@@ -1,0 +1,68 @@
+name: UI template audit
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  ui-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Jekyll site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install headless browser
+        run: |
+          npm install --no-save playwright@1.56.1
+          which google-chrome || which google-chrome-stable || which chromium || which chromium-browser
+      - name: Check responsive pages, images and navigation
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --directory _site >/tmp/ui-server.log 2>&1 &
+          node - <<'JS'
+          const {chromium}=require('playwright');
+          (async()=>{
+            const b=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox']});
+            const pages=['/','/projects/','/about/','/certifications/','/contact/','/projects/harbourline/'];
+            const sizes=[375,768,1280];
+            let failures=[];
+            for(const width of sizes)for(const route of pages){
+              const page=await b.newPage({viewport:{width,height:850}});
+              const result=await page.goto('http://127.0.0.1:8765'+route,{waitUntil:'networkidle'});
+              await page.evaluate(async()=>{ const imgs=[...document.images]; imgs.forEach(img=>{img.loading='eager'}); await Promise.all(imgs.map(img=>img.decode().catch(()=>{}))); });
+              const info=await page.evaluate(()=>({
+                scrollWidth:document.documentElement.scrollWidth,
+                bodyWidth:document.body.scrollWidth,
+                title:document.title,
+                headings:[...document.querySelectorAll('h1')].map(x=>x.textContent.trim()),
+                failedImages:[...document.images].filter(x=>!x.complete || x.naturalWidth===0).map(x=>x.src),
+                menuVisible:getComputedStyle(document.querySelector('.mobile-menu')).display!=='none',
+                desktopNavVisible:getComputedStyle(document.querySelector('.desktop-nav')).display!=='none'
+              }));
+              console.log(JSON.stringify({route,width,status:result.status(),...info}));
+              if(result.status()!==200) failures.push(route+' '+width+' HTTP '+result.status());
+              if(info.scrollWidth>width+2) failures.push(route+' '+width+' horizontal overflow '+info.scrollWidth);
+              if(info.failedImages.length) failures.push(route+' '+width+' broken image '+info.failedImages.join(','));
+              if(info.headings.length!==1) failures.push(route+' '+width+' h1 count '+info.headings.length);
+              if(width<=768 && !info.menuVisible) failures.push(route+' '+width+' mobile menu missing');
+              if(width>768 && !info.desktopNavVisible) failures.push(route+' '+width+' desktop nav missing');
+              if(route==='/' && width===375){
+                await page.locator('.mobile-menu summary').click();
+                const visible=await page.locator('.mobile-menu nav a').first().isVisible();
+                if(!visible) failures.push('mobile menu cannot be opened');
+              }
+              await page.close();
+            }
+            await b.close();
+            if(failures.length){console.error('AUDIT FAILED:',failures.join(' | '));process.exit(1)}
+            console.log('UI AUDIT PASSED: 18 pages/viewports, images, nav, h1 and overflow');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS

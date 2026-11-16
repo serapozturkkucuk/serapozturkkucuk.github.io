@@ -1,13 +1,13 @@
+{% assign nav_links = "Home|/,Projects|/projects/,Certifications|/certifications/,Experience|/about/,Contact|/contact/" | split: "," %}
 <header class="site-head">
   <div class="wrap head-row">
     <a class="brand" href="{{ '/' | relative_url }}">
       <span class="brand-name">{{ site.author.name }}</span>
       <span class="brand-sub">Salesforce · CRM · Business Systems</span>
     </a>
-    <nav aria-label="Main">
-      <ul>
-        {% assign links = "Home|/,Projects|/projects/,Certifications|/certifications/,Experience|/about/,Contact|/contact/" | split: "," %}
-        {% for l in links %}
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <ul class="nav-links">
+        {% for l in nav_links %}
           {% assign parts = l | split: "|" %}
           {% assign target = parts[1] %}
           {% assign active = false %}
@@ -16,5 +16,19 @@
         {% endfor %}
       </ul>
     </nav>
+    <details class="mobile-menu">
+      <summary aria-label="Open site navigation"><span>Menu</span><span aria-hidden="true" class="menu-glyph"></span></summary>
+      <nav aria-label="Mobile navigation">
+        <ul class="nav-links">
+          {% for l in nav_links %}
+            {% assign parts = l | split: "|" %}
+            {% assign target = parts[1] %}
+            {% assign active = false %}
+            {% if target == "/" %}{% if page.url == "/" or page.url == "/index.html" %}{% assign active = true %}{% endif %}{% else %}{% if page.url contains target %}{% assign active = true %}{% endif %}{% endif %}
+            <li><a href="{{ target | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ parts[0] }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </details>
   </div>
 </header>
