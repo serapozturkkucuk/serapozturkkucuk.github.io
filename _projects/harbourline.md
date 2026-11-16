@@ -1,22 +1,38 @@
 ---
 title: Harbourline Security
-subtitle: Salesforce CRM implementation in a practice org
-summary: A self-directed Salesforce Developer Edition practice org for a fictional company that sells, installs and maintains CCTV and access-control systems, covering sales, service and admin processes, configured and tested by me.
+subtitle: A Salesforce CRM built around real-world business problems
+summary: A fictional security company had scattered customer information, informal discount approvals and support requests without clear ownership. I designed and tested a Salesforce practice org to bring those processes together.
 status: completed
-status_label: Practice org · 2026
+status_label: Self-directed practice org · 2026
 featured: true
 order: 1
-card_image: /assets/img/harbourline/service.png
-card_alt: Harbourline Service Home page in Salesforce, with the Support Queue
-tags: [Sales Cloud, Service Cloud, Flow, Security, Data Management, Reports]
-role: Salesforce Administrator. I designed, configured, tested and documented everything.
-org: Salesforce Developer Edition, with two full user licences
+card_image: /assets/img/harbourline/flow.png
+card_alt: Harbourline Salesforce record-triggered Flow showing decisions and record creation
+tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
+role: Salesforce Administrator — requirements, configuration, testing and documentation
+org: Salesforce Developer Edition · fictional business and test data
 period: August 2026 – present
-tools: Setup, Flow Builder, Schema Builder, Lightning App Builder, Data Import Wizard, dataloader.io
+tools: Flow Builder, Schema Builder, Lightning App Builder, Data Loader, dataloader.io
+showcase_images:
+  - image: /assets/img/harbourline/flow.png
+    alt: Create HQ Building Flow showing Get Records, a decision, and Create Records in Salesforce Flow Builder
+    title: Designing for the exception
+    caption: Check whether a Headquarters Building exists before creating one
+    anchor: "#decisions"
+  - image: /assets/img/harbourline/validation.png
+    alt: Salesforce validation error preventing an unapproved discount from advancing to Proposal
+    title: A control that actually stops the record
+    caption: Unapproved discounts cannot move into price stages
+    anchor: "#solutions"
+  - image: /assets/img/harbourline/kanban.png
+    alt: Harbourline Admin Request tracker Kanban board grouped by status
+    title: Turning requests into a visible queue
+    caption: Admin work tracked by priority and status
+    anchor: "#solutions"
 links:
-  - label: Full documentation
+  - label: Explore technical evidence
     url: /docs/harbourline/
-  - label: Download as PDF
+  - label: Download full portfolio PDF
     url: /docs/harbourline/Serap_Ozturk-Kucuk_Salesforce_Admin_Portfolio_v1.1.pdf
 stats:
   - value: "28"
@@ -24,136 +40,105 @@ stats:
   - value: "65"
     label: customer sites
   - value: "40"
-    label: deals migrated
+    label: Opportunities migrated
   - value: "4"
-    label: record-triggered flows
+    label: record-triggered Flows
 contents:
-  - id: scenario
-    title: Business scenario
-  - id: requirements
-    title: Requirements
-  - id: data-model
-    title: Data model
-  - id: configuration
-    title: Configuration
-  - id: automation
-    title: Automation and Flow
-  - id: security
-    title: Security and access
+  - id: challenge
+    title: The challenge
+  - id: solutions
+    title: What I built
+  - id: decisions
+    title: Design decisions
   - id: testing
-    title: Testing and troubleshooting
-  - id: results
-    title: Results and lessons
+    title: Testing and fixes
+  - id: outcome
+    title: Results and next steps
 ---
 
-<h2 id="scenario">1. Business scenario and challenge</h2>
+<p class="case-kicker">The project in brief</p>
+<p class="case-opening">I wanted to build more than a working set of Salesforce features. I wanted to see whether each configuration decision could solve a business problem — and what happened when I tested the exceptions.</p>
+<p class="case-context">Harbourline Security is a fictional CCTV and access-control installation business in North West England. I used Salesforce Developer Edition, fictional users and test data to design and test its sales, customer service and internal admin processes. The figures above describe the size of my practice dataset, not live business results.</p>
 
-Harbourline Security is a fictional company in the North West of England. It sells, installs and maintains CCTV and access-control systems for businesses such as logistics firms, care homes and colleges. A sales team wins new customers and sells more to existing ones, and a service team handles customer problems.
+<h2 id="challenge">01 / The challenge</h2>
 
-Before Salesforce, the scenario was:
+<p>Four problems shaped the build: discounts were agreed by email, support messages had no reliable ownership, information about customer sites was scattered, and requests to the Salesforce admin had no shared priority or status. Sales managers also needed visibility without giving every rep access to every deal.</p>
 
-- **Discounts were agreed by email**, with no record of who approved what.
-- **Support emails arrived in a shared inbox**, where they could be missed.
-- **Customer site details were scattered**, so engineers had to ask around.
-- **Requests to the admin were made in passing**, with no list and no priorities.
+<h2 id="solutions">02 / What I built</h2>
 
-<h2 id="requirements">2. Requirements and objectives</h2>
+<div class="solution-list">
+  <div class="solution-item">
+    <span class="solution-index">01</span>
+    <div><h3>Sales approvals with a clear stopping point</h3><p>Two Opportunity sales processes support different types of deals. Discounts above 15% require manager approval; those above 40% require a second approval step. A validation rule prevents a deal with an unapproved discount from progressing into price stages.</p></div>
+  </div>
+  <div class="solution-item">
+    <span class="solution-index">02</span>
+    <div><h3>Support cases routed to the right place</h3><p>Email-to-Case creates cases from incoming messages. A Support Queue, assignment and auto-response rules establish ownership and acknowledgement; an escalation rule addresses cases after four hours. A Flow alerts the service manager to cases from Key Accounts.</p></div>
+  </div>
+  <div class="solution-item">
+    <span class="solution-index">03</span>
+    <div><h3>Customer data that connects to the real world</h3><p>A custom Building object links sites to Accounts, with a lookup to the site Contact. External IDs support matching during imports, and reports and dashboards help sales, service and admin teams see their work.</p></div>
+  </div>
+  <div class="solution-item">
+    <span class="solution-index">04</span>
+    <div><h3>Admin requests people can track</h3><p>I created an Admin Request object with a Kanban view, P1–P4 priority determined from Impact and Urgency, status validation and notification Flows. It replaces an informal request process with a visible backlog.</p></div>
+  </div>
+</div>
 
-| The business needs | How I met it |
-|---|---|
-| Sales reps see only their own deals; managers see their team's | Private org-wide default for Opportunities, plus a role hierarchy |
-| Discounts over 15% need the manager, over 40% the Sales VP too | Approval process with two steps, and a validation rule so it can't be skipped |
-| Every support email becomes a case with an owner | Email-to-Case, a support queue, an assignment rule and an automatic reply |
-| The service manager hears at once about problems at the biggest customers | Record-triggered flow that emails the manager for Key Account cases |
-| Old CRM data moves over without duplicates | Legacy IDs as External IDs, and upserts tested on 4 rows first |
-| Managers see the numbers each week | 13 reports on three dashboards |
-| One place for all requests to the admin | A custom Admin Request object with a Kanban board |
+<h2 id="decisions">03 / Decisions behind the build</h2>
 
-<h2 id="data-model">3. Solution architecture and data model</h2>
+<p>My approach was to compare the available declarative tools before adding automation. Formulas and roll-ups calculate values, validation rules enforce requirements, approval processes manage sign-off, and Flow handles logic that needs to act on records.</p>
 
-- **Building** (custom): a customer's site. Master-detail to Account, because a site can't exist without its customer. A roll-up summary on Account counts the sites.
-- **Site Contact**: a lookup from Building to Contact, because a site doesn't always have a named person.
-- **Training Session** and **Session Attendee**: customers' staff attend many sessions, and each session has many people, so a junction object links them.
-- **Admin Request** (custom): tracks requests to the admin, with an auto-number, a priority formula and a status lifecycle.
-- **Legacy IDs** on Account, Contact and Opportunity: External IDs, so imports can match records without Salesforce IDs.
+<div class="case-decision">
+  <h3>Why Building is a child of Account</h3>
+  <p>A customer site cannot exist without its customer, so I used master-detail from Building to Account. That also supports a roll-up count of sites. Site Contact is a lookup because a building may not have a named contact.</p>
+  <figure class="shot">
+    <img src="{{ '/assets/img/harbourline/schema.png' | relative_url }}" alt="Salesforce Schema Builder showing Account, Building, Contact and Training Session object relationships" loading="lazy" width="1000" height="650">
+    <figcaption>Actual Schema Builder view from the practice org, including the Building relationship and Session Attendee junction.</figcaption>
+  </figure>
+</div>
 
-<figure class="shot narrow"><img src="{{ '/assets/img/harbourline/schema.png' | relative_url }}" alt="Schema Builder showing Account, Contact, Building, Session Attendee and Training Session" loading="lazy"><figcaption>Schema Builder: Building linked to Account and Contact, and the Session Attendee junction between Contact and Training Session.</figcaption></figure>
+<div class="case-decision">
+  <h3>Why the HQ Building Flow checks before creating</h3>
+  <p>When an Opportunity is won, an after-save Flow checks for an existing Headquarters Building before creating a new one. I tested both the create path and the path where a building already exists, so the automation would not create duplicates.</p>
+</div>
 
-<h2 id="configuration">4. Salesforce configuration</h2>
+<div class="case-decision">
+  <h3>Why sharing rules were not enough on their own</h3>
+  <p>Opportunities are Private, with access opened through the role hierarchy and specific sharing. During testing, one user still saw no deals because her profile lacked Read permission on Opportunity. Fixing the object permission made the distinction between object access and record sharing very clear.</p>
+</div>
 
-**Sales**
-- Two record types and sales processes: External Sale (new customers, with a Site Survey stage) and Internal Sale (existing customers), each with its own Path.
-- Three products in the standard price book, and a discount approval process with a validation rule that blocks the price stages until the discount is approved.
+<h2 id="testing">04 / What I tested — and what went wrong</h2>
 
-<figure class="shot"><img src="{{ '/assets/img/harbourline/validation.png' | relative_url }}" alt="Validation rule error stopping a deal with an unapproved discount from moving to Proposal" loading="lazy"><figcaption>The validation rule at work: a deal with an unapproved discount can't move to Proposal/Price Quote.</figcaption></figure>
+<p>I tested the expected path and the path where each feature should do nothing or block an action. With only two full Developer Edition user licences, I reassigned the spare licence to test user roles one at a time using Login As.</p>
 
-**Service**
-- Email-to-Case, a Support Queue, an assignment rule, an auto-response, and an escalation rule after four hours.
+<div class="test-grid">
+  <div><strong>100 cases</strong><span>Bulk test of the Case alert Flow, including records that should not trigger alerts</span></div>
+  <div><strong>4-row trials</strong><span>Small imports before larger loads, followed by record-count checks</span></div>
+  <div><strong>Real email</strong><span>Email-to-Case tested end to end on the primary incoming-email path</span></div>
+  <div><strong>Multiple roles</strong><span>Record visibility checked with Login As and role-based access tests</span></div>
+</div>
 
-<figure class="shot"><img src="{{ '/assets/img/harbourline/service.png' | relative_url }}" alt="Service Home page with the Support Queue and open cases" loading="lazy"><figcaption>Service Home as the service manager. The red flag on case 00001026 is the escalation rule.</figcaption></figure>
+<p><strong>Two fixes that taught me the most:</strong></p>
+<ul>
+  <li><strong>No Opportunity visibility despite sharing:</strong> the user had no object-level Read permission. I corrected the permission, then retested.</li>
+  <li><strong>Approval failed because Manager was empty:</strong> the submitting user had no Manager assigned. I added that check to my user setup checklist.</li>
+</ul>
 
-**For every team**
-- A Lightning app per team with only the tabs they use, Home pages by app and profile, and compact layouts with the key fields at the top.
-- 13 reports on Sales, Service and Admin Work dashboards, each answering one question a manager asks.
+<p class="case-footnote">The detailed documentation includes other troubleshooting cases, data import decisions, security tables and test scenarios.</p>
 
-<figure class="shot narrow"><img src="{{ '/assets/img/harbourline/sales.png' | relative_url }}" alt="Harbourline Sales dashboard with discounts awaiting approval and open pipeline by stage" loading="lazy"><figcaption>The Sales dashboard: discounts waiting for approval, open pipeline by stage, and won revenue by customer tier.</figcaption></figure>
+<h2 id="outcome">05 / Results, limitations and next steps</h2>
 
-**Admin Request tracker**
-- Anyone raises a request from the + menu. Priority (P1 to P4) is worked out from Impact and Urgency, so nobody picks their own. A rejection needs a reason, and requesters are emailed when the status changes.
+<p>I finished with configured and tested processes for sales approvals, customer service, customer-site records, access management and admin requests, plus 13 reports across three dashboards. I documented what I built, what failed during testing and how I fixed it.</p>
 
-<figure class="shot"><img src="{{ '/assets/img/harbourline/kanban.png' | relative_url }}" alt="Kanban board of admin requests grouped by status" loading="lazy"><figcaption>All open requests on a Kanban board. Everyone can see it; only the Admin Team can move cards.</figcaption></figure>
+<p><strong>What this does not prove:</strong> Harbourline is a practice project, not a live deployment. I have not measured real customer outcomes such as reduced approval time or faster case resolution. Email-to-Case testing did not yet cover unknown senders or reply threading. Web-to-Case, entitlements and sandbox deployment were not implemented.</p>
 
-<h2 id="automation">5. Automation and Flow design</h2>
+<p>Next, I'd like to extend the same approach to deployment between orgs, Screen Flows and Permission Set Groups — documenting the decisions and tests rather than treating a successful save as proof a feature works.</p>
 
-I use Flow only when a simpler tool can't do the job. Formulas, roll-ups, validation rules and approval processes handle the rest.
-
-| Flow | Type | What it does |
-|---|---|---|
-| Create HQ Building | After save, Opportunity | When a deal is won, creates the customer's Headquarters Building, unless one already exists |
-| Key Account case alert | After save, Case | Emails the service manager when a Key Account customer opens a case |
-| Admin Request owner and dates | Before save, Admin Request | Sets the queue as owner and fills in the requester; stamps Date Closed, and clears it if the request is reopened |
-| Admin Request status email | After save, Admin Request | Emails the requester when the status changes |
-
-<figure class="shot narrow"><img src="{{ '/assets/img/harbourline/flow.png' | relative_url }}" alt="Flow Builder showing the Create HQ Building flow with Get Records, a decision and Create Records" loading="lazy"><figcaption>The Create HQ Building flow: it looks for the building first, and creates it only on the "No HQ" path.</figcaption></figure>
-
-<h2 id="security">6. Security and access management</h2>
-
-| Object | Org-wide default | Opened up by |
-|---|---|---|
-| Opportunity | Private | Role hierarchy, a criteria-based sharing rule, an account team |
-| Account | Public Read Only | Owners and managers edit |
-| Contact | Controlled by Parent | Follows the Account |
-| Case | Public Read Only | Service team edits |
-| Admin Request | Public Read Only | Only the Admin Team queue edits |
-
-- Two custom profiles (Sales, Service), with permission sets for single extras, such as deleting Opportunities.
-- A sharing rule gives the service team read access to won deals. An account team gives two people access to one Key Account.
-
-<h2 id="testing">7. Testing and troubleshooting</h2>
-
-**How I tested**
-- I checked every user's view with **Login As**. With only two licences, I moved the spare licence from user to user.
-- I tested every flow on the path where it should act and on the path where it shouldn't, including a bulk test with 100 cases.
-- I tested every import with a 4-row file first, and counted records before and after.
-- I tested Email-to-Case end to end with a real email.
-
-**Problems I hit, and how I fixed them**
-
-| Problem | Cause and fix |
-|---|---|
-| Approval failed: "Manager field is empty" | The submitter had no Manager. Now on my new-user checklist |
-| Lead conversion failed on a Legacy ID | The field was required. Legacy IDs are now optional, and required fields are set on the page layout |
-| A user saw no deals despite a sharing rule | Her profile had no Read on Opportunity. Sharing opens records; the profile opens the object |
-| A rep's Home page chart was empty | Report charts run as the viewer. A dashboard that runs as a fixed user shows team totals |
-| The Contacts import duplicated Accounts | The wrong import option. I cleaned up, tested 4 rows, then reloaded with matching on email |
-
-<h2 id="results">8. Results, limitations and lessons learned</h2>
-
-**Results.** Each business need in section 2 is now a defined process in Salesforce, configured and tested. These results come from a practice org. In a live business I would measure the before and after, such as approval times and cases escalated, before claiming results.
-
-**Limitations**
-- A Developer Edition org with two licences, so I tested users one at a time.
-- Email-to-Case is tested on the main path only. Emails from unknown senders and reply threading are not tested yet.
-- Web-to-Case, entitlements and sandboxes are not part of this build.
-
-**What I'd do next:** a sandbox-style deployment between two orgs, Screen Flows, and Permission Set Groups.
+<div class="case-next-step">
+  <div><span class="label">Want the technical detail?</span><h3>See the diagrams, field decisions and test evidence</h3><p>The complete documentation keeps the deeper configuration steps without slowing down this case study.</p></div>
+  <div class="case-next-actions">
+    <a class="btn primary" href="{{ '/docs/harbourline/' | relative_url }}">Read technical documentation</a>
+    <a class="btn" href="{{ '/docs/harbourline/Serap_Ozturk-Kucuk_Salesforce_Admin_Portfolio_v1.1.pdf' | relative_url }}">Download full PDF</a>
+  </div>
+</div>
