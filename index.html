@@ -11,6 +11,7 @@ title: Home
   <div class="actions">
     <a class="btn primary" href="{{ '/projects/' | relative_url }}">Explore my work</a>
     {% if site.author.cv_file != "" %}<a class="btn" href="{{ site.author.cv_file | relative_url }}">Download CV</a>{% else %}<a class="btn" href="{{ '/about/' | relative_url }}">About me</a>{% endif %}
+    <a class="btn" href="{{ site.author.trailhead }}" target="_blank" rel="noopener noreferrer">Trailhead Profile</a>
   </div>
 </section>
 
