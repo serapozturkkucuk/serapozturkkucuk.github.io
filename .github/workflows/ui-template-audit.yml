@@ -32,7 +32,7 @@ jobs:
           (async()=>{
             const b=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox']});
             const pages=['/','/projects/','/about/','/certifications/','/contact/','/projects/harbourline/'];
-            const sizes=[375,768,1280];
+            const sizes=[375,768,1024,1280,1440];
             let failures=[];
             for(const width of sizes)for(const route of pages){
               const page=await b.newPage({viewport:{width,height:850}});
@@ -48,6 +48,29 @@ jobs:
                 desktopNavVisible:getComputedStyle(document.querySelector('.desktop-nav')).display!=='none'
               }));
               console.log(JSON.stringify({route,width,status:result.status(),...info}));
+              const geometry=await page.evaluate(()=>{
+                const main=document.querySelector('main.wrap');
+                const mr=main.getBoundingClientRect(),ms=getComputedStyle(main);
+                const left=mr.left+parseFloat(ms.paddingLeft),right=mr.right-parseFloat(ms.paddingRight);
+                const nodes=[
+                  ...main.querySelectorAll(':scope > header, :scope > section, :scope > div, :scope > p.crumb'),
+                  ...main.querySelectorAll('.case-grid > .facts-box, .case-grid > .case, .block > .experience-value, .block > .experience-project, .block > .experience-skills, .block > .experience-detail-row, .block > .jobs, .block > .badges, .block > .contact-list, .block > .home-skill-grid, .case > .stats, .case > .solution-list, .case > .test-grid, .case > .case-decision, .case > figure.shot, .case > .case-next-step, .case > h2')
+                ];
+                const issues=nodes.filter(x=>getComputedStyle(x).display!=='none').map(x=>{
+                  const r=x.getBoundingClientRect();
+                  return {element:x.tagName.toLowerCase()+'.'+x.className,left:Math.round(r.left-left),right:Math.round(right-r.right)};
+                }).filter(x=>Math.abs(x.left)>2||Math.abs(x.right)>2);
+                const wrappers=[document.querySelector('.site-head .wrap'),document.querySelector('.site-foot .wrap')].map(x=>{
+                  const r=x.getBoundingClientRect(),cs=getComputedStyle(x);
+                  return {left:r.left+parseFloat(cs.paddingLeft),right:r.right-parseFloat(cs.paddingRight)};
+                });
+                const wrappersMatch=wrappers.every(x=>Math.abs(x.left-left)<2&&Math.abs(x.right-right)<2);
+                const prose=[...main.querySelectorAll('p')].every(x=>getComputedStyle(x).textAlign==='left'&&getComputedStyle(x).maxWidth==='75ch');
+                return {left:Math.round(left),right:Math.round(right),issues,wrappersMatch,prose};
+              });
+              if(geometry.issues.length)failures.push(route+' '+width+' misaligned: '+JSON.stringify(geometry.issues));
+              if(!geometry.wrappersMatch)failures.push(route+' '+width+' header/footer container mismatch');
+              if(!geometry.prose)failures.push(route+' '+width+' prose alignment or measure mismatch');
               if(result.status()!==200) failures.push(route+' '+width+' HTTP '+result.status());
               if(info.scrollWidth>width+2) failures.push(route+' '+width+' horizontal overflow '+info.scrollWidth);
               if(info.failedImages.length) failures.push(route+' '+width+' broken image '+info.failedImages.join(','));
@@ -63,6 +86,6 @@ jobs:
             }
             await b.close();
             if(failures.length){console.error('AUDIT FAILED:',failures.join(' | '));process.exit(1)}
-            console.log('UI AUDIT PASSED: 18 pages/viewports, images, nav, h1 and overflow');
+            console.log('UI AUDIT PASSED: 30 pages/viewports, precise left/right alignment, prose measure, images, nav, h1 and overflow');
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
