@@ -20,7 +20,7 @@ jobs:
       - name: Install headless browser
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
+          which google-chrome || which google-chrome-stable || which chromium || which chromium-browser
       - name: Check responsive pages, images and navigation
         shell: bash
         run: |
@@ -28,7 +28,7 @@ jobs:
           node - <<'JS'
           const {chromium}=require('playwright');
           (async()=>{
-            const b=await chromium.launch({headless:true,args:['--no-sandbox']});
+            const b=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox']});
             const pages=['/','/projects/','/about/','/certifications/','/contact/','/projects/harbourline/'];
             const sizes=[375,768,1280];
             let failures=[];
