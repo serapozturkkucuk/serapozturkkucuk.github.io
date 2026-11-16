@@ -337,3 +337,50 @@ main.wrap:has(.experience-head) > .block { justify-self: start; }
 @media (max-width: 560px) {
   .experience-detail-row { grid-template-columns: minmax(0,1fr); gap: 10px; }
 }
+
+
+/* Homepage — a concise introduction and a single project visual */
+.home-hero .hero-copy { gap: 17px; }
+.home-hero .hero-copy .label { max-width: 55ch; }
+.home-hero .hero-copy h1 { margin-top: 4px; }
+.home-hero .hero-copy .lede { line-height: 1.6; }
+.home-location { font-size: var(--fs-small); }
+.home-capabilities { gap: 16px; }
+.home-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.home-skill-grid li {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-width: 0;
+  padding: 17px 16px;
+}
+.home-skill-grid li + li { border-left: 1px solid var(--line); }
+.home-skill-grid strong { font-size: var(--fs-body); line-height: 1.4; }
+.home-skill-grid span { color: var(--ink-soft); font-size: var(--fs-small); line-height: 1.55; }
+.home-end-links {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: var(--fs-small);
+}
+.home-end-links a { font-weight: 650; }
+@media (max-width: 900px) {
+  .home-skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-skill-grid li:nth-child(3) { border-left: none; }
+  .home-skill-grid li:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 540px) {
+  .home-skill-grid { grid-template-columns: minmax(0, 1fr); }
+  .home-skill-grid li + li { border-left: none; border-top: 1px solid var(--line); }
+}
