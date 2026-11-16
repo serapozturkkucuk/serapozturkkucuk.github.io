@@ -3,7 +3,7 @@ title: Sandbox-style deployment
 summary: Moving tested changes from a development org to a second org with a change package, and preparing for a Salesforce release.
 status: planned
 status_label: Planned
-featured: true
+featured: false
 order: 2
 ---
 
