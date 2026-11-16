@@ -9,5 +9,5 @@ title: Projects
 
 {% assign all = site.projects | sort: "order" %}
 <div class="grid two">
-  {% for p in all %}{% include project-card.html project=p %}{% endfor %}
+  {% for p in all %}{% if p.status == "completed" %}{% include project-card.html project=p %}{% endif %}{% endfor %}
 </div>
