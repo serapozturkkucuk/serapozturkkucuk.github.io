@@ -20,10 +20,10 @@ author:
   trailhead: https://www.salesforce.com/trailblazer/serapozturkkucuk
   # Add a job-search email address between the quotes, or leave it empty to hide it.
   email: "serap.uk@outlook.com"
-  # Put your CV PDF in assets/files/ and write its path, for example:
-  # cv_file: /assets/files/Serap_Ozturk-Kucuk_CV.pdf
+  # Put your CV PDF in the cv/ folder and write its path, for example:
+  # cv_file: /cv/SerapKucuk_CV_SalesforceAdmin_v0.6_without.pdf
   # While it is empty, the Download CV buttons are hidden.
-  cv_file: ""
+  cv_file: "/cv/SerapKucuk_CV_SalesforceAdmin_v0.6_without.pdf"
 
 collections:
   projects:
