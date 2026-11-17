@@ -20,7 +20,7 @@ links:
   - label: Technical Documentation
     url: /docs/harbourline/
   - label: Download PDF
-    url: /docs/harbourline/Serap_Ozturk-Kucuk_Salesforce_Admin_Portfolio_v1.1.pdf
+    url: /docs/harbourline/Serap_Ozturk-Kucuk_Salesforce_Admin_Portfolio_v1.2.pdf
 stats:
   - value: "28"
     label: Accounts
