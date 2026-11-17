@@ -11,23 +11,6 @@ layout: default
   {% if page.tags %}<ul class="tags">{% for t in page.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
 </header>
 
-{% if page.showcase_images %}
-<section class="project-showcase" aria-label="Highlights from the {{ page.title }} project">
-  <div class="showcase-heading">
-    <div><span class="label">Inside the build</span><h2>Designed. Configured. Tested.</h2></div>
-    <p>Real screenshots from the practice org — explore the decisions behind each one below.</p>
-  </div>
-  <div class="showcase-gallery">
-    {% for shot in page.showcase_images %}
-      <a class="showcase-shot" href="{{ shot.anchor }}">
-        <span class="showcase-img"><img src="{{ shot.image | relative_url }}" alt="{{ shot.alt | escape }}" {% if forloop.first %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></span>
-        <span class="showcase-copy"><strong>{{ shot.title }}</strong><small>{{ shot.caption }}</small></span>
-      </a>
-    {% endfor %}
-  </div>
-</section>
-{% endif %}
-
 <div class="case-grid">
   <aside class="facts-box" aria-label="Project facts">
     <dl>
