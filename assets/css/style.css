@@ -176,7 +176,11 @@ main.wrap :is(.page-head > p, .block > p, .project-brief > p, .project-chapter >
 .roles span {font-size:var(--fs-small);color:var(--ink-soft)}
 .points {list-style:disc;padding-left:20px;color:var(--ink-soft)}
 .so {color:var(--teal-ink);font-weight:700;font-size:var(--fs-small)}
-.experience-detail-row {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.experience-detail-row {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.experience-certifications-card {background:var(--ink);color:var(--on-navy)}
+.experience-certifications-card h2 {color:var(--on-navy)}
+.experience-certifications-card a {color:var(--on-navy);font-weight:700;text-decoration:none;text-underline-offset:4px}
+.experience-certifications-card a:hover,.experience-certifications-card a:focus-visible {color:#CFEAE6;text-decoration:underline}
 .experience-detail-card {display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-width:0;padding:17px 18px}
 .experience-detail-card h2 {font-size:var(--fs-body);margin-bottom:7px}
 .experience-detail-card p {font-size:var(--fs-small)}
