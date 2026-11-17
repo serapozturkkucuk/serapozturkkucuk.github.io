@@ -103,9 +103,8 @@ main.wrap :is(.page-head,.project-showcase,.project-gallery,.case-grid,.case,.st
 .hero-proof-foot strong {font-weight:750}
 .hero-proof-foot span {font-size:var(--fs-small);color:var(--ink-soft)}
 .home-capabilities {gap:15px}
-.home-skill-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:0;list-style:none;border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);overflow:hidden}
-.home-skill-grid li {display:grid;align-content:start;gap:6px;min-width:0;padding:16px}
-.home-skill-grid li+li {border-left:1px solid var(--line)}
+.home-skill-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.home-skill-grid li {display:grid;align-content:start;gap:6px;min-width:0;padding:17px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
 .home-skill-grid strong {line-height:1.4}
 .home-skill-grid span {color:var(--ink-soft);font-size:var(--fs-small)}
 .home-end-links {padding-top:14px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:var(--fs-small)}
@@ -278,14 +277,13 @@ figure.shot figcaption {font-size:var(--fs-small);color:var(--ink-soft)}
   .project-gallery > :only-child {grid-template-columns:minmax(0,1fr)}
   .project-gallery > :only-child .project-tile-media {aspect-ratio:16/10;height:auto;min-height:0;border-right:0;border-bottom:1px solid var(--line)}
 }
+@media(max-width:900px){.home-skill-grid {grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){
   main.wrap {gap:30px;padding-block:27px 56px}
   .head-row {min-height:68px;padding-block:10px}
   .brand-name {font-size:var(--fs-small)}
   .brand-sub {font-size:var(--fs-small);letter-spacing:0}
-  .home-skill-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
-  .home-skill-grid li:nth-child(3) {border-left:0;border-top:1px solid var(--line)}
-  .home-skill-grid li:nth-child(4) {border-top:1px solid var(--line)}
+  .home-skill-grid {grid-template-columns:minmax(0,1fr);gap:10px}
   .value-grid {grid-template-columns:minmax(0,1fr)}
   .value-grid li:nth-child(even) {border-left:0}
   .experience-skills,.skill-table,.contact-list {grid-template-columns:minmax(0,1fr)}
