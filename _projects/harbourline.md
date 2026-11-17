@@ -1,7 +1,7 @@
 ---
 title: Harbourline Security
 subtitle: Sales, Service and Access Controls in a Salesforce Practice Org
-summary: A Salesforce Developer Edition project covering discount approvals, customer-site records, service cases and admin requests for a security business.
+summary: A Trailhead Playground (Developer Edition) project covering discount approvals, customer-site records, service cases and admin requests for a security business.
 status: completed
 status_label: Self-Directed Practice Org · 2026
 featured: true
@@ -13,9 +13,9 @@ card_date_label: Started
 card_description: A tested Salesforce practice org for sales approvals, case management, customer sites and admin requests.
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
 role: "Salesforce Administrator: requirements, configuration, testing and documentation"
-org: Salesforce Developer Edition · practice org and test data
+org: Trailhead Playground (Developer Edition) · practice org and test data
 period: August 2026 – present
-tools: Flow Builder, Schema Builder, Lightning App Builder, Data Loader, dataloader.io
+tools: Flow Builder, Schema Builder, Lightning App Builder, Data Import Wizard, dataloader.io
 links:
   - label: Technical Documentation
     url: /docs/harbourline/
@@ -28,16 +28,16 @@ stats:
     label: Customer Sites
   - value: "40"
     label: Opportunities
-  - value: "4"
-    label: Record-Triggered Flows
+  - value: "11"
+    label: Automations & Rules
 ---
 
+<p class="case-context">Harbourline Security is a fictional CCTV and access-control business in North West England. The Trailhead Playground (Developer Edition) org uses test users and records. The figures describe practice data, not live business results.</p>
 <p class="case-opening">Salesforce configuration addresses controlled discounts, support case ownership, customer-site records, admin requests and access to reporting. Testing covers expected behaviour, exceptions and permissions.</p>
-<p class="case-context">Harbourline Security is a fictional CCTV and access-control business in North West England. The Salesforce Developer Edition org uses test users and records. The figures describe practice data, not live business results.</p>
 
 <!-- PROJECT SECTION -->
 
-<p>Discounts were agreed by email, support messages lacked clear ownership, customer-site records were scattered, and admin requests had no shared priority or status. Sales managers also needed visibility without giving every sales rep access to every Opportunity.</p>
+<p>Discounts were agreed by email, so margin was given away with no approval or record. Support messages lacked clear ownership, so slow or missed replies put customer relationships at risk. Customer-site records were scattered, and engineers lost time searching for the right information. Admin requests had no shared priority or status, so effort went to whoever asked loudest. Sales managers also needed visibility without giving every sales rep access to every Opportunity.</p>
 
 <!-- PROJECT SECTION -->
 
@@ -54,7 +54,7 @@ stats:
   </div>
   <div class="solution-item">
     <h3>Linking Accounts to Customer Sites</h3>
-    <p>A custom Building object links sites to Accounts, with an optional lookup to a site Contact. External IDs support upsert during data migration.</p>
+    <p>A custom Building object links each site to its Account through master-detail, so the number of sites rolls up to the Account. An optional lookup links a site Contact, and External IDs support upsert during data migration.</p>
   </div>
   <div class="solution-item">
     <h3>Admin Requests People Can Track</h3>
@@ -69,7 +69,7 @@ stats:
 
 <!-- PROJECT SECTION -->
 
-<p>Declarative options were compared before adding automation. Formulas and roll-ups calculate values, validation rules enforce requirements, approval processes manage sign-off, and record-triggered Flows handle actions requiring additional logic.</p>
+<p>Three choices shaped the build: how customer sites relate to Accounts, how the HQ Building Flow avoids duplicate records, and how discount approvals are enforced rather than left optional. Each choice was made after comparing the alternatives.</p>
 
 <div class="case-decision">
   <h3>Why Building Is a Child of Account</h3>
@@ -84,8 +84,8 @@ stats:
 </div>
 
 <div class="case-decision">
-  <h3>Why Sharing Rules Were Not Enough on Their Own</h3>
-  <p>Opportunities are Private, with access opened through the role hierarchy and specific sharing. One test user could not view Opportunities because the profile lacked object-level Read permission. Lesson: sharing opens records, but the profile must first give access to the object.</p>
+  <h3>Why the Approval Process Needs a Validation Rule</h3>
+  <p>An approval process on its own is optional: a sales rep can simply not submit. A validation rule blocks the price stages until the discount is approved, so the approval cannot be skipped.</p>
 </div>
 
 <!-- PROJECT SECTION -->
@@ -100,15 +100,33 @@ stats:
 </div>
 
 <h3>Key Fixes</h3>
-<ul>
-  <li><strong>Missing Opportunity visibility:</strong> Object-level Read permission was added, then record access was retested.</li>
-  <li><strong>Missing approval manager:</strong> The submitter's Manager field was empty. Manager assignment was added to the user setup checklist.</li>
-</ul>
+<div class="case-fixes">
+  <div class="case-fix">
+    <h3>No Opportunity Access Despite a Sharing Rule</h3>
+    <p>The service manager could not see any Opportunities, although a sharing rule shared won deals with her role. Her profile had no Read permission on Opportunity. Read access was added and the test repeated.</p>
+    <p class="case-lesson"><strong>Lesson:</strong> sharing opens records, but the profile must first give access to the object.</p>
+  </div>
+  <div class="case-fix">
+    <h3>Approval Failed: Manager Field Empty</h3>
+    <p>The first discount submission failed because the submitter had no Manager on the user record. Managers were set for every user.</p>
+    <p class="case-lesson"><strong>Lesson:</strong> check every approver path before activating an approval process.</p>
+  </div>
+  <div class="case-fix">
+    <h3>Lead Conversion Blocked</h3>
+    <p>A required Legacy ID field stopped every Lead from converting. Legacy IDs became optional, and required fields were set on the page layout instead.</p>
+    <p class="case-lesson"><strong>Lesson:</strong> fields added for a data migration must not block records created after go-live.</p>
+  </div>
+  <div class="case-fix">
+    <h3>Duplicate Accounts After Import</h3>
+    <p>The wrong import option created a copy of each Account. Records were cleaned up, and the data was reloaded with matching on email after a 4-row test.</p>
+    <p class="case-lesson"><strong>Lesson:</strong> test every import on a small file and check the results before the full load.</p>
+  </div>
+</div>
 
 <!-- PROJECT SECTION -->
 
 <p>The practice org includes discount approvals, Email-to-Case, customer-site relationships, access controls and an Admin Request tracker, with 13 reports and three dashboards. Configuration decisions, test outcomes and troubleshooting fixes are documented.</p>
 {% include project-showcase.html src="/assets/img/harbourline/sales.webp" width="785" height="896" alt="Harbourline Sales dashboard showing discount approvals, pipeline by stage and won revenue by customer tier" caption="Sales dashboard showing pending discount approvals, pipeline stages and customer tiers." %}
 
-<p><strong>Project Scope:</strong> No live customer outcomes were measured. Email-to-Case testing did not cover unknown senders or reply threading; Web-to-Case, entitlements and sandbox deployment were not implemented.</p>
-<p><strong>Next Steps:</strong> Deployment between orgs with GitHub version control, a fuller service process (entitlements, Web-to-Case, Omni-Channel), and an Agentforce agent.</p>
+<p><strong>Limitations:</strong> No live customer outcomes were measured. Email-to-Case testing did not cover unknown senders or reply threading; Web-to-Case, entitlements and sandbox deployment were not implemented.</p>
+<p><strong>Next Steps:</strong> deploying changes between two orgs as a sandbox-to-production release, a fuller service process (entitlements, Web-to-Case, Omni-Channel), and an Agentforce agent.</p>

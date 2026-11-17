@@ -65,13 +65,13 @@ jobs:
                   return {left:r.left+parseFloat(cs.paddingLeft),right:r.right-parseFloat(cs.paddingRight)};
                 });
                 const wrappersMatch=wrappers.every(x=>Math.abs(x.left-left)<2&&Math.abs(x.right-right)<2);
-                const textNodes=[...main.querySelectorAll('.page-head > p, .experience-story > p, .case > p, .project-intro-followup, .hero-copy > p, .home-end-links > p')];
+                const textNodes=[...main.querySelectorAll('p')];
                 const proseIssues=textNodes.map(x=>{
-                  const r=x.getBoundingClientRect(),parent=x.parentElement.getBoundingClientRect(),cs=getComputedStyle(x);
-                  const shouldJustify=innerWidth>900&&x.matches('.page-head > p, .experience-story > p, .case > p, .project-intro-followup');
-                  const mode=shouldJustify?'justify':'left';
-                  return {element:x.className||x.parentElement.className,left:Math.round(r.left-parent.left),right:Math.round(parent.right-r.right),maxWidth:cs.maxWidth,align:cs.textAlign,expected:mode};
-                }).filter(x=>Math.abs(x.left)>2||Math.abs(x.right)>2||x.maxWidth!=='none'||x.align!==x.expected);
+                  const r=x.getBoundingClientRect(),parent=x.parentElement.getBoundingClientRect(),cs=getComputedStyle(x),pcs=getComputedStyle(x.parentElement);
+                  const innerLeft=parent.left+parseFloat(pcs.paddingLeft)+parseFloat(pcs.borderLeftWidth);
+                  const innerRight=parent.right-parseFloat(pcs.paddingRight)-parseFloat(pcs.borderRightWidth);
+                  return {element:x.className||x.parentElement.className,left:Math.round(r.left-innerLeft),right:Math.round(innerRight-r.right),maxWidth:cs.maxWidth,align:cs.textAlign};
+                }).filter(x=>Math.abs(x.left)>2||Math.abs(x.right)>2||x.maxWidth!=='none'||x.align!=='left');
                 return {left:Math.round(left),right:Math.round(right),issues,wrappersMatch,proseIssues};
               });
               if(geometry.issues.length)failures.push(route+' '+width+' misaligned: '+JSON.stringify(geometry.issues));
