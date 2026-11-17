@@ -101,7 +101,7 @@ jobs:
               const copy=await page.locator('main.wrap').innerText();
               if(copy.includes('£')||copy.includes('—')||copy.includes('CMS systems'))
                 failures.push(route+' '+width+' unexpected public copy: money, em dash or CMS systems');
-              if(/\\b(?:I|my|mine|me|Serap['’]s)\\b/i.test(copy.replace('What I Bring','')))
+              if(/\b(?:I|my|mine|me|Serap['’]s)\b/i.test(copy.replace('What I Bring','')))
                 failures.push(route+' '+width+' first-person or possessive pronoun remains');
               if(route==='/experience/'){
                 const details=await page.evaluate(()=>({
