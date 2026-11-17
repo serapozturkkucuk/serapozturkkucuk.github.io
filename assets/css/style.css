@@ -41,11 +41,11 @@ main.wrap {min-height:65vh;display:flex;flex-direction:column;align-items:stretc
 .site-head {position:sticky;top:0;z-index:20;background:rgba(248,247,244,.97);border-bottom:1px solid var(--line)}
 .head-row {display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;position:relative;min-height:72px}
 .brand {display:grid;gap:1px;color:var(--ink);text-decoration:none;line-height:1.3}
-.brand-name {font-weight:740;letter-spacing:-.02em}
-.brand-sub {font-size:var(--fs-small);font-weight:600;color:var(--teal-ink)}
+.brand-name {font-size:1.1rem;font-weight:750;letter-spacing:-.02em;white-space:nowrap}
+.brand-sub {font-size:var(--fs-small);font-weight:600;color:var(--ink-soft)}
 .nav-links {display:flex;align-items:center;gap:24px;list-style:none;padding:0;margin:0}
 .nav-links a {display:block;padding:7px 0;border-bottom:2px solid transparent;color:var(--ink-soft);text-decoration:none;font-size:var(--fs-small);font-weight:650}
-.nav-links a:hover,.nav-links a[aria-current="page"] {color:var(--ink);border-bottom-color:var(--champagne)}
+.nav-links a:hover,.nav-links a[aria-current="page"] {color:var(--ink);border-bottom-color:var(--teal)}
 .mobile-menu {display:none}
 .mobile-menu summary {list-style:none;cursor:pointer}
 .mobile-menu summary::-webkit-details-marker {display:none}
@@ -92,6 +92,7 @@ main.wrap :is(.page-head > p, .block > p, .project-brief > p, .project-chapter >
 .home-hero {grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;gap:clamp(22px,4vw,48px)}
 .hero-copy {min-width:0;display:grid;justify-items:start;align-content:center;gap:17px}
 .hero-copy h1 {max-width:15ch}
+.home-role-line {font-size:var(--fs-body);font-weight:700;color:var(--teal-ink)}
 .hero-copy .lede {width:100%;max-width:none;line-height:1.6}
 .home-location {font-size:var(--fs-small)}
 .hero-copy .actions {margin-top:6px}
@@ -189,7 +190,10 @@ main.wrap :is(.page-head > p, .block > p, .project-brief > p, .project-chapter >
 /* Requested content layout adjustments */
 .experience-jobs .points {gap:5px}
 .home-end-links .contact-cta {gap:12px;padding:24px}
-.home-end-links .contact-cta h2 {color:var(--ink);font-size:var(--fs-heading)}
+.home-end-links .contact-cta {background:var(--ink);color:var(--on-navy)}
+.home-end-links .contact-cta h2 {color:var(--on-navy);font-size:var(--fs-heading)}
+.home-end-links .contact-cta .btn.primary {background:var(--surface);color:var(--ink);border-color:var(--surface)}
+.home-end-links .contact-cta .btn.primary:hover {background:var(--teal-soft);color:var(--ink);border-color:var(--teal)}
 .home-end-links .contact-cta p {color:var(--ink-soft);font-size:var(--fs-body)}
 .contact-link-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
 .contact-link-card {display:flex;align-items:center;gap:15px;min-width:0;min-height:112px;padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);text-decoration:none}
@@ -252,7 +256,7 @@ figure.shot figcaption {font-size:var(--fs-small);color:var(--ink-soft)}
 .case-decision {display:grid;gap:11px;padding:18px 0;border-bottom:1px solid var(--line)}
 .case-fixes {display:grid;gap:0}
 .case-fix {display:grid;gap:9px;padding:18px 0;border-bottom:1px solid var(--line)}
-.case-fix h3 {margin:0}
+.case-fix h4 {margin:0;font-size:var(--fs-body);font-weight:720;line-height:1.23;letter-spacing:-.025em}
 .case-fix .case-lesson {color:var(--ink);font-weight:600}
 .case-fix .case-lesson strong {font-weight:750}
 
@@ -338,7 +342,7 @@ figure.shot figcaption {font-size:var(--fs-small);color:var(--ink-soft)}
 @media(max-width:560px){
   main.wrap {gap:30px;padding-block:27px 56px}
   .head-row {min-height:68px;padding-block:10px}
-  .brand-name {font-size:var(--fs-small)}
+  .brand-name {font-size:clamp(.8rem,3.4vw,1rem)}
   .brand-sub {font-size:var(--fs-small);letter-spacing:0}
   .home-skill-grid {grid-template-columns:minmax(0,1fr);gap:10px}
   .value-grid {grid-template-columns:minmax(0,1fr)}
