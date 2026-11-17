@@ -67,7 +67,7 @@ stats:
   <div class="solution-item">
     <h3>Admin Requests People Can Track</h3>
     <p>A custom Admin Request object provides a Kanban view, P1–P4 priority based on Impact and Urgency, status validation and notification Flows. A shared backlog replaces informal requests.</p>
-    {% include project-showcase.html src="/assets/img/harbourline/kanban.webp" width="1500" height="260" alt="Admin Request Kanban board grouped by status and priority" caption="Kanban view tracks the status and priority of admin requests." %}
+    {% include project-showcase.html src="/assets/img/harbourline/admin-kanban.webp" width="1500" height="260" alt="Admin Request Kanban board grouped by status and priority" caption="Kanban view tracks the status and priority of admin requests." %}
   </div>
   <div class="solution-item">
     <h3>Access and Reporting</h3>
