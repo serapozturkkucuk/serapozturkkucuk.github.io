@@ -9,15 +9,15 @@ title: Experience
 </header>
 
 <section class="block experience-intro">
-  <h2>About me</h2>
+  <h2>Career background</h2>
   <div class="experience-story">
-    <p>I started as an agronomist and copywriter at Doktar Technologies, an agri-tech start-up in Turkey, where I was one of the first employees. I built the customer database from day one and grew its social media audience by 50,000 in one year, helping establish a paid service that became the company’s main source of income. I later led digital marketing, helped develop the CRM and product database, and created dashboards for senior teams. After moving to the UK, I joined Puratos in quality assurance, was promoted to QA Team Leader within a year, and delivered £80,000 in annual savings through process improvements. When the company relocated in 2026, I chose Salesforce as my next step, bringing together my experience in data, systems and processes.</p>
+    <p>Serap began her career at Doktar Technologies, an agri-tech business in Turkey, working in agronomy and copywriting and building the customer database from day one. Her responsibilities later grew to include digital marketing, CRM and product data, app testing, dashboards and website migrations. Social media work grew Doktar’s audience by 50,000 in one year and helped establish a paid service. After moving to the UK, she joined Puratos as a QA Technician and progressed to QA Team Leader in 2024. The role combined product-data controls, quality processes and staff training. Process improvements delivered £80,000 in annual cost reductions. Salesforce administration is the next step, applying experience in data, systems, UAT and process improvement to configuration, automation and testing.</p>
   </div>
   <div class="experience-value">
     <div class="experience-value-heading">
-      <span class="label">What I bring</span>
-      <h3>Business understanding backed by hands-on systems work</h3>
-      <p>Experience turning operational needs into accurate data, usable processes and tested improvements.</p>
+      <span class="label">Relevant experience</span>
+      <h3>CRM, data quality, testing and process improvement</h3>
+      <p>Experience across CRM and product databases, reporting, UAT, quality controls and staff training.</p>
     </div>
     <ul class="value-grid">
       <li><strong>CRM &amp; business systems</strong><span>Helped develop a CRM and product database, including data structure, segmentation and reporting.</span></li>
@@ -66,7 +66,6 @@ title: Experience
       <div class="what">
         <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b><span>{{ r.dates }}</span></li>{% endfor %}</ul>
         <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
-        {% if j.for_salesforce %}<p class="so">Relevant to Salesforce: {{ j.for_salesforce }}</p>{% endif %}
       </div>
     </li>
     {% endfor %}
@@ -97,8 +96,8 @@ title: Experience
 
 <section class="block experience-download-cv">
   <div class="contact-cta">
-    <h2>Explore my experience in more detail</h2>
-    <p>Download my CV for a concise overview of my Salesforce skills, projects and professional experience.</p>
-    {% if site.author.cv_file != "" %}<a class="btn primary" href="{{ site.author.cv_file | relative_url }}" download>Download CV (PDF)</a>{% endif %}
+    <h2>Full CV</h2>
+    <p>Salesforce skills, project evidence and professional experience in one document.</p>
+    {% if site.author.cv_file != "" %}<a class="btn primary" href="{{ site.author.cv_file | relative_url }}" download="Serap_Ozturk-Kucuk_Salesforce_Administrator_CV.pdf">Download CV (PDF)</a>{% endif %}
   </div>
 </section>
