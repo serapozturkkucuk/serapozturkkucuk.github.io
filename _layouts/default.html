@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{% if page.title and page.url != "/" %}{{ page.title }} · {% endif %}{{ site.author.name }}</title>
+<title>{% if page.url == "/projects/" %}Salesforce Projects{% elsif page.url == "/experience/" %}Salesforce Administrator Experience{% elsif page.url == "/certifications/" %}Salesforce Certifications{% elsif page.title and page.url != "/" %}{{ page.title }}{% endif %}{% if page.url != "/" %} · {% endif %}{{ site.author.name }}</title>
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | escape }}{% else %}{{ site.description | escape }}{% endif %}">
 <meta name="theme-color" content="#F7F9FA">
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=21">
 </head>
 <body>
 {% include nav.html %}
