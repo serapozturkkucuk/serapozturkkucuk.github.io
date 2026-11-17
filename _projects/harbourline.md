@@ -10,7 +10,7 @@ card_image: /assets/img/harbourline/flow.webp
 card_alt: Harbourline Salesforce record-triggered Flow showing decisions and record creation
 card_date: August 2026
 card_date_label: Started
-card_description: A tested Salesforce practice org for sales approvals, case management, Customer Sites and admin requests.
+card_description: A tested Salesforce practice org for sales approvals, case management, customer sites and admin requests.
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
 role: Salesforce Administrator, requirements, configuration, testing and documentation
 org: Salesforce Developer Edition · fictional business and test data
@@ -67,7 +67,7 @@ contents:
 
 <h2 id="challenge">01 / The Challenge</h2>
 
-<p>Four problems shaped the build: discounts were agreed by email, support messages had no reliable ownership, information about Customer Sites was scattered, and requests to the Salesforce admin had no shared priority or status. Sales managers also needed visibility without giving every rep access to every deal.</p>
+<p>Four problems shaped the build: discounts were agreed by email, support messages had no reliable ownership, information about customer sites was scattered, and requests to the Salesforce admin had no shared priority or status. Sales managers also needed visibility without giving every rep access to every deal.</p>
 
 <h2 id="solutions">02 / Solution Overview</h2>
 
@@ -92,7 +92,7 @@ contents:
 
 <h2 id="decisions">03 / Decisions Behind the Build</h2>
 
-<p>Declarative options were compared before adding automation. Formulas and roll-ups calculate values, validation rules enforce requirements, approval processes manage sign-off, and Record-Triggered Flows handle actions that need additional logic.</p>
+<p>Declarative options were compared before adding automation. Formulas and roll-ups calculate values, validation rules enforce requirements, approval processes manage sign-off, and record-triggered Flows handle actions that need additional logic.</p>
 
 <div class="case-decision">
   <h3>Why Building Is a Child of Account</h3>
