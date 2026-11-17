@@ -117,9 +117,20 @@ jobs:
                   const skills=[...document.querySelectorAll('.experience-skills dt')].length;
                   return {titles,jobs,skills};
                 });
-                const expected=['Career Background','Salesforce Experience','Salesforce Skills','What I Bring','Professional Experience','Technology & Tools','Education','Languages','Additional Details','Full CV'];
+                const expected=['Career Background','Salesforce Experience','Salesforce Skills','What I Bring','Professional Experience','Technology & Tools','Certifications','Education','Languages','Additional Details','Full CV'];
                 if(editorial.titles.join('|')!==expected.join('|')||editorial.jobs!==2||editorial.skills<5)
                   failures.push(route+' '+width+' Experience page section order or evidence missing '+JSON.stringify(editorial));
+                const certCard=await page.evaluate(()=>{
+                  const card=document.querySelector('.experience-certifications-card');
+                  const grid=card?.closest('.experience-detail-row');
+                  const styles=card?getComputedStyle(card):null;
+                  const gridStyles=grid?getComputedStyle(grid):null;
+                  const link=card?.querySelector('a');
+                  return {exists:!!card,first:grid?.firstElementChild===card,href:link?.getAttribute('href'),label:link?.textContent.trim(),background:styles?.backgroundColor,colour:styles?.color,columns:gridStyles?.gridTemplateColumns.split(' ').length};
+                });
+                const expectedColumns=width<=560?1:width<=780?2:4;
+                if(!certCard.exists||!certCard.first||certCard.href!=='/certifications/'||certCard.label!=='View Certifications →'||certCard.columns!==expectedColumns||certCard.background!=='rgb(32, 51, 72)'||certCard.colour!=='rgb(255, 255, 255)')
+                  failures.push(route+' '+width+' Certification card appearance or layout mismatch '+JSON.stringify(certCard));
               }
               const copy=await page.locator('main.wrap').innerText();
               if(copy.includes('£')||copy.includes('—')||copy.includes('CMS systems'))
