@@ -49,8 +49,8 @@ layout: default
   </aside>
 
   <article class="case">
-    {% for section_markup in project_sections offset:1 limit:5 %}
-      {% assign section_key = section_ids[forloop.index0] %}
+    {% for section_key in section_ids %}
+      {% assign section_markup = project_sections[forloop.index] %}
       {% case section_key %}
         {% when 'challenge' %}{% assign section_title = '01 The Business Challenge' %}
         {% when 'solutions' %}{% assign section_title = '02 The Solution' %}
