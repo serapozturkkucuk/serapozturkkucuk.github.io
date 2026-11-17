@@ -41,6 +41,8 @@ stats:
 
 <!-- PROJECT SECTION -->
 
+<p>Five parts of the org answer the problems above: discount approvals, support case ownership, customer-site records, admin request tracking, and access and reporting.</p>
+
 <div class="solution-list">
   <div class="solution-item">
     <h3>Sales Approvals With a Clear Stopping Point</h3>
@@ -102,22 +104,22 @@ stats:
 <h3>Key Fixes</h3>
 <div class="case-fixes">
   <div class="case-fix">
-    <h3>No Opportunity Access Despite a Sharing Rule</h3>
+    <h4>No Opportunity Access Despite a Sharing Rule</h4>
     <p>The service manager could not see any Opportunities, although a sharing rule shared won deals with her role. Her profile had no Read permission on Opportunity. Read access was added and the test repeated.</p>
     <p class="case-lesson"><strong>Lesson:</strong> sharing opens records, but the profile must first give access to the object.</p>
   </div>
   <div class="case-fix">
-    <h3>Approval Failed: Manager Field Empty</h3>
+    <h4>Approval Failed: Manager Field Empty</h4>
     <p>The first discount submission failed because the submitter had no Manager on the user record. Managers were set for every user.</p>
     <p class="case-lesson"><strong>Lesson:</strong> check every approver path before activating an approval process.</p>
   </div>
   <div class="case-fix">
-    <h3>Lead Conversion Blocked</h3>
+    <h4>Lead Conversion Blocked</h4>
     <p>A required Legacy ID field stopped every Lead from converting. Legacy IDs became optional, and required fields were set on the page layout instead.</p>
     <p class="case-lesson"><strong>Lesson:</strong> fields added for a data migration must not block records created after go-live.</p>
   </div>
   <div class="case-fix">
-    <h3>Duplicate Accounts After Import</h3>
+    <h4>Duplicate Accounts After Import</h4>
     <p>The wrong import option created a copy of each Account. Records were cleaned up, and the data was reloaded with matching on email after a 4-row test.</p>
     <p class="case-lesson"><strong>Lesson:</strong> test every import on a small file and check the results before the full load.</p>
   </div>
