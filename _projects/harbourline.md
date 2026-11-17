@@ -63,6 +63,8 @@ contents:
 <p class="case-opening">The aim was to turn business requirements into working Salesforce processes, then test both the expected outcomes and the exceptions. The project documents not only what was configured, but why each approach was chosen and where problems were found.</p>
 <p class="case-context">Harbourline Security represents a fictional CCTV and access-control business in North West England. The sales, service and admin processes were configured and tested in Salesforce Developer Edition using fictional users and test data. The figures above describe the practice dataset, not live business results.</p>
 
+{% include project-showcase.html %}
+
 <h2 id="challenge">01 / The challenge</h2>
 
 <p>Four problems shaped the build: discounts were agreed by email, support messages had no reliable ownership, information about customer sites was scattered, and requests to the Salesforce admin had no shared priority or status. Sales managers also needed visibility without giving every rep access to every deal.</p>
