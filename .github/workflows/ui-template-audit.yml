@@ -65,12 +65,18 @@ jobs:
                   return {left:r.left+parseFloat(cs.paddingLeft),right:r.right-parseFloat(cs.paddingRight)};
                 });
                 const wrappersMatch=wrappers.every(x=>Math.abs(x.left-left)<2&&Math.abs(x.right-right)<2);
-                const prose=[...main.querySelectorAll('p:not(.crumb)')].every(x=>{const cs=getComputedStyle(x);return cs.textAlign==='left'&&cs.maxWidth!=='none'&&x.getBoundingClientRect().width<=parseFloat(cs.maxWidth)+2;});
-                return {left:Math.round(left),right:Math.round(right),issues,wrappersMatch,prose};
+                const textNodes=[...main.querySelectorAll('.page-head > p, .experience-story > p, .case > p, .project-intro-followup, .hero-copy > p, .home-end-links > p')];
+                const proseIssues=textNodes.map(x=>{
+                  const r=x.getBoundingClientRect(),parent=x.parentElement.getBoundingClientRect(),cs=getComputedStyle(x);
+                  const shouldJustify=innerWidth>900&&x.matches('.page-head > p, .experience-story > p, .case > p, .project-intro-followup');
+                  const mode=shouldJustify?'justify':'left';
+                  return {element:x.className||x.parentElement.className,left:Math.round(r.left-parent.left),right:Math.round(parent.right-r.right),maxWidth:cs.maxWidth,align:cs.textAlign,expected:mode};
+                }).filter(x=>Math.abs(x.left)>2||Math.abs(x.right)>2||x.maxWidth!=='none'||x.align!==x.expected);
+                return {left:Math.round(left),right:Math.round(right),issues,wrappersMatch,proseIssues};
               });
               if(geometry.issues.length)failures.push(route+' '+width+' misaligned: '+JSON.stringify(geometry.issues));
               if(!geometry.wrappersMatch)failures.push(route+' '+width+' header/footer container mismatch');
-              if(!geometry.prose)failures.push(route+' '+width+' prose alignment or measure mismatch');
+              if(geometry.proseIssues.length)failures.push(route+' '+width+' text misalignment: '+JSON.stringify(geometry.proseIssues));
               if(result.status()!==200) failures.push(route+' '+width+' HTTP '+result.status());
               if(info.scrollWidth>width+2) failures.push(route+' '+width+' horizontal overflow '+info.scrollWidth);
               if(info.failedImages.length) failures.push(route+' '+width+' broken image '+info.failedImages.join(','));
@@ -86,6 +92,6 @@ jobs:
             }
             await b.close();
             if(failures.length){console.error('AUDIT FAILED:',failures.join(' | '));process.exit(1)}
-            console.log('UI AUDIT PASSED: 30 pages/viewports, precise left/right alignment, prose measure, images, nav, h1 and overflow');
+            console.log('UI AUDIT PASSED: 30 pages/viewports, precise left/right alignment, full-width text bounds, images, nav, h1 and overflow');
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
