@@ -6,10 +6,10 @@ status: completed
 status_label: Self-Directed Practice Org · 2026
 featured: true
 order: 1
-card_image: /assets/img/harbourline/flow.webp
-card_alt: Harbourline Salesforce record-triggered Flow showing decisions and record creation
-card_date: August 2026
-card_date_label: Started
+card_image: /assets/img/harbourline/sales.webp
+card_alt: Harbourline Sales dashboard showing discount approvals, pipeline by stage and won revenue by customer tier
+card_date: 2026
+card_date_label: Practice Org
 card_description: A tested Salesforce practice org for sales approvals, case management, customer sites and admin requests.
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
 role: "Salesforce Administrator: requirements, configuration, testing and documentation"
