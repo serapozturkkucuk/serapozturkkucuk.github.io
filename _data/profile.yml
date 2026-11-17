@@ -1,16 +1,16 @@
-# Skills, tools, education and approach shown on the About page. Keep them the same as your CV.
+# Skills, tools, education and approach shown on the Experience page. Keep them the same as your CV.
 
 skills:
-  - group: Platform configuration
-    text: Custom objects, fields, page layouts, record types, apps, navigation
-  - group: Data management
+  - group: Platform Configuration
+    text: Custom objects, fields, validation rules, formula fields, page layouts, record types, apps, navigation
+  - group: Data Management
     text: Data Import Wizard, Data Loader, upsert, duplicate and matching rules, data quality
   - group: Automation
-    text: Record-triggered flows, entry criteria, decisions, assignments, testing
-  - group: Security and access
+    text: Record-triggered, screen and schedule-triggered flows, entry criteria, decisions, assignments, email alerts, testing
+  - group: Security and Access
     text: Profiles, permission sets, role hierarchy, org-wide defaults, sharing rules, account teams, user access testing
-  - group: Sales and service processes
-    text: Lead and opportunity processes, approval processes, Cases, queues, assignment and escalation rules
+  - group: Sales and Service Processes
+    text: Lead process, sales processes, support process, approval processes, Email-to-Case, Cases, queues, assignment and escalation rules
   - group: Reporting
     text: Reports, dashboards, charts, filters, summaries
 
