@@ -3,13 +3,13 @@ title: Harbourline Security
 subtitle: Sales, Service and Access Controls in a Salesforce Practice Org
 summary: A Trailhead Playground (Developer Edition) project covering discount approvals, customer-site records, service cases and admin requests for a security business.
 status: completed
-status_label: Self-Directed Practice Org · 2026
+status_label: Salesforce Practice Org · 2026
 featured: true
 order: 1
 card_image: /assets/img/harbourline/sales.webp
 card_alt: Harbourline Sales dashboard showing discount approvals, pipeline by stage and won revenue by customer tier
 card_date: 2026
-card_date_label: Practice Org
+card_date_label: Salesforce Practice Org
 card_description: A tested Salesforce practice org for sales approvals, case management, customer sites and admin requests.
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
 role: "Salesforce Administrator: requirements, configuration, testing and documentation"
@@ -33,11 +33,17 @@ stats:
 ---
 
 <p class="case-context">Harbourline Security is a fictional CCTV and access-control business in North West England. The Trailhead Playground (Developer Edition) org uses test users and records. The figures describe practice data, not live business results.</p>
-<p class="case-opening">Salesforce configuration addresses controlled discounts, support case ownership, customer-site records, admin requests and access to reporting. Testing covers expected behaviour, exceptions and permissions.</p>
+<p class="case-opening">Configured and tested a Salesforce practice org covering discount approvals, Email-to-Case, customer-site records, admin requests and record access. Documented design decisions, test results and troubleshooting.</p>
 
 <!-- PROJECT SECTION -->
 
-<p>Discounts were agreed by email, so margin was given away with no approval or record. Support messages lacked clear ownership, so slow or missed replies put customer relationships at risk. Customer-site records were scattered, and engineers lost time searching for the right information. Admin requests had no shared priority or status, so effort went to whoever asked loudest. Sales managers also needed visibility without giving every sales rep access to every Opportunity.</p>
+<ul>
+  <li><strong>Lost Margin:</strong> Discounts were agreed by email, so margin was given away with no approval or record.</li>
+  <li><strong>Missed Replies:</strong> Support messages lacked clear ownership, so slow or missed replies put customer relationships at risk.</li>
+  <li><strong>Lost Time:</strong> Customer-site records were scattered, and engineers lost time searching for the right information.</li>
+  <li><strong>Unclear Priorities:</strong> Admin requests had no shared priority or status, so effort went to whoever asked loudest.</li>
+  <li><strong>Access:</strong> Sales managers needed visibility without giving every sales rep access to every Opportunity.</li>
+</ul>
 
 <!-- PROJECT SECTION -->
 
@@ -46,7 +52,7 @@ stats:
 <div class="solution-list">
   <div class="solution-item">
     <h3>Sales Approvals With a Clear Stopping Point</h3>
-    <p>Two Opportunity sales processes support different types of deals. Discounts above 15% require manager approval; discounts above 40% require a second approval step. A validation rule blocks unapproved discounts from progressing into price stages.</p>
+    <p>Two sales processes: External Sale for new customers, with a Site Survey stage, and Internal Sale for existing customers. Discounts above 15% require manager approval; discounts above 40% require a second approval step. A validation rule blocks unapproved discounts from progressing into price stages.</p>
     {% include project-showcase.html src="/assets/img/harbourline/validation.webp" width="1500" height="204" loading="eager" alt="Salesforce validation rule error preventing an unapproved Opportunity discount" caption="Validation rule blocks a discount until the required approval is complete." %}
   </div>
   <div class="solution-item">
@@ -65,7 +71,7 @@ stats:
   </div>
   <div class="solution-item">
     <h3>Access and Reporting</h3>
-    <p>Private Opportunities opened through the role hierarchy, a sharing rule and an account team, with 13 reports on three dashboards.</p>
+    <p>Opportunity access is controlled with a Private org-wide default, the role hierarchy, a sharing rule and an account team. There are 13 reports on three dashboards.</p>
   </div>
 </div>
 
@@ -96,7 +102,7 @@ stats:
 
 <div class="test-grid">
   <div><strong>100 Cases</strong><span>Bulk-tested the Case alert Flow, including records that should not trigger alerts</span></div>
-  <div><strong>500 Lead Scans</strong><span>495 imported, five duplicates not imported; small four-row trials preceded larger loads</span></div>
+  <div><strong>500 Test Lead Scans</strong><span>495 imported, five duplicates not imported; small four-row trials preceded larger loads</span></div>
   <div><strong>Real Email</strong><span>Email-to-Case tested end to end on the primary incoming-email path</span></div>
   <div><strong>Approval Levels</strong><span>Manager and Sales VP steps tested by activating users in turn</span></div>
 </div>
