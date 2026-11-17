@@ -37,7 +37,7 @@ jobs:
             for(const width of sizes)for(const route of pages){
               const page=await b.newPage({viewport:{width,height:850}});
               const result=await page.goto('http://127.0.0.1:8765'+route,{waitUntil:'networkidle'});
-              await page.evaluate(async()=>{ const imgs=[...document.images]; imgs.forEach(img=>{img.loading='eager'}); await Promise.all(imgs.map(img=>img.decode().catch(()=>{}))); });
+              await page.evaluate(async()=>{ const imgs=[...document.images]; imgs.forEach(img=>{img.dataset.originalLoading=img.getAttribute('loading')||'';img.loading='eager'}); await Promise.all(imgs.map(img=>img.decode().catch(()=>{}))); });
               const info=await page.evaluate(()=>({
                 scrollWidth:document.documentElement.scrollWidth,
                 bodyWidth:document.body.scrollWidth,
@@ -101,7 +101,7 @@ jobs:
                     headingsCorrect:JSON.stringify(headers)===JSON.stringify(expected),
                     tocCorrect:toc.length===5&&toc.every((a,i)=>a.textContent.trim()===expected[i]&&a.getAttribute('href')==='#'+sections[i]?.querySelector('h2')?.id),
                     shotCounts:sectionShotCounts,
-                    shotsOK:shots.length===6&&shots.every((img,i)=>img.src.endsWith('.webp')&&+img.getAttribute('width')>0&&+img.getAttribute('height')>0&&img.closest('a')?.href===img.src&&(i===0?img.loading!=='lazy':img.loading==='lazy')),
+                    shotsOK:shots.length===6&&shots.every((img,i)=>img.src.endsWith('.webp')&&+img.getAttribute('width')>0&&+img.getAttribute('height')>0&&img.closest('a')?.href===img.src&&(i===0?img.dataset.originalLoading!=='lazy':img.dataset.originalLoading==='lazy')),
                     actionsOK:topActions.length===2&&JSON.stringify(topActions)===JSON.stringify(bottomActions)&&topActions[0].label==='Technical Documentation'&&topActions[1].label==='Download PDF',
                     sidebarDesktop:innerWidth>1000?sideStyle.position==='sticky'&&Math.abs(box.width-280)<3&&box.height<=innerHeight-20:sideStyle.position!=='sticky',
                     gridOK:innerWidth>1000?Math.abs(projectRight-caseBody.getBoundingClientRect().right)<2&&Math.abs(projectLeft-sidebar.getBoundingClientRect().left)<2:Math.abs(projectLeft-sidebar.getBoundingClientRect().left)<2
