@@ -17,7 +17,7 @@ title: Certifications
 {% assign planned = site.data.certifications | where: "status", "planned" %}
 {% if studying.size > 0 or planned.size > 0 %}
 <section class="block">
-  <h2>Working towards</h2>
+  <h2>Working Towards</h2>
   <ul class="badges">
     {% for c in studying %}{% include cert-card.html cert=c %}{% endfor %}
     {% for c in planned %}{% include cert-card.html cert=c %}{% endfor %}
