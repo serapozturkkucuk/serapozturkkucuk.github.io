@@ -153,12 +153,12 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 <body>
 <div class="wrap">
   <header>
-    <a href="../../projects/harbourline/" style="font-size:0.9rem;text-decoration:none">← Back to the Harbourline case study</a>
-    <span class="eyebrow">Salesforce Administrator portfolio</span>
+    <a href="../../projects/harbourline/" style="font-size:0.9rem;text-decoration:none">← Back to the Harbourline Case Study</a>
+    <span class="eyebrow">Salesforce Administrator Portfolio</span>
     <h1>Serap Ozturk-Kucuk</h1>
     <span class="status">Salesforce Certified Platform Administrator</span>
     <p class="note">Portfolio version 1.1 · November 2026</p>
-    <p class="lede">Salesforce Certified Platform Administrator with experience in internally developed CRM/CMS systems, product and customer data, reporting, UAT and operational process improvement across agri-tech and food manufacturing.</p>
+    <p class="lede">Salesforce Certified Platform Administrator with experience in internally developed CRM/CMS platforms, product and customer data, reporting, UAT and operational process improvement across agri-tech and food manufacturing.</p>
     <p class="lede">Technical documentation for the fictional Harbourline Security practice org. The guides cover configuration decisions, test evidence and troubleshooting. Implemented features are distinguished from certification-study examples in the final section.</p>
     <ol class="stats">
       <li><b>28</b>customer Accounts</li>
@@ -171,18 +171,18 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
   </header>
 
   <section id="company">
-    <span class="case-num">The example company</span>
+    <span class="case-num">The Example Company</span>
     <h2>Harbourline Security</h2>
     <p>Harbourline Security is a fictional company: it sells, installs and maintains CCTV and access-control systems for businesses in the North West of England. The sales team wins new customers and sells more to existing ones, the service team handles customer Cases, and customers' staff attend product training sessions. Every piece uses the same people, objects and fields, so the examples connect.</p>
-    <p class="note"><b>Testing eight fictional users with two licences:</b> only two active Salesforce user licences were available in the practice environment. Test users were activated and deactivated in turn to check role-based access and each discount approval step. Login As was used to inspect record visibility. Inactive users continued to own records and appear in the role hierarchy, preserving the sharing and reporting scenarios. The manager and Sales VP approval steps were tested separately because not all simulated users could be active simultaneously.</p>
+    <p class="note"><b>Testing Eight Fictional Users with Two Licences:</b> only two active Salesforce user licences were available in the practice environment. Test users were activated and deactivated in turn to check role-based access and each discount approval step. Login As was used to inspect record visibility. Inactive users continued to own records and appear in the role hierarchy, preserving the sharing and reporting scenarios. The manager and Sales VP approval steps were tested separately because not all simulated users could be active simultaneously.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Person</th><th>Role</th><th>Where they appear</th></tr></thead>
+        <thead><tr><th>Person</th><th>Role</th><th>Where They Appear</th></tr></thead>
         <tbody>
           <tr><td><strong>Serap Ozturk-Kucuk</strong></td><td>Salesforce Admin (portfolio owner)</td><td><em>Builds and maintains the org; Managing Director role at the top of the hierarchy; works the Admin Team queue</em></td></tr>
           <tr><td><strong>Allison Grant</strong></td><td>Sales VP</td><td><em>Top of the sales role hierarchy; approves discounts over 40%</em></td></tr>
-          <tr><td><strong>Marcus Reid</strong></td><td>Sales Manager</td><td><em>Priya's manager; sees his team's deals through the role hierarchy; approves discounts over 15%</em></td></tr>
-          <tr><td><strong>Priya Shah</strong></td><td>Sales Rep</td><td><em>Owns her own deals only (Opportunities are Private); submits discount requests; Read/Write on the Northgate account team</em></td></tr>
+          <tr><td><strong>Marcus Reid</strong></td><td>Sales Manager</td><td><em>Priya's manager; sees team Opportunities through the role hierarchy; approves discounts over 15%</em></td></tr>
+          <tr><td><strong>Priya Shah</strong></td><td>Sales Rep</td><td><em>Owns assigned Opportunities only (Opportunities are Private); submits discount requests; Read/Write on the Northgate account team</em></td></tr>
           <tr><td><strong>Leo Chen</strong></td><td>Sales Analyst</td><td><em>Delete Opportunities permission set; Read Only on the Northgate account team</em></td></tr>
           <tr><td><strong>Ada Lewis</strong></td><td>Customer Service Manager</td><td><em>View All Cases permission set; reads won deals through a sharing rule; gets Key Account and escalation emails</em></td></tr>
           <tr><td><strong>Tom Hughes</strong></td><td>Support Agent</td><td><em>Works Cases from the Support Queue</em></td></tr>
@@ -190,10 +190,10 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
         </tbody>
       </table>
     </div>
-    <h3 class="sub">The org at a glance: objects and fields</h3>
+    <h3 class="sub">The Org at a Glance: Objects and Fields</h3>
     <div class="table-wrap long">
       <table class="wide">
-        <thead><tr><th>Object</th><th>Key fields (API names)</th><th>Pieces</th></tr></thead>
+        <thead><tr><th>Object</th><th>Key Fields (API Names)</th><th>Pieces</th></tr></thead>
         <tbody>
           <tr><td><strong>Account</strong><br><em>standard</em></td><td><code>Customer_Tier__c</code> picklist: Standard, Gold, Key Account<br><code>Number_of_Sites__c</code> roll-up summary, COUNT of Buildings<br><code>Legacy_Account_ID__c</code> text, External ID, unique, optional</td><td>01, 05, 07, 09, 10</td></tr>
           <tr><td><strong>Building</strong><br><em>custom, <code>Building__c</code></em></td><td>Name: text, e.g. Northgate Logistics Headquarters<br><code>Account__c</code> master-detail to Account (Read Only sharing, no reparenting)<br><code>Site_Contact__c</code> lookup to Contact, optional</td><td>01, 06, 07</td></tr>
@@ -203,7 +203,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
           <tr><td><strong>Contact</strong><br><em>standard</em></td><td><code>Legacy_Contact_ID__c</code> text, External ID, unique, optional</td><td>01, 04, 09</td></tr>
           <tr><td><strong>Case</strong><br><em>standard</em></td><td>Origin, Priority, Status; owner set to the Support Queue by the assignment rule</td><td>04, 05, 07, 10</td></tr>
           <tr><td><strong>Lead</strong><br><em>standard</em></td><td>Lead Source = Trade Show; 500 badge scans from the Security Expo 2026 list: 495 created, 5 duplicates not imported</td><td>09</td></tr>
-          <tr><td><strong>Product and price book</strong><br><em>standard</em></td><td>CCTV Camera Kit, Access Control Panel and Annual Maintenance Plan, each in the Standard Price Book</td><td>03</td></tr>
+          <tr><td><strong>Product and Price Book</strong><br><em>standard</em></td><td>CCTV Camera Kit, Access Control Panel and Annual Maintenance Plan, each in the Standard Price Book</td><td>03</td></tr>
           <tr><td><strong>Admin Request</strong><br><em>custom, <code>Admin_Request__c</code></em></td><td>Name: auto number REQ-{0000}<br>Impact, Urgency, Status picklists; <code>Priority__c</code> formula P1 to P4<br><code>Days_Open__c</code> formula; <code>Requested_By__c</code> lookup to User</td><td>12</td></tr>
         </tbody>
       </table>
@@ -211,11 +211,11 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
   </section>
 
   <section id="relationships">
-    <span class="case-num">01 · Data model</span>
-    <h2>Object relationships</h2>
+    <span class="case-num">01 · Data Model</span>
+    <h2>Object Relationships</h2>
     <div class="brief">
-      <div><b>The problem</b>Choosing the wrong relationship is hard to undo. It decides who owns the child record, who can see it, what happens when the parent is deleted, and whether you can total the children.</div>
-      <div><b>Documented approach</b>A decision map from "how many on each side?" to the right relationship, with a real example for each, and the checks needed before changing a relationship type.</div>
+      <div><b>The Problem</b>Choosing the wrong relationship is hard to undo. It decides who owns the child record, who can see it, what happens when the parent is deleted, and whether you can total the children.</div>
+      <div><b>Documented Approach</b>A decision map from "how many on each side?" to the right relationship, with a real example for each, and the checks needed before changing a relationship type.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 522" role="img" aria-labelledby="or-t or-d">
@@ -255,7 +255,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th></th><th>Lookup</th><th>Master-detail</th></tr></thead>
+        <thead><tr><th></th><th>Lookup</th><th>Master-Detail</th></tr></thead>
         <tbody>
           <tr><td>Child needs a parent?</td><td>No, optional</td><td>Yes, always (the field is required)</td></tr>
           <tr><td>Owner and sharing</td><td>The child has its own owner and sharing</td><td>The child has no owner; it follows the parent</td></tr>
@@ -267,22 +267,22 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
         </tbody>
       </table>
     </div>
-    <figure class="shot narrow"><img src="/assets/img/harbourline/schema.webp" loading="lazy" decoding="async" alt="Schema Builder showing Building, Contact, Account, Session Attendee and Training Session with their relationships"><figcaption>Schema Builder in the Harbourline org: Building (master-detail to Account, lookup to Contact) and the Session Attendee junction between Contact and Training Session.</figcaption></figure>
+    <figure class="shot narrow"><img src="/assets/img/harbourline/schema.webp" loading="lazy" decoding="async" alt="Schema Builder showing Building, Contact, Account, Session Attendee and Training Session showing object relationships"><figcaption>Schema Builder in the Harbourline org: Building (master-detail to Account, lookup to Contact) and the Session Attendee junction between Contact and Training Session.</figcaption></figure>
     <p class="note">Other types: hierarchical (User to User, like the Manager field), external lookup (the parent is an external object) and indirect lookup (the child is external, matched on an External ID field).</p>
   </section>
 
   <section id="access">
-    <span class="case-num">02 · Security and access</span>
-    <h2>Security and sharing</h2>
+    <span class="case-num">02 · Security and Access</span>
+    <h2>Security and Sharing</h2>
     <div class="brief">
-      <div><b>The problem</b>A user unable to access a record is a common admin support issue. The cause can be in three different places, and each is fixed with a different tool.</div>
-      <div><b>Documented approach</b>A map of the three checks every user must pass, a check order for troubleshooting, and Harbourline's requests matched to the right tool.</div>
+      <div><b>The Problem</b>A user unable to access a record is a common admin support issue. The cause can be in three different places, and each is fixed with a different tool.</div>
+      <div><b>Documented Approach</b>A map of the three checks every user must pass, a check order for troubleshooting, and Harbourline's requests matched to the right tool.</div>
     </div>
-    <div class="built"><b>Built and tested in the org</b><ul>
+    <div class="built"><b>Built and Tested in the Org</b><ul>
       <li>Org-wide defaults: Opportunity Private, Account and Case Public Read Only, Contact Controlled by Parent, Training Session Public Read Only</li>
       <li>Role hierarchy by department; criteria-based sharing rule (Closed Won deals to the service team, Read Only); account team on Northgate</li>
-      <li>Login As results: Priya sees her 3 deals plus Northgate's; Leo only Northgate's; Marcus sees Priya's; Ada the 8 Closed Won deals, read only</li>
-      <li>Found while testing: Ada saw no deals at all, because her profile had no Read on Opportunity. A sharing rule can't open an object the profile can't read</li>
+      <li>Login As results: Priya sees three owned Opportunities plus Northgate's; Leo only Northgate's; Marcus sees Priya's; Ada the 8 Closed Won deals, read only</li>
+      <li>Found while testing: Ada saw no deals at all, because the profile had no Read on Opportunity. A sharing rule can't open an object the profile can't read</li>
     </ul></div>
     <div class="figure">
       <svg viewBox="0 0 680 742" role="img" aria-labelledby="ac-t ac-d">
@@ -316,11 +316,11 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     </div>
     <div class="legend">
       <span><i class="sw" style="background:var(--accent-soft);border-color:var(--accent)"></i>Permissions: what a user can do</span>
-      <span><i class="sw" style="background:var(--sh-soft);border-color:var(--sh-line)"></i>Sharing: which records they reach</span>
+      <span><i class="sw" style="background:var(--sh-soft);border-color:var(--sh-line)"></i>Sharing: accessible records</span>
       <span><i class="sw" style="background:var(--tip-soft);border-color:var(--tip-line);border-style:dashed"></i>Good to know</span>
     </div>
 
-    <h3 class="sub">A user can't see a record: check in this order</h3>
+    <h3 class="sub">A User Can't See a Record: Check in This Order</h3>
     <ol class="checks">
       <li><b>Log in</b>Is the user active, inside the login IP ranges and login hours?</li>
       <li><b>Object</b>Does the profile or a permission set give Read on the object?</li>
@@ -329,29 +329,29 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     </ol>
     <p class="note">The "Sharing" button on a record shows exactly who has access and why, which is the quickest way to check step 4.</p>
 
-    <h3 class="sub">Worked example: Harbourline's sales and service teams</h3>
+    <h3 class="sub">Worked Example: Harbourline's Sales and Service Teams</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Business request</th><th>Tool</th><th>Why</th></tr></thead>
+        <thead><tr><th>Business Request</th><th>Tool</th><th>Why</th></tr></thead>
         <tbody>
           <tr><td>Priya and the other reps can edit Opportunities but not delete them</td><td><span class="tool">Profile</span><span class="pill p">Permissions</span></td><td><em>Object permissions: Read, Create, Edit</em></td></tr>
-          <tr><td>Each rep sees only their own records</td><td><span class="tool">Org-wide default: Private</span><span class="pill sh">Sharing</span></td><td><em>The floor for everyone</em></td></tr>
-          <tr><td>Marcus sees his team's records</td><td><span class="tool">Role hierarchy</span><span class="pill sh">Sharing</span></td><td><em>Managers see the records below them</em></td></tr>
+          <tr><td>Sales reps see only owned records</td><td><span class="tool">Org-wide default: Private</span><span class="pill sh">Sharing</span></td><td><em>The floor for everyone</em></td></tr>
+          <tr><td>Marcus sees team records</td><td><span class="tool">Role hierarchy</span><span class="pill sh">Sharing</span></td><td><em>Managers see the records below them</em></td></tr>
           <tr><td>Leo, the analyst, also needs to delete records</td><td><span class="tool">Permission set</span><span class="pill p">Permissions</span></td><td><em>Extra for one person, no new profile</em></td></tr>
           <tr><td>Ada reads every Case, but can't edit them</td><td><span class="tool">Permission set with View All on Case</span><span class="pill p">Permissions</span></td><td><em>View All skips sharing and gives read only</em></td></tr>
         </tbody>
       </table>
     </div>
-    <h3 class="sub">Which sharing tool?</h3>
+    <h3 class="sub">Which Sharing Tool?</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Tool</th><th>Who gets access</th><th>Example at Harbourline</th></tr></thead>
+        <thead><tr><th>Tool</th><th>Who Gets Access</th><th>Example at Harbourline</th></tr></thead>
         <tbody>
           <tr><td>Role hierarchy</td><td>Managers above the record owner</td><td>Marcus sees Priya's Opportunities</td></tr>
           <tr><td>Sharing rule (criteria-based)</td><td>A role or group, automatically, for many records</td><td>Closed Won deals shared with the Customer Service Manager and subordinates, Read Only</td></tr>
           <tr><td>Account team (enable it first)</td><td>Named people on one customer</td><td>Northgate Logistics: Priya Read/Write, Leo Read Only</td></tr>
           <tr><td>Manual sharing</td><td>One person, one record</td><td>Priya shares one Opportunity with Ada <span class="study">study example</span></td></tr>
-          <tr><td>Restriction rule</td><td>Nobody: it hides records</td><td>Support agents see only their own Tasks <span class="study">study example</span></td></tr>
+          <tr><td>Restriction rule</td><td>Nobody: it hides records</td><td>Support agents see only assigned Tasks <span class="study">study example</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -360,10 +360,10 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="sales-process">
     <span class="case-num">03 · Sales Cloud</span>
-    <h2>Sales process and path</h2>
+    <h2>Sales Process and Path</h2>
     <div class="brief">
-      <div><b>The problem</b>Sales teams sell in different ways, and each way needs its own stages. The pieces must be built in a fixed order, or the record type has no process to pick.</div>
-      <div><b>Documented approach</b>The build order as a map, then a step-by-step guide with the Harbourline build: an External process for new customers (with a Site Survey stage) and an Internal process for existing ones, each with its own path.</div>
+      <div><b>The Problem</b>Sales teams sell in different ways, and each way needs its own stages. The pieces must be built in a fixed order, or the record type has no process to pick.</div>
+      <div><b>Documented Approach</b>The build order as a map, then a step-by-step guide with the Harbourline build: an External process for new customers (with a Site Survey stage) and an Internal process for existing ones, each with its own path.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 310" role="img" aria-labelledby="sp-t sp-d">
@@ -396,32 +396,32 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     </div>
     <ol class="manual">
       <li class="phase">Phase 1: Prepare the stages</li>
-      <li class="st"><span class="n">1</span><div class="do"><strong>Check the Opportunity Stage values</strong><p>Every stage either process needs must exist here first.</p><small>Where: Object Manager &gt; Opportunity &gt; Fields &amp; Relationships &gt; Stage</small></div><div class="ex"><b>Example</b><span>Add the new stage Site Survey (Open, 30%, after Qualification)</span><span>Check: Prospecting, Qualification, Proposal/Price Quote, Negotiation/Review, Closed Won, Closed Lost</span></div></li>
+      <li class="st"><span class="n">1</span><div class="do"><strong>Check the Opportunity Stage Values</strong><p>Every stage either process needs must exist here first.</p><small>Where: Object Manager &gt; Opportunity &gt; Fields &amp; Relationships &gt; Stage</small></div><div class="ex"><b>Example</b><span>Add the new stage Site Survey (Open, 30%, after Qualification)</span><span>Check: Prospecting, Qualification, Proposal/Price Quote, Negotiation/Review, Closed Won, Closed Lost</span></div></li>
       <li class="phase">Phase 2: Create the processes</li>
-      <li class="st"><span class="n">2</span><div class="do"><strong>Create the sales processes</strong><p>One process per way of selling. Each one picks its stages.</p><small>Where: Setup &gt; Sales Processes &gt; New</small></div><div class="ex"><b>Example</b><span>Internal (existing customers): Qualification, Proposal/Price Quote, Closed Won, Closed Lost</span><span>External (new customers): all stages, including Site Survey</span></div></li>
-      <li class="st"><span class="n">3</span><div class="do"><strong>Create an Opportunity record type for each process</strong><p>Each record type is tied to one sales process.</p><small>Where: Object Manager &gt; Opportunity &gt; Record Types &gt; New</small></div><div class="ex"><b>Example</b><span>Internal Sale → Internal</span><span>External Sale → External</span></div></li>
-      <li class="st"><span class="n">4</span><div class="do"><strong>Choose profiles and page layouts</strong><p>Pick which profiles can use each record type and which layout each pair gets.</p><small>Where: Record type wizard, then Page Layout Assignment</small></div><div class="ex"><b>Example</b><span>Harbourline Sales profile: both record types, External Sale as default</span><span>Harbourline Service profile: neither</span></div></li>
+      <li class="st"><span class="n">2</span><div class="do"><strong>Create the Sales Processes</strong><p>One process per way of selling. Each one picks its stages.</p><small>Where: Setup &gt; Sales Processes &gt; New</small></div><div class="ex"><b>Example</b><span>Internal (existing customers): Qualification, Proposal/Price Quote, Closed Won, Closed Lost</span><span>External (new customers): all stages, including Site Survey</span></div></li>
+      <li class="st"><span class="n">3</span><div class="do"><strong>Create an Opportunity Record Type for Each Process</strong><p>Each record type is tied to one sales process.</p><small>Where: Object Manager &gt; Opportunity &gt; Record Types &gt; New</small></div><div class="ex"><b>Example</b><span>Internal Sale → Internal</span><span>External Sale → External</span></div></li>
+      <li class="st"><span class="n">4</span><div class="do"><strong>Choose Profiles and Page Layouts</strong><p>Pick which profiles can use each record type and which layout each pair gets.</p><small>Where: Record type wizard, then Page Layout Assignment</small></div><div class="ex"><b>Example</b><span>Harbourline Sales profile: both record types, External Sale as default</span><span>Harbourline Service profile: neither</span></div></li>
       <li class="phase">Phase 3: Guide the users</li>
-      <li class="st"><span class="n">5</span><div class="do"><strong>Build a path for each record type</strong><p>Turn on Path, then add key fields and guidance for success to each stage.</p><small>Where: Setup &gt; Path Settings &gt; New Path</small></div><div class="ex"><b>Example</b><span>External Path and Internal Path: key fields and guidance for success on each stage, and a Closed Won celebration</span></div></li>
-      <li class="st"><span class="n">6</span><div class="do"><strong>Test as a sales rep</strong><p>Create one Opportunity of each record type and check the stages and the path.</p><small>Where: Log in as the user</small></div><div class="ex"><b>Example</b><span>Log in as Priya, create an Internal and an External Opportunity</span><span>Then: 40 deals migrated with an upsert, 23 External and 17 Internal</span></div></li>
+      <li class="st"><span class="n">5</span><div class="do"><strong>Build a Path for Each Record Type</strong><p>Turn on Path, then add key fields and guidance for success to each stage.</p><small>Where: Setup &gt; Path Settings &gt; New Path</small></div><div class="ex"><b>Example</b><span>External Path and Internal Path: key fields and guidance for success on each stage, and a Closed Won celebration</span></div></li>
+      <li class="st"><span class="n">6</span><div class="do"><strong>Test as a Sales Rep</strong><p>Create one Opportunity of each record type and check the stages and the path.</p><small>Where: Log in as the user</small></div><div class="ex"><b>Example</b><span>Log in as Priya, create an Internal and an External Opportunity</span><span>Then: 40 deals migrated with an upsert, 23 External and 17 Internal</span></div></li>
     </ol>
   </section>
 
   <section id="case-map">
     <span class="case-num">04 · Service Cloud</span>
-    <h2>Case management</h2>
+    <h2>Case Management</h2>
     <div class="brief">
-      <div><b>The problem</b>Case management uses many separate features. It is hard to see which one runs when, and what has to be set up first.</div>
-      <div><b>Documented approach</b>One map of a Case's life: how it arrives, the rules that act on it, what must be built first, and how it is worked and closed.</div>
+      <div><b>The Problem</b>Case management uses many separate features. It is hard to see which one runs when, and what has to be set up first.</div>
+      <div><b>Documented Approach</b>One map of a Case's life: how it arrives, the rules that act on it, what must be built first, and how it is worked and closed.</div>
     </div>
-    <div class="built"><b>Built and tested in the org</b><ul>
+    <div class="built"><b>Built and Tested in the Org</b><ul>
       <li>Email-to-Case, Support Queue, assignment rule, auto-response "Case Received", escalation rule after 4 hours, Key Account alert flow</li>
-      <li>Tested end to end with a real email: the Case linked to James and Northgate by his email address, went to the queue, the auto-reply arrived, and the escalation flagged it later</li>
+      <li>Tested end to end with a real email: the Case linked to James and Northgate by the sender's email address, went to the queue, the auto-reply arrived, and the escalation flagged it later</li>
       <li>For the Case import, the owner was supplied in the file rather than assigned by a rule. Data Loader can apply assignment rules when configured, so import settings must be checked before each load</li>
       <li>Only the main path is tested so far. Not yet tested: emails from senders who aren't Contacts, replies threading into the same Case, and duplicate Cases from repeated emails</li>
       <li>Shown in the map but studied only: Web-to-Case, entitlements and milestones, knowledge, macros</li>
     </ul></div>
-    <figure class="shot"><img src="/assets/img/harbourline/service.webp" loading="lazy" decoding="async" alt="Harbourline Service Home page with a team rule banner, the Support Queue list and My Open Cases"><figcaption>Service Home as Ada, the service manager: the Support Queue first. The red flag on case 00001026 is the escalation rule.</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/harbourline/service.webp" loading="lazy" decoding="async" alt="Harbourline Service Home page with a team rule banner, the Support Queue list and Open Cases"><figcaption>Service Home as Ada, the service manager: the Support Queue first. The red flag on case 00001026 is the escalation rule.</figcaption></figure>
     <div class="figure">
       <svg viewBox="0 0 900 920" role="img" aria-labelledby="cm-t cm-d">
         <title id="cm-t">Case management</title>
@@ -515,10 +515,10 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="save-order">
     <span class="case-num">05 · Automation</span>
-    <h2>Order of execution</h2>
+    <h2>Order of Execution</h2>
     <div class="brief">
-      <div><b>The problem</b>A rule "doesn't work" and nobody knows why. Usually something earlier in the save stopped it, or it hasn't fired yet. Knowing the order is the first step in troubleshooting.</div>
-      <div><b>Documented approach</b>The full save order in four phases, followed with one real example: James's new Case, from the first check to the emails going out.</div>
+      <div><b>The Problem</b>A rule "doesn't work" and nobody knows why. Usually something earlier in the save stopped it, or it hasn't fired yet. Knowing the order is the first step in troubleshooting.</div>
+      <div><b>Documented Approach</b>The full save order in four phases, followed with one real example: James's new Case, from the first check to the emails going out.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 1126.0" role="img" aria-labelledby="oe-t oe-d">
@@ -579,10 +579,10 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="which-tool">
     <span class="case-num">06 · Automation</span>
-    <h2>Choosing an automation tool</h2>
+    <h2>Choosing an Automation Tool</h2>
     <div class="brief">
-      <div><b>The problem</b>Flow can do almost anything, so it gets used for jobs a simpler tool does better and that are easier to maintain.</div>
-      <div><b>Documented approach</b>A check to run before building any flow: match the business need to the simplest tool, using the words people actually say. Every example is built in the Harbourline org.</div>
+      <div><b>The Problem</b>Flow can do almost anything, so it gets used for jobs a simpler tool does better and that are easier to maintain.</div>
+      <div><b>Documented Approach</b>A check to run before building any flow: match the business need to the simplest tool, using the words people actually say. Every example is built in the Harbourline org.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 530" role="img" aria-labelledby="wt-t wt-d">
@@ -616,7 +616,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <p class="note">Only the last row needs a flow. The others are simpler, built with clicks, and easier for the next admin to understand.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Business need</th><th>Clue words</th><th>Why it isn't a flow</th></tr></thead>
+        <thead><tr><th>Business Need</th><th>Clue Words</th><th>Why It Isn't a Flow</th></tr></thead>
         <tbody>
           <tr><td>Store or link data</td><td><em>store, keep, link, belongs to</em></td><td>It's the data model. Nothing needs to happen automatically.</td></tr>
           <tr><td>Calculate a value to show</td><td><em>show, display, calculate, combine</em></td><td>A formula only works out a value and shows it. It never creates records or sends emails.</td></tr>
@@ -632,10 +632,10 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="flow-choice">
     <span class="case-num">07 · Automation</span>
-    <h2>Flow design</h2>
+    <h2>Flow Design</h2>
     <div class="brief">
-      <div><b>The problem</b>A business asks for "something automatic." The admin has to pick the flow type, the save timing and the fewest elements that do the job.</div>
-      <div><b>Documented approach</b>A four-question decision chart, from the trigger to the extra elements, with practical notes, then worked examples that follow the chart to a finished flow.</div>
+      <div><b>The Problem</b>A business asks for "something automatic." The admin has to pick the flow type, the save timing and the fewest elements that do the job.</div>
+      <div><b>Documented Approach</b>A four-question decision chart, from the trigger to the extra elements, with practical notes, then worked examples that follow the chart to a finished flow.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 1028" role="img" aria-labelledby="fc-t fc-d">
@@ -702,24 +702,24 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     </div>
     <figure class="shot narrow"><img src="/assets/img/harbourline/flow.webp" loading="lazy" decoding="async" alt="Flow Builder showing the Create HQ Building flow: trigger, Get HQ Building, decision HQ exists, Create HQ Building"><figcaption>The Create HQ Building flow in Flow Builder: Get Records, a Decision, then Create Records only on the "No HQ" path.</figcaption></figure>
     <p class="note">The record that starts a record-triggered flow is already in the flow with all its fields, so Get Records is only needed for other records. Every flow was tested on the path where it should act and the path where it shouldn't: a second won deal for Northgate created no duplicate Building, and 100 test Cases for Standard customers sent no alerts.</p>
-    <span class="eyebrow">The four flows in the Harbourline org, through the four questions</span>
+    <span class="eyebrow">The Four Flows in the Harbourline Org, Through the Four Questions</span>
     <div class="table-wrap">
       <table class="wide">
-        <thead><tr><th>Request</th><th>1. What starts it?</th><th>2. Which records?</th><th>3. How many?</th><th>4. Extras</th><th>Finished flow</th></tr></thead>
+        <thead><tr><th>Request</th><th>1. What Starts It?</th><th>2. Which Records?</th><th>3. How Many?</th><th>4. Extras</th><th>Finished Flow</th></tr></thead>
         <tbody>
           <tr><td>When a deal is won, create the customer's Headquarters Building, unless it already has one</td><td>Record-triggered: Opportunity updated, Stage becomes Closed Won</td><td>Actions and Related Records, because it creates another record</td><td>One record</td><td>Formula, Get Records, Decision</td><td class="flow">Start → Formula ("Account name Headquarters") → Get Records (Building with that name) → Decision (none found?) → Create Records</td></tr>
           <tr><td>Email Ada, the service manager, when a Key Account customer opens a Case</td><td>Record-triggered: Case is created</td><td>Actions and Related Records, because it sends an email</td><td>One record</td><td>Decision, Action</td><td class="flow">Start → Decision (Account's Customer Tier = Key Account?) → Send Email</td></tr>
           <tr><td>A new Admin Request goes to the Admin Team queue with the requester filled in; Date Closed is stamped when it is closed and cleared if it is reopened</td><td>Record-triggered: Admin Request created or updated</td><td>Fast Field Updates, because only the same request changes</td><td>One record</td><td>Decisions, Get Records (the queue), Assignment</td><td class="flow">Start → Decision (new?) → Get Records (Admin Team queue) → Assignment (Owner, Requested By) → Decision (just closed or reopened?) → Assignment (Date Closed)</td></tr>
-          <tr><td>Email the requester when the status of their Admin Request changes</td><td>Record-triggered: Admin Request updated, Status is changed</td><td>Actions and Related Records, because it sends an email</td><td>One record</td><td>Action</td><td class="flow">Start (entry conditions: Status changed, Requested By filled) → Send Email (subject formula, text template)</td></tr>
+          <tr><td>Email the requester when the Admin Request status changes</td><td>Record-triggered: Admin Request updated, Status is changed</td><td>Actions and Related Records, because it sends an email</td><td>One record</td><td>Action</td><td class="flow">Start (entry conditions: Status changed, Requested By filled) → Send Email (subject formula, text template)</td></tr>
         </tbody>
       </table>
     </div>
     <span class="eyebrow">Worked example with a loop <span class="study">study example</span></span>
     <p><b>Request:</b> a button on the Account page sets Priority to High on that Account's open Cases (for example, Northgate Logistics), but only when the Subject contains "urgent".</p>
     <div class="brief">
-      <div><b>1. What starts it?</b>A user clicks a button, so it's a screen flow</div>
-      <div><b>2. Which records?</b>Other records (the Cases), so no save timing to choose</div>
-      <div><b>3. How many?</b>Many, each with its own answer, so a Loop</div>
+      <div><b>1. What Starts It?</b>A user clicks a button, so it's a screen flow</div>
+      <div><b>2. Which Records?</b>Other records (the Cases), so no save timing to choose</div>
+      <div><b>3. How Many?</b>Many, each with its own answer, so a Loop</div>
       <div><b>4. Extras</b>Get Records first, and a Decision inside the loop</div>
     </div>
     <ol class="timeline">
@@ -735,41 +735,41 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="approval">
     <span class="case-num">08 · Automation</span>
-    <h2>Approval process</h2>
+    <h2>Approval Process</h2>
     <div class="brief">
-      <div><b>The problem</b>An approval process points to users, fields, templates and email alerts. If one is missing, the wizard stops or the process fails later.</div>
-      <div><b>Documented approach</b>A step-by-step build guide in the order things must exist, as built in the Harbourline org: Priya asks for a discount, Marcus approves over 15% and Allison also over 40%, and a validation rule makes sure no deal skips it.</div>
+      <div><b>The Problem</b>An approval process points to users, fields, templates and email alerts. If one is missing, the wizard stops or the process fails later.</div>
+      <div><b>Documented Approach</b>A step-by-step build guide in the order things must exist, as built in the Harbourline org: Priya asks for a discount, Marcus approves over 15% and Allison also over 40%, and a validation rule makes sure no deal skips it.</div>
     </div>
-    <ol class="glance"><li><b>Prepare what the process needs</b><span>Users, manager, fields, email templates</span></li><li><b>Create the process</b><span>Object, entry criteria, approver, submitters</span></li><li><b>Add the steps and actions</b><span>Initial action, approval steps, final actions</span></li><li><b>Go live and enforce</b><span>Button and Home page, validation rule, test every path</span></li></ol>
+    <ol class="glance"><li><b>Prepare What the Process Needs</b><span>Users, manager, fields, email templates</span></li><li><b>Create the Process</b><span>Object, entry criteria, approver, submitters</span></li><li><b>Add the Steps and Actions</b><span>Initial action, approval steps, final actions</span></li><li><b>Go Live and Enforce</b><span>Button and Home page, validation rule, test every path</span></li></ol>
     <ol class="manual">
       <li class="phase">Phase 1: Prepare what the process needs</li>
-      <li class="st"><span class="n">1</span><div class="do"><strong>Create the users and roles</strong><p>Create the approvers and the submitter, and the roles they sit in.</p><small>Where: Setup &gt; Users, Setup &gt; Roles</small></div><div class="ex"><b>Example</b><span>Users: Allison Grant (Sales VP), Marcus Reid (Sales Manager), Priya Shah (Sales Rep)</span><span>Roles: Sales VP, with Sales Manager under it</span></div></li>
-      <li class="st"><span class="n">2</span><div class="do"><strong>Set the manager on the user</strong><p>Fill in the Manager field, so the process can find the right approver.</p><small>Where: The submitter's User record</small></div><div class="ex"><b>Example</b><span>Priya's Manager field = Marcus Reid</span></div></li>
-      <li class="st"><span class="n">3</span><div class="do"><strong>Create the fields the process uses</strong><p>One field to check, and one field to show the result.</p><small>Where: Object Manager &gt; the object &gt; Fields &amp; Relationships</small></div><div class="ex"><b>Example</b><span>On Opportunity:</span><span>Discount Percentage (Percent)</span><span>Approval Status (restricted picklist: Not Submitted, Pending, Approved, Rejected), read-only for reps so nobody approves their own discount</span></div></li>
-      <li class="st"><span class="n">4</span><div class="do"><strong>Create the email template folder</strong><p>A folder to keep the approval emails together.</p><small>Where: Classic Email Templates</small></div><div class="ex"><b>Example</b><span>One folder for the discount emails, shared with the sales team</span></div></li>
-      <li class="st"><span class="n">5</span><div class="do"><strong>Create the email templates</strong><p>One template for the approver's request, and separate ones for approved and rejected. Tick Available for Use, or the alert can't find them.</p><small>Where: Classic Email Templates</small></div><div class="ex"><b>Example</b><span>Request to the approver</span><span>Discount Approved, Discount Rejected (to the deal owner)</span></div></li>
+      <li class="st"><span class="n">1</span><div class="do"><strong>Create the Users and Roles</strong><p>Create the approvers and the submitter, and the roles they sit in.</p><small>Where: Setup &gt; Users, Setup &gt; Roles</small></div><div class="ex"><b>Example</b><span>Users: Allison Grant (Sales VP), Marcus Reid (Sales Manager), Priya Shah (Sales Rep)</span><span>Roles: Sales VP, with Sales Manager under it</span></div></li>
+      <li class="st"><span class="n">2</span><div class="do"><strong>Set the Manager on the User</strong><p>Fill in the Manager field, so the process can find the right approver.</p><small>Where: The submitter's User record</small></div><div class="ex"><b>Example</b><span>Priya's Manager field = Marcus Reid</span></div></li>
+      <li class="st"><span class="n">3</span><div class="do"><strong>Create the Fields the Process Uses</strong><p>One field to check, and one field to show the result.</p><small>Where: Object Manager &gt; the object &gt; Fields &amp; Relationships</small></div><div class="ex"><b>Example</b><span>On Opportunity:</span><span>Discount Percentage (Percent)</span><span>Approval Status (restricted picklist: Not Submitted, Pending, Approved, Rejected), read-only for reps so self-approval of discounts is prevented</span></div></li>
+      <li class="st"><span class="n">4</span><div class="do"><strong>Create the Email Template Folder</strong><p>A folder to keep the approval emails together.</p><small>Where: Classic Email Templates</small></div><div class="ex"><b>Example</b><span>One folder for the discount emails, shared with the sales team</span></div></li>
+      <li class="st"><span class="n">5</span><div class="do"><strong>Create the Email Templates</strong><p>One template for the approver's request, and separate ones for approved and rejected. Tick Available for Use, or the alert can't find them.</p><small>Where: Classic Email Templates</small></div><div class="ex"><b>Example</b><span>Request to the approver</span><span>Discount Approved, Discount Rejected (to the deal owner)</span></div></li>
       <li class="phase">Phase 2: Create the process</li>
-      <li class="st"><span class="n">6</span><div class="do"><strong>Start the approval process</strong><p>Choose the object and the Standard Setup Wizard, then name the process.</p><small>Where: Setup &gt; Approval Processes</small></div><div class="ex"><b>Example</b><span>Object: Opportunity</span><span>Name: Opportunity Discount Approval</span></div></li>
-      <li class="st"><span class="n">7</span><div class="do"><strong>Set the entry criteria</strong><p>Decide which records can be submitted at all.</p><small>Where: The wizard, entry criteria</small></div><div class="ex"><b>Example</b><span>Discount Percentage greater than 15%</span></div></li>
-      <li class="st"><span class="n">8</span><div class="do"><strong>Set the approver, editing and submitters</strong><p>Choose how the approver is found, who can edit the record while it waits, and who can submit it.</p><small>Where: The wizard</small></div><div class="ex"><b>Example</b><span>Approver: the Manager field</span><span>Editing while pending: administrators only</span><span>Submitter: the Opportunity Owner (Priya), who can also recall</span></div></li>
+      <li class="st"><span class="n">6</span><div class="do"><strong>Start the Approval Process</strong><p>Choose the object and the Standard Setup Wizard, then name the process.</p><small>Where: Setup &gt; Approval Processes</small></div><div class="ex"><b>Example</b><span>Object: Opportunity</span><span>Name: Opportunity Discount Approval</span></div></li>
+      <li class="st"><span class="n">7</span><div class="do"><strong>Set the Entry Criteria</strong><p>Decide which records can be submitted at all.</p><small>Where: The wizard, entry criteria</small></div><div class="ex"><b>Example</b><span>Discount Percentage greater than 15%</span></div></li>
+      <li class="st"><span class="n">8</span><div class="do"><strong>Set the Approver, Editing and Submitters</strong><p>Choose how the approver is found, who can edit the record while it waits, and who can submit it.</p><small>Where: The wizard</small></div><div class="ex"><b>Example</b><span>Approver: the Manager field</span><span>Editing while pending: administrators only</span><span>Submitter: the Opportunity Owner (Priya), who can also recall</span></div></li>
       <li class="phase">Phase 3: Add the steps and actions</li>
-      <li class="st"><span class="n">9</span><div class="do"><strong>Add the initial submission actions</strong><p>Mark the record as waiting. Salesforce locks the record by default, so nobody changes it while it waits.</p><small>Where: Initial Submission Actions</small></div><div class="ex"><b>Example</b><span>Field Update: Approval Status = Pending</span><span>Record Lock (added by default)</span></div></li>
-      <li class="st"><span class="n">10</span><div class="do"><strong>Add the approval steps</strong><p>One step per level. Give each step its own rule and approver. Steps run in order.</p><small>Where: Approval Steps</small></div><div class="ex"><b>Example</b><span>Step 1, every request: Marcus, Priya's manager</span><span>Step 2, only over 40%: Allison, the Sales VP; otherwise approved after Step 1</span></div></li>
-      <li class="st"><span class="n">11</span><div class="do"><strong>Add the final actions</strong><p>Set what happens at the end: one set for approval and one for rejection. Only one set runs. Create the Email Alerts here, using the templates from step 5.</p><small>Where: Final Approval Actions, Final Rejection Actions</small></div><div class="ex"><b>Example</b><span>Approved: Status = Approved, unlock, email the owner</span><span>Rejected: Status = Rejected, unlock, email the owner</span><span>Recalled: Status = Not Submitted, unlock</span></div></li>
+      <li class="st"><span class="n">9</span><div class="do"><strong>Add the Initial Submission Actions</strong><p>Mark the record as waiting. Salesforce locks the record by default, so nobody changes it while it waits.</p><small>Where: Initial Submission Actions</small></div><div class="ex"><b>Example</b><span>Field Update: Approval Status = Pending</span><span>Record Lock (added by default)</span></div></li>
+      <li class="st"><span class="n">10</span><div class="do"><strong>Add the Approval Steps</strong><p>One step per level. Give each step its own rule and approver. Steps run in order.</p><small>Where: Approval Steps</small></div><div class="ex"><b>Example</b><span>Step 1, every request: Marcus, Priya's manager</span><span>Step 2, only over 40%: Allison, the Sales VP; otherwise approved after Step 1</span></div></li>
+      <li class="st"><span class="n">11</span><div class="do"><strong>Add the Final Actions</strong><p>Set what happens at the end: one set for approval and one for rejection. Only one set runs. Create the Email Alerts here, using the templates from step 5.</p><small>Where: Final Approval Actions, Final Rejection Actions</small></div><div class="ex"><b>Example</b><span>Approved: Status = Approved, unlock, email the owner</span><span>Rejected: Status = Rejected, unlock, email the owner</span><span>Recalled: Status = Not Submitted, unlock</span></div></li>
       <li class="phase">Phase 4: Go live and enforce</li>
-      <li class="st"><span class="n">12</span><div class="do"><strong>Add the button and history to the page</strong><p>Users need a way to submit and a place to see what happened.</p><small>Where: Object Manager &gt; Opportunity &gt; Page Layouts</small></div><div class="ex"><b>Example</b><span>Submit for Approval button in the actions</span><span>Approval History related list on the page</span><span>Items to Approve on the approvers' Home page</span></div></li>
-      <li class="st"><span class="n">13</span><div class="do"><strong>Make the approval impossible to skip</strong><p>On its own, an approval process is optional: a rep can simply not submit. A validation rule blocks the price stages until the discount is approved.</p><small>Where: Object Manager &gt; Opportunity &gt; Validation Rules</small></div><div class="ex"><b>Example</b><span>Discount_Needs_Approval: blocks Proposal/Price Quote, Negotiation/Review and Closed Won when the discount is over 15% and Approval Status isn't Approved</span></div></li>
-      <li class="st"><span class="n">14</span><div class="do"><strong>Activate it and test every path</strong><p>Click Activate, then log in as the rep and submit test records. After activation you can't add or remove steps, so clone the process if the steps need to change.</p><small>Where: The process detail page</small></div><div class="ex"><b>Example</b><span>20%, approved by the manager: the deal moves to Proposal</span><span>45%, not submitted: blocked at Proposal, saves at Site Survey</span></div></li>
+      <li class="st"><span class="n">12</span><div class="do"><strong>Add the Button and History to the Page</strong><p>Users need a way to submit and a place to see what happened.</p><small>Where: Object Manager &gt; Opportunity &gt; Page Layouts</small></div><div class="ex"><b>Example</b><span>Submit for Approval button in the actions</span><span>Approval History related list on the page</span><span>Items to Approve on the approvers' Home page</span></div></li>
+      <li class="st"><span class="n">13</span><div class="do"><strong>Make the Approval Impossible to Skip</strong><p>On its own, an approval process is optional: a rep can simply not submit. A validation rule blocks the price stages until the discount is approved.</p><small>Where: Object Manager &gt; Opportunity &gt; Validation Rules</small></div><div class="ex"><b>Example</b><span>Discount_Needs_Approval: blocks Proposal/Price Quote, Negotiation/Review and Closed Won when the discount is over 15% and Approval Status isn't Approved</span></div></li>
+      <li class="st"><span class="n">14</span><div class="do"><strong>Activate It and Test Every Path</strong><p>Click Activate, then log in as the rep and submit test records. After activation you can't add or remove steps, so clone the process if the steps need to change.</p><small>Where: The process detail page</small></div><div class="ex"><b>Example</b><span>20%, approved by the manager: the deal moves to Proposal</span><span>45%, not submitted: blocked at Proposal, saves at Site Survey</span></div></li>
     </ol>
     <figure class="shot"><img src="/assets/img/harbourline/validation.webp" loading="lazy" decoding="async" alt="An opportunity with a 45 percent discount blocked from moving to Proposal/Price Quote by a validation rule error"><figcaption>The validation rule at work: a deal with an unapproved discount can't move to Proposal/Price Quote.</figcaption></figure>
-    <span class="eyebrow">If something goes wrong</span>
+    <span class="eyebrow">If Something Goes Wrong</span>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>What the user sees</th><th>Usual cause</th></tr></thead>
+        <thead><tr><th>What the User Sees</th><th>Usual Cause</th></tr></thead>
         <tbody>
           <tr><td>No Submit for Approval button</td><td>The button isn't on the page layout, or the process isn't active</td></tr>
           <tr><td>"No applicable approval process was found"</td><td>The record doesn't meet the entry criteria, or the user isn't an allowed submitter</td></tr>
-          <tr><td>"The next approver ... is determined by the Manager field. This value is empty."</td><td>The submitter has no Manager on their user record. This was found during testing; Manager assignments should be checked before configuring approval steps</td></tr>
+          <tr><td>"The next approver ... is determined by the Manager field. This value is empty."</td><td>The submitter has no Manager on the User record. This was found during testing; Manager assignments should be checked before configuring approval steps</td></tr>
           <tr><td>No email arrives</td><td>The template isn't Available for Use, or the email alert has no recipient</td></tr>
           <tr><td>An approved deal is still locked</td><td>The Final Approval action locks instead of unlocking. This was identified and corrected during testing</td></tr>
           <tr><td>A recalled request still shows Pending</td><td>The Recall action has no field update; it should set Approval Status back to Not Submitted</td></tr>
@@ -779,11 +779,11 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
   </section>
 
   <section id="data">
-    <span class="case-num">09 · Data management</span>
-    <h2>Data import, export and duplicates</h2>
+    <span class="case-num">09 · Data Management</span>
+    <h2>Data Import, Export and Duplicates</h2>
     <div class="brief">
-      <div><b>The problem</b>Bad imports are the fastest way to fill an org with wrong or duplicate data, and the wrong tool can't do the job at all.</div>
-      <div><b>Documented approach</b>A three-question guide to picking the right data tool, linking parent and child records, and stopping duplicates, with the Harbourline import and clean-up tasks.</div>
+      <div><b>The Problem</b>Bad imports are the fastest way to fill an org with wrong or duplicate data, and the wrong tool can't do the job at all.</div>
+      <div><b>Documented Approach</b>A three-question guide to picking the right data tool, linking parent and child records, and stopping duplicates, with the Harbourline import and clean-up tasks.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 770" role="img" aria-labelledby="dm-t dm-d">
@@ -831,7 +831,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <table>
         <thead><tr><th>Job at Harbourline</th><th>Tool</th><th>Why</th></tr></thead>
         <tbody>
-          <tr><td>Load 28 Accounts, 74 Contacts, 65 Buildings, 5 Training Sessions and 45 Attendees</td><td>Data Import Wizard, parents first</td><td>Accounts, then Contacts, then the custom objects that need their parents' IDs</td></tr>
+          <tr><td>Load 28 Accounts, 74 Contacts, 65 Buildings, 5 Training Sessions and 45 Attendees</td><td>Data Import Wizard, parents first</td><td>Accounts, then Contacts, then the custom objects that require parent record IDs</td></tr>
           <tr><td>Import 500 Leads from the Security Expo 2026 list</td><td>Data Import Wizard + duplicate rule</td><td>495 created, 5 not imported. The duplicate rule (email match) is Allow + Alert + Report. On screen a user can choose to save anyway; an import has no user to confirm, so the duplicate rule stops the save unless the tool tells Salesforce to allow it, and the 5 second scans were listed as errors</td></tr>
           <tr><td>Migrate 40 Opportunities from the old CRM</td><td>dataloader.io, upsert</td><td>The wizard can't import Opportunities. Legacy Opportunity ID finds the deal and Legacy Account ID links its Account. Tested 4 rows first; the 4 were updated, not duplicated</td></tr>
           <tr><td>Bulk-test a flow with 100 Cases, then remove them</td><td>dataloader.io, then Mass Delete</td><td>Counted with a list view before and after, because Mass Delete shows no totals</td></tr>
@@ -840,10 +840,10 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       </table>
     </div>
     <p class="note">Deleted records go to the Recycle Bin for about 15 days. A hard delete in Data Loader skips it.</p>
-    <h3 class="sub">Import problems and corrective actions</h3>
+    <h3 class="sub">Import Problems and Corrective Actions</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Problem</th><th>Cause</th><th>Prevention or fix</th></tr></thead>
+        <thead><tr><th>Problem</th><th>Cause</th><th>Prevention or Fix</th></tr></thead>
         <tbody>
           <tr><td>The Contacts import created a copy of an Account for every Contact</td><td>"Add new records" was chosen instead of "Add new and update existing"</td><td>Test a small file first, match on email, check the Account list after every import</td></tr>
           <tr><td>The import tool showed none of the newly created fields</td><td>dataloader.io was logged in to a different org</td><td>Check the username before any import</td></tr>
@@ -856,15 +856,15 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
   </section>
 
   <section id="reports">
-    <span class="case-num">10 · Reports and dashboards</span>
-    <h2>One question per report</h2>
+    <span class="case-num">10 · Reports and Dashboards</span>
+    <h2>One Question per Report</h2>
     <div class="brief">
-      <div><b>The problem</b>Managers ask the same questions every week. If the answers live in spreadsheets, they are late and nobody trusts them.</div>
-      <div><b>Documented approach</b>Thirteen reports, each answering one question a manager asks, and three dashboards that put the answers on one page.</div>
+      <div><b>The Problem</b>Managers ask the same questions every week. If the answers live in spreadsheets, they are late and nobody trusts them.</div>
+      <div><b>Documented Approach</b>Thirteen reports, each answering one question a manager asks, and three dashboards that put the answers on one page.</div>
     </div>
     <div class="table-wrap">
       <table class="wide">
-        <thead><tr><th>Report</th><th>The question it answers</th><th>Built with</th></tr></thead>
+        <thead><tr><th>Report</th><th>The Question It Answers</th><th>Built with</th></tr></thead>
         <tbody>
           <tr><td>Open Pipeline by Stage</td><td>How much is still to win, and where is it stuck?</td><td><em>Filter Closed = False, not a list of stages, so it stays right if stages change</em></td></tr>
           <tr><td>Pipeline by Process and Stage</td><td>New customers or existing ones: where is the pipeline?</td><td><em>Matrix report</em></td></tr>
@@ -880,25 +880,25 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       </table>
     </div>
     <figure class="shot narrow"><img src="/assets/img/harbourline/sales.webp" loading="lazy" decoding="async" alt="Harbourline Sales dashboard showing discounts awaiting approval, open pipeline by stage and won revenue by customer tier"><figcaption>The Harbourline Sales dashboard: discounts waiting for approval, open pipeline by stage, and won revenue by customer tier.</figcaption></figure>
-    <h3 class="sub">Reporting issues found during testing</h3>
+    <h3 class="sub">Reporting Issues Found During Testing</h3>
     <ol class="checks">
-      <li><b>Viewer's access</b>A report chart on a Home page runs as the viewer. A rep with Private deals sees an empty chart; a dashboard running as a fixed user shows team totals.</li>
-      <li><b>Folder sharing</b>Users can't see a report in a folder that isn't shared with them. Report folders were shared by role, with admin-only reports restricted to managers.</li>
-      <li><b>The right measure</b>A dashboard chart showed zeros because it used Sum of Days Open instead of Record Count.</li>
-      <li><b>Snapshots</b>Dashboards show the data from their last refresh, so dashboards were refreshed before checking results.</li>
+      <li><b>Viewer's Access</b>A report chart on a Home page runs as the viewer. A rep with Private deals sees an empty chart; a dashboard running as a fixed user shows team totals.</li>
+      <li><b>Folder Sharing</b>Users can't see a report in a folder that isn't shared with them. Report folders were shared by role, with admin-only reports restricted to managers.</li>
+      <li><b>The Right Measure</b>A dashboard chart showed zeros because it used Sum of Days Open instead of Record Count.</li>
+      <li><b>Snapshots</b>Dashboard data reflects the last refresh, so dashboards were refreshed before checking results.</li>
     </ol>
   </section>
 
   <section id="apps">
-    <span class="case-num">11 · User experience</span>
-    <h2>Apps and pages for each team</h2>
+    <span class="case-num">11 · User Experience</span>
+    <h2>Apps and Pages for Each Team</h2>
     <div class="brief">
-      <div><b>The problem</b>A busy screen with every tab and field slows people down, and they stop using the system.</div>
-      <div><b>Documented approach</b>One Lightning app per team, with only the tabs that team uses, and a Home page whose first screen answers the team's first question of the day.</div>
+      <div><b>The Problem</b>A busy screen with every tab and field slows people down, and they stop using the system.</div>
+      <div><b>Documented Approach</b>One Lightning app per team, with only the tabs that team uses, and a Home page whose first screen answers the team's first question of the day.</div>
     </div>
     <div class="table-wrap">
       <table class="wide">
-        <thead><tr><th>App</th><th>Tabs</th><th>Home page</th></tr></thead>
+        <thead><tr><th>App</th><th>Tabs</th><th>Home Page</th></tr></thead>
         <tbody>
           <tr><td><strong>Harbourline Sales</strong><br><em>Harbourline Sales profile</em></td><td>Home, Leads, Accounts, Contacts, Opportunities, Products, Buildings, Reports, Dashboards, Overview</td><td>Team message, Items to Approve, pipeline chart, assigned deals</td></tr>
           <tr><td><strong>Harbourline Service</strong><br><em>Harbourline Service profile</em></td><td>Home, Cases, Accounts, Contacts, Buildings, Training Sessions, Opportunities, Reports, Dashboards, Overview</td><td>Team rule, Support Queue list, open cases, workload chart</td></tr>
@@ -907,18 +907,18 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       </table>
     </div>
     <ol class="checks">
-      <li><b>Compact layouts</b>Key fields at the top of every record: Customer Tier and Number of Sites on Accounts; Amount, Stage, Discount and Approval Status on deals; Priority, Status and Owner on Cases.</li>
-      <li><b>Page assignment</b>App and profile beats app default, which beats org default. A page assigned to the admin profile hides the team pages from the admin, so team pages were checked using Login As.</li>
-      <li><b>List views on pages</b>A list view on a Home page must be visible to all users, or it is empty for them.</li>
+      <li><b>Compact Layouts</b>Key fields at the top of every record: Customer Tier and Number of Sites on Accounts; Amount, Stage, Discount and Approval Status on deals; Priority, Status and Owner on Cases.</li>
+      <li><b>Page Assignment</b>App and profile beats app default, which beats org default. A page assigned to the admin profile hides the team pages from the admin, so team pages were checked using Login As.</li>
+      <li><b>List Views on Pages</b>A list view on a Home page must be visible to all users, or it is empty for them.</li>
     </ol>
   </section>
 
   <section id="tracker">
-    <span class="case-num">12 · Running the org</span>
-    <h2>Admin Request tracker</h2>
+    <span class="case-num">12 · Running the Org</span>
+    <h2>Admin Request Tracker</h2>
     <div class="brief">
-      <div><b>The problem</b>Requests to an admin arrive by email, chat and in the corridor. Without one list, things are lost, priorities depend on who shouts loudest, and nobody can see what the admin is working on.</div>
-      <div><b>Documented approach</b>A custom object, like GitHub Issues inside Salesforce: anyone raises a request from any page, priority is worked out for them, everyone can see the board, and requesters are emailed when the status changes. Agile Accelerator from AppExchange was considered, but a custom tracker was simpler for a one-administrator team.</div>
+      <div><b>The Problem</b>Requests to an admin arrive by email, chat and in the corridor. Without one list, things are lost, priorities depend on who shouts loudest, and nobody can see what the admin is working on.</div>
+      <div><b>Documented Approach</b>A custom object, like GitHub Issues inside Salesforce: anyone raises a request from any page, priority is worked out for them, everyone can see the board, and requesters are emailed when the status changes. Agile Accelerator from AppExchange was considered, but a custom tracker was simpler for a one-administrator team.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 290" role="img" aria-labelledby="ar-t ar-d">
@@ -953,7 +953,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <span><i class="sw" style="background:var(--tip-soft);border-color:var(--tip-line);border-style:dashed"></i>Automation and rules</span>
     </div>
     <figure class="shot"><img src="/assets/img/harbourline/kanban.webp" loading="lazy" decoding="async" alt="Kanban board of open admin requests grouped by status, each card showing number, subject, priority and team"><figcaption>All Open Requests as a Kanban board: everyone can see it; only the Admin Team can move cards.</figcaption></figure>
-    <h3 class="sub">Fair priority: nobody picks their own</h3>
+    <h3 class="sub">Fair Priority: Calculated From Impact and Urgency</h3>
     <p>The requester chooses Impact and Urgency. A formula gives High 3 points, Medium 2 and Low 1, adds them up, and turns the total into a priority.</p>
     <div class="table-wrap">
       <table>
@@ -965,26 +965,26 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
         </tbody>
       </table>
     </div>
-    <ol class="glance"><li><b>Object and fields</b><span>Auto number, picklists, formulas, validation rule</span></li><li><b>Record page</b><span>Layout, Path, compact layout, history</span></li><li><b>Queue and flows</b><span>Owner, requester, dates, emails</span></li><li><b>Open it to everyone</b><span>Sharing, permission set, + menu, board</span></li><li><b>Report on it</b><span>Reports and the Admin Work dashboard</span></li></ol>
+    <ol class="glance"><li><b>Object and Fields</b><span>Auto number, picklists, formulas, validation rule</span></li><li><b>Record Page</b><span>Layout, Path, compact layout, history</span></li><li><b>Queue and Flows</b><span>Owner, requester, dates, emails</span></li><li><b>Open It to Everyone</b><span>Sharing, permission set, + menu, board</span></li><li><b>Report on It</b><span>Reports and the Admin Work dashboard</span></li></ol>
     <ol class="manual">
       <li class="phase">Phase 1: Object and fields</li>
-      <li class="st"><span class="n">1</span><div class="do"><strong>Create the custom object</strong><p>An auto-number name gives every request a reference people can quote. Allow reports, activities, field history and search.</p><small>Where: Object Manager &gt; Create &gt; Custom Object</small></div><div class="ex"><b>Example</b><span>Admin Request, Request Number REQ-{0000}</span></div></li>
-      <li class="st"><span class="n">2</span><div class="do"><strong>Create the fields, each with a description</strong><p>Make fields required on the page layout, not on the field, so imports and automation are never blocked.</p><small>Where: Admin Request &gt; Fields &amp; Relationships</small></div><div class="ex"><b>Example</b><span>Subject, Requested By (lookup User), Team, Request Type, User Story, Why It Matters, Impact, Urgency, Needed By, Status, Effort, Resolution, Date Closed</span></div></li>
-      <li class="st"><span class="n">3</span><div class="do"><strong>Add the formula fields</strong><p>Calculated values can't be typed over, so they stay fair.</p><small>Where: Admin Request &gt; Fields &amp; Relationships &gt; Formula</small></div><div class="ex"><b>Example</b><span>Priority: P1 to P4 from Impact and Urgency</span><span>Days Open: Date Closed (or today) minus the created date</span></div></li>
-      <li class="st"><span class="n">4</span><div class="do"><strong>Add the validation rule</strong><p>Every finished request must say what was done or why not.</p><small>Where: Admin Request &gt; Validation Rules</small></div><div class="ex"><b>Example</b><span>Resolution required when Status is Done, Rejected or On Hold</span></div></li>
+      <li class="st"><span class="n">1</span><div class="do"><strong>Create the Custom Object</strong><p>An auto-number name gives every request a reference people can quote. Allow reports, activities, field history and search.</p><small>Where: Object Manager &gt; Create &gt; Custom Object</small></div><div class="ex"><b>Example</b><span>Admin Request, Request Number REQ-{0000}</span></div></li>
+      <li class="st"><span class="n">2</span><div class="do"><strong>Create the Fields, Each with a Description</strong><p>Make fields required on the page layout, not on the field, so imports and automation are never blocked.</p><small>Where: Admin Request &gt; Fields &amp; Relationships</small></div><div class="ex"><b>Example</b><span>Subject, Requested By (lookup User), Team, Request Type, User Story, Why It Matters, Impact, Urgency, Needed By, Status, Effort, Resolution, Date Closed</span></div></li>
+      <li class="st"><span class="n">3</span><div class="do"><strong>Add the Formula Fields</strong><p>Calculated values can't be typed over, so they stay fair.</p><small>Where: Admin Request &gt; Fields &amp; Relationships &gt; Formula</small></div><div class="ex"><b>Example</b><span>Priority: P1 to P4 from Impact and Urgency</span><span>Days Open: Date Closed (or today) minus the created date</span></div></li>
+      <li class="st"><span class="n">4</span><div class="do"><strong>Add the Validation Rule</strong><p>Every finished request must say what was done or why not.</p><small>Where: Admin Request &gt; Validation Rules</small></div><div class="ex"><b>Example</b><span>Resolution required when Status is Done, Rejected or On Hold</span></div></li>
       <li class="phase">Phase 2: Record page</li>
-      <li class="st"><span class="n">5</span><div class="do"><strong>Lay out the page and track changes</strong><p>Requester fields first, the admin's fields in their own section. Track history and post status changes to the feed.</p><small>Where: Page Layouts, Set History Tracking, Feed Tracking</small></div><div class="ex"><b>Example</b><span>History: Status, Owner, Impact, Urgency (formula fields can't be tracked)</span><span>Chatter for questions and updates</span></div></li>
-      <li class="st"><span class="n">6</span><div class="do"><strong>Add a Path and a compact layout</strong><p>A new custom object's page has no Path, so add the component in Lightning App Builder.</p><small>Where: Path Settings, Lightning App Builder, Compact Layouts</small></div><div class="ex"><b>Example</b><span>Path on Status</span><span>Compact: number, subject, status, priority, requester, days open</span></div></li>
+      <li class="st"><span class="n">5</span><div class="do"><strong>Lay Out the Page and Track Changes</strong><p>Requester fields first, administrator fields in a separate section. Track history and post status changes to the feed.</p><small>Where: Page Layouts, Set History Tracking, Feed Tracking</small></div><div class="ex"><b>Example</b><span>History: Status, Owner, Impact, Urgency (formula fields can't be tracked)</span><span>Chatter for questions and updates</span></div></li>
+      <li class="st"><span class="n">6</span><div class="do"><strong>Add a Path and a Compact Layout</strong><p>A new custom object's page has no Path, so add the component in Lightning App Builder.</p><small>Where: Path Settings, Lightning App Builder, Compact Layouts</small></div><div class="ex"><b>Example</b><span>Path on Status</span><span>Compact: number, subject, status, priority, requester, days open</span></div></li>
       <li class="phase">Phase 3: Queue and flows</li>
-      <li class="st"><span class="n">7</span><div class="do"><strong>Create a queue as the owner</strong><p>Requests belong to the team, not one person.</p><small>Where: Setup &gt; Queues</small></div><div class="ex"><b>Example</b><span>Admin Team queue for Admin Request</span></div></li>
-      <li class="st"><span class="n">8</span><div class="do"><strong>Build the before-save flow</strong><p>Sets the request's own fields: fast, and no extra save.</p><small>Where: Flow Builder &gt; Record-Triggered, Fast Field Updates</small></div><div class="ex"><b>Example</b><span>New request: Owner = Admin Team (found with Get Records, not a typed ID), Requested By = the creator if empty</span><span>Closed: stamp Date Closed; reopened: clear it</span></div></li>
-      <li class="st"><span class="n">9</span><div class="do"><strong>Build the after-save flow</strong><p>Emails go out after the save, so a failed save sends nothing.</p><small>Where: Flow Builder &gt; Record-Triggered, Actions and Related Records</small></div><div class="ex"><b>Example</b><span>Status changed: email the requester "REQ-0003 is now Done"</span></div></li>
+      <li class="st"><span class="n">7</span><div class="do"><strong>Create a Queue as the Owner</strong><p>Requests belong to the team, not one person.</p><small>Where: Setup &gt; Queues</small></div><div class="ex"><b>Example</b><span>Admin Team queue for Admin Request</span></div></li>
+      <li class="st"><span class="n">8</span><div class="do"><strong>Build the before-Save Flow</strong><p>Sets the request's own fields: fast, and no extra save.</p><small>Where: Flow Builder &gt; Record-Triggered, Fast Field Updates</small></div><div class="ex"><b>Example</b><span>New request: Owner = Admin Team (found with Get Records, not a typed ID), Requested By = the creator if empty</span><span>Closed: stamp Date Closed; reopened: clear it</span></div></li>
+      <li class="st"><span class="n">9</span><div class="do"><strong>Build the after-Save Flow</strong><p>Emails go out after the save, so a failed save sends nothing.</p><small>Where: Flow Builder &gt; Record-Triggered, Actions and Related Records</small></div><div class="ex"><b>Example</b><span>Status changed: email the requester "REQ-0003 is now Done"</span></div></li>
       <li class="phase">Phase 4: Open it to everyone</li>
-      <li class="st"><span class="n">10</span><div class="do"><strong>Set sharing and access</strong><p>Everyone sees every request; only the owner edits.</p><small>Where: Sharing Settings, Permission Sets</small></div><div class="ex"><b>Example</b><span>OWD Public Read Only</span><span>Permission set "Raise Admin Requests": create and read; admin fields read only</span></div></li>
-      <li class="st"><span class="n">11</span><div class="do"><strong>Add a global action and a board</strong><p>Raising a request must take seconds, from any page.</p><small>Where: Global Actions, Publisher Layouts, List Views</small></div><div class="ex"><b>Example</b><span>New Admin Request in the + menu, Requested By pre-filled</span><span>All Open Requests as a Kanban board by Status</span></div></li>
+      <li class="st"><span class="n">10</span><div class="do"><strong>Set Sharing and Access</strong><p>Everyone sees every request; only the owner edits.</p><small>Where: Sharing Settings, Permission Sets</small></div><div class="ex"><b>Example</b><span>OWD Public Read Only</span><span>Permission set "Raise Admin Requests": create and read; admin fields read only</span></div></li>
+      <li class="st"><span class="n">11</span><div class="do"><strong>Add a Global Action and a Board</strong><p>Raising a request must take seconds, from any page.</p><small>Where: Global Actions, Publisher Layouts, List Views</small></div><div class="ex"><b>Example</b><span>New Admin Request in the + menu, Requested By pre-filled</span><span>All Open Requests as a Kanban board by Status</span></div></li>
       <li class="phase">Phase 5: Report on it</li>
-      <li class="st"><span class="n">12</span><div class="do"><strong>Build the reports and dashboard</strong><p>Shows whether the admin is keeping up, and gives evidence for the weekly update.</p><small>Where: Reports, Dashboards</small></div><div class="ex"><b>Example</b><span>Open by Status, Open by Priority, Closed This Month, Average Days Open by Team</span></div></li>
-      <li class="st"><span class="n">13</span><div class="do"><strong>Test as a requester</strong><p>Check what a normal user can and can't do.</p><small>Where: Log in as the user</small></div><div class="ex"><b>Example</b><span>Priya raised a request with the + button: owner Admin Team, Priority P2; no Edit button; she sees the board but can't move cards</span></div></li>
+      <li class="st"><span class="n">12</span><div class="do"><strong>Build the Reports and Dashboard</strong><p>Shows whether the admin is keeping up, and gives evidence for the weekly update.</p><small>Where: Reports, Dashboards</small></div><div class="ex"><b>Example</b><span>Open by Status, Open by Priority, Closed This Month, Average Days Open by Team</span></div></li>
+      <li class="st"><span class="n">13</span><div class="do"><strong>Test as a Requester</strong><p>Check what a normal user can and can't do.</p><small>Where: Log in as the user</small></div><div class="ex"><b>Example</b><span>Priya raised a request with the + button: owner Admin Team, Priority P2; no Edit button; she sees the board but can't move cards</span></div></li>
     </ol>
     <figure class="shot"><img src="/assets/img/harbourline/admindash.webp" loading="lazy" decoding="async" alt="Admin Work dashboard row: closed this month metric, open requests by status donut, open requests by priority bar chart"><figcaption>The Admin Work dashboard: requests closed this month, open requests by status, and by priority.</figcaption></figure>
     <p class="note">Duplicate rules can't catch two requests worded differently, so duplicates are caught at Triage and rejected as "Duplicate of REQ-xxxx". A possible improvement is a "Duplicate Of" lookup.</p>
@@ -992,15 +992,15 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="dictionary">
     <span class="case-num">Appendix</span>
-    <h2>Field dictionary</h2>
+    <h2>Field Dictionary</h2>
     <p>The custom fields in the Harbourline org, with what they're for and what depends on them. Fields are required on the page layout rather than on the field, so imports and automation are never blocked.</p>
     <div class="table-wrap long">
       <table class="wide">
-        <thead><tr><th>Object</th><th>Field (API name)</th><th>Type</th><th>Required</th><th>Used by</th></tr></thead>
+        <thead><tr><th>Object</th><th>Field (API Name)</th><th>Type</th><th>Required</th><th>Used by</th></tr></thead>
         <tbody>
           <tr><td>Account</td><td>Customer Tier<br><code>Customer_Tier__c</code></td><td>Picklist: Standard, Gold, Key Account</td><td>No</td><td>Key Account alert flow, Won by Customer Tier report, compact layout</td></tr>
           <tr><td>Account</td><td>Number of Sites<br><code>Number_of_Sites__c</code></td><td>Roll-up summary: COUNT of Buildings</td><td>Calculated</td><td>Compact layout</td></tr>
-          <tr><td>Account</td><td>Legacy Account ID<br><code>Legacy_Account_ID__c</code></td><td>Text (20), External ID, unique</td><td>No</td><td>Imports: links Opportunities and Cases to their Account</td></tr>
+          <tr><td>Account</td><td>Legacy Account ID<br><code>Legacy_Account_ID__c</code></td><td>Text (20), External ID, unique</td><td>No</td><td>Imports: links Opportunities and Cases to the Account</td></tr>
           <tr><td>Contact</td><td>Legacy Contact ID<br><code>Legacy_Contact_ID__c</code></td><td>Text, External ID, unique</td><td>No (made optional so Leads can convert)</td><td>Imports</td></tr>
           <tr><td>Building</td><td>Account<br><code>Account__c</code></td><td>Master-detail to Account (Read Only sharing, no reparenting)</td><td>Yes, always</td><td>Number of Sites roll-up; HQ Building flow</td></tr>
           <tr><td>Building</td><td>Building Name<br><code>Name</code></td><td>Text (80), e.g. Northgate Logistics Headquarters</td><td>Yes</td><td>HQ Building flow finds and creates it by name</td></tr>
@@ -1026,7 +1026,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Validation rule</th><th>Object</th><th>Blocks the save when</th></tr></thead>
+        <thead><tr><th>Validation Rule</th><th>Object</th><th>Blocks the Save When</th></tr></thead>
         <tbody>
           <tr><td><code>Discount_Needs_Approval</code></td><td>Opportunity</td><td>Stage is Proposal/Price Quote, Negotiation/Review or Closed Won, the discount is over 15%, and Approval Status isn't Approved</td></tr>
           <tr><td><code>Resolution_required_when_closing_or_on_hold</code></td><td>Admin Request</td><td>Status is Done, Rejected or On Hold and Resolution is empty</td></tr>
@@ -1037,12 +1037,12 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="topics">
     <span class="case-num">Topics</span>
-    <h2>Implemented features and study topics</h2>
-    <h3 class="sub">Configured and tested in the Harbourline org</h3>
+    <h2>Implemented Features and Study Topics</h2>
+    <h3 class="sub">Configured and Tested in the Harbourline Org</h3>
     <ul class="topics">
       <li>Custom objects and object relationships</li><li>Roll-up summary and formula fields</li><li>Record types, sales processes and Path</li><li>Products and price books</li><li>Company settings (currency, locale)</li><li>Users, roles and profiles</li><li>Permission sets</li><li>Org-wide defaults and sharing rules</li><li>Account teams</li><li>Page layouts and compact layouts</li><li>Validation rules</li><li>Data Import Wizard and dataloader.io</li><li>Matching and duplicate rules</li><li>Lead conversion</li><li>Email-to-Case, queues, assignment, auto-response and escalation rules</li><li>Email templates</li><li>Record-triggered flows</li><li>Approval processes</li><li>Reports, custom report types and dashboards</li><li>Lightning apps, Home and app pages</li><li>Field history and feed tracking</li><li>Global actions</li><li>Kanban list views</li><li>Testing with Login As</li><li>Backups and data clean-up</li>
     </ul>
-    <h3 class="sub">Studied for the certification, not yet built in the org</h3>
+    <h3 class="sub">Studied for the Certification, Not yet Built in the Org</h3>
     <ul class="topics">
       <li>External objects</li><li>Opportunity teams and splits</li><li>Forecasting</li><li>Restriction rules</li><li>Manual sharing</li><li>Dynamic Forms</li><li>MFA and identity verification</li><li>Security Health Check</li><li>Search layouts</li><li>Setup Audit Trail</li><li>Tasks and events</li><li>Web-to-Case</li><li>Entitlements and milestones</li><li>Knowledge and macros</li><li>Screen and schedule-triggered flows</li><li>Sandboxes and deployment</li>
     </ul>

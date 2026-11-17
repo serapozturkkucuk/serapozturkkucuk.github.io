@@ -1,0 +1,110 @@
+---
+layout: default
+title: Experience
+permalink: /experience/
+redirect_from: /about/
+---
+<header class="page-head experience-head">
+  <h1>Experience</h1>
+  <p class="lede">Salesforce Certified Platform Administrator with a background in data, digital marketing and quality assurance.</p>
+  {% if site.author.cv_file != "" %}
+  <div class="actions">
+    <a class="btn primary" href="{{ site.author.cv_file | relative_url }}" download="Serap_Ozturk-Kucuk_Salesforce_Administrator_CV.pdf">Download CV</a>
+  </div>
+  {% endif %}
+</header>
+
+<section class="block">
+  <h2>Career Background</h2>
+  <p>Experience across agri-tech and food manufacturing. At Doktar Technologies, the role grew from agronomy and copywriting into digital marketing, customer and product data, reporting and app testing. Built the customer database from day one, defined requirements for the company’s custom CRM and CMS platform with the internal IT team, and worked on website migrations in Adobe Experience Manager (AEM). At Puratos UK, promoted from QA Technician to QA Team Leader, responsible for traceability, product data, quality controls and staff training. These skills in accurate data, clear processes and testing before release are now applied to Salesforce administration.</p>
+</section>
+
+<section class="block" aria-labelledby="salesforce-experience-title">
+  <div class="block-head">
+    <h2 id="salesforce-experience-title">Salesforce Experience</h2>
+  </div>
+  <div class="experience-project card">
+    <div>
+      <span class="pill">Self-Directed Practice Project · 2026</span>
+      <h3>Harbourline Security (Salesforce Practice Org)</h3>
+      <p>Configured and tested a Salesforce Developer Edition practice org for a fictional security company. The project covers sales approvals, case management, customer sites, security, automation and reporting.</p>
+      <a class="btn primary" href="{{ '/projects/harbourline/' | relative_url }}">Explore Harbourline Case Study</a>
+    </div>
+    <a class="experience-project-image" href="{{ '/assets/img/harbourline/schema.webp' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="View Full-Size Salesforce Schema Builder Screenshot">
+      <img src="{{ '/assets/img/harbourline/schema.webp' | relative_url }}" alt="Salesforce Schema Builder showing Account, Building, Contact and Training Session object relationships" loading="lazy" decoding="async">
+    </a>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Salesforce Skills</h2>
+  <dl class="skill-table experience-skills">
+    {% for s in site.data.profile.skills %}<dt>{{ s.group }}</dt><dd>{{ s.text }}</dd>{% endfor %}
+  </dl>
+</section>
+
+<section class="block">
+  <h2>What I Bring</h2>
+  <div class="experience-value">
+    <ul class="value-grid">
+      <li><strong>CRM &amp; Business Systems</strong><span>Defined requirements for a custom CRM/CMS platform, including customer data, segmentation and reporting; worked on Adobe Experience Manager (AEM) website migrations.</span></li>
+      <li><strong>Data Quality &amp; Reporting</strong><span>Maintained records for 100+ products in SAP; built Power BI and Looker Studio dashboards for senior teams.</span></li>
+      <li><strong>Testing &amp; Process Improvement</strong><span>Ran app UAT with product and marketing teams; improved SOPs, sampling schedules and waste management.</span></li>
+      <li><strong>Quality, Traceability &amp; Training</strong><span>Supported BRCGS audit readiness and trained 20+ colleagues on procedures.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Professional Experience</h2>
+  <ol class="jobs experience-jobs">
+    {% for j in site.data.experience %}
+    <li class="card">
+      <div class="when">
+        <b>{{ j.company }}</b>
+        <span>{{ j.location }}</span>
+        <span>{{ j.dates }}</span>
+      </div>
+      <div class="what">
+        <ul class="roles">{% for r in j.roles %}<li><b>{{ r.title }}</b><span>{{ r.dates }}</span></li>{% endfor %}</ul>
+        <ul class="points">{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="block">
+  <h2>Technology &amp; Tools</h2>
+  <ul class="chips">{% for t in site.data.profile.tools %}<li>{{ t }}</li>{% endfor %}</ul>
+</section>
+
+<section class="block experience-detail-sections" aria-label="Education, Languages and Additional Details">
+  <div class="experience-detail-row">
+    <div class="card experience-detail-card">
+      <h2>Education</h2>
+      {% for e in site.data.profile.education %}
+      <p><strong>{{ e.title }}</strong></p>
+      <p class="muted">{{ e.place }} · {{ e.dates }}</p>
+      {% endfor %}
+    </div>
+    <div class="card experience-detail-card">
+      <h2>Languages</h2>
+      <p>English (Business Level)</p>
+      <p>Turkish (Native)</p>
+    </div>
+    <div class="card experience-detail-card">
+      <h2>Additional Details</h2>
+      <p>Right to Work in the UK</p>
+      <p>Full UK Driving Licence</p>
+    </div>
+  </div>
+</section>
+
+<section class="block experience-download-cv">
+  <div class="contact-cta">
+    <h2>Full CV</h2>
+    <p>Salesforce skills, the Harbourline project and professional experience in one document.</p>
+    {% if site.author.cv_file != "" %}<a class="btn primary" href="{{ site.author.cv_file | relative_url }}" download="Serap_Ozturk-Kucuk_Salesforce_Administrator_CV.pdf">Download CV</a>{% endif %}
+  </div>
+</section>

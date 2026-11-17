@@ -1,7 +1,7 @@
 {% assign p = include.project %}
 {% if p.status == "planned" %}
 <div class="project-tile project-tile-planned">
-  <div class="project-tile-media project-tile-empty"><span>Coming soon</span></div>
+  <div class="project-tile-media project-tile-empty"><span>Coming Soon</span></div>
   <div class="project-tile-body">
     <h3>{{ p.title }}</h3>
     <p>{{ p.card_description | default: p.summary }}</p>
@@ -18,7 +18,7 @@
     <p>{{ p.card_description | default: p.summary }}</p>
     <div class="project-tile-footer">
       {% if p.card_date %}<span class="project-tile-date">{{ p.card_date_label | default: 'Project' }} · {{ p.card_date }}</span>{% else %}<span class="project-tile-date">{{ p.status_label }}</span>{% endif %}
-      <span class="project-tile-link" aria-hidden="true">View project ↗</span>
+      <span class="project-tile-link" aria-hidden="true">View Project ↗</span>
     </div>
   </div>
 </a>

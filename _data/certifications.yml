@@ -11,7 +11,7 @@
   status: earned
   year: 2026
   verify_url: https://www.salesforce.com/trailblazer/serapozturkkucuk
-  verify_label: View Trailhead profile
+  verify_label: View Trailhead Profile
 
 - name: Leadership and Management
   issuer: High Speed Training
@@ -46,10 +46,10 @@
   issuer: Salesforce
   code: PAB
   status: studying
-  note: Training starts 23 November 2026
+  note: Training Starts 23 November 2026
 
 - name: Salesforce Agentforce Specialist
   issuer: Salesforce
   code: AI
   status: planned
-  note: Next, after App Builder
+  note: Next, After App Builder
