@@ -3,7 +3,8 @@
 <div class="project-tile project-tile-planned">
   <div class="project-tile-media project-tile-empty"><span>Coming Soon</span></div>
   <div class="project-tile-body">
-    <h3>{{ p.title }}</h3>
+    {% if p.order %}<span class="solution-index">{{ p.order | prepend: "0" | slice: -2, 2 }}</span>{% endif %}
+    <h2>{{ p.title }}</h2>
     <p>{{ p.card_description | default: p.summary }}</p>
     <span class="project-tile-date">Planned</span>
   </div>
@@ -14,11 +15,12 @@
     {% if p.card_image %}<img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt | default: p.title | escape }}" width="{{ p.card_image_width | default: 1400 }}" height="{{ p.card_image_height | default: 1249 }}" loading="{% if p.featured %}eager{% else %}lazy{% endif %}" decoding="async">{% endif %}
   </div>
   <div class="project-tile-body">
-    <h3>{{ p.title }}</h3>
+    {% if p.order %}<span class="solution-index">{{ p.order | prepend: "0" | slice: -2, 2 }}</span>{% endif %}
+    <h2>{{ p.title }}</h2>
     <p>{{ p.card_description | default: p.summary }}</p>
     <div class="project-tile-footer">
       {% if p.card_date %}<span class="project-tile-date">{{ p.card_date_label | default: 'Project' }} · {{ p.card_date }}</span>{% else %}<span class="project-tile-date">{{ p.status_label }}</span>{% endif %}
-      <span class="project-tile-link" aria-hidden="true">View Project ↗</span>
+      <span class="project-tile-link" aria-hidden="true">View Project →</span>
     </div>
   </div>
 </a>
