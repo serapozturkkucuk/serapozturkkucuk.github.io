@@ -158,8 +158,8 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h1>Serap Ozturk-Kucuk</h1>
     <span class="status">Salesforce Certified Platform Administrator</span>
     <p class="note">Portfolio version 1.1 · November 2026</p>
-    <p class="lede">Experienced professional with leadership, testing and data skills, now certified in Salesforce, who built a complete org to prove it. Twelve years at an agri-tech start-up in Turkey, in agronomy, social media and digital marketing, then QA Team Leader in UK food manufacturing.</p>
-    <p class="lede">Each piece below is a map or build guide for one admin topic, with examples from Harbourline Security, a practice org I configured and tested myself in a Salesforce Developer Edition org. I use the same guides as my working manual.</p>
+    <p class="lede">Salesforce Certified Platform Administrator with experience in internally developed CRM/CMS systems, product and customer data, reporting, UAT and operational process improvement across agri-tech and food manufacturing.</p>
+    <p class="lede">Technical documentation for the fictional Harbourline Security practice org. The guides cover configuration decisions, test evidence and troubleshooting. Implemented features are distinguished from certification-study examples in the final section.</p>
     <ol class="stats">
       <li><b>28</b>customer Accounts</li>
       <li><b>74</b>Contacts</li>
@@ -174,12 +174,12 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <span class="case-num">The example company</span>
     <h2>Harbourline Security</h2>
     <p>Harbourline Security is a fictional company: it sells, installs and maintains CCTV and access-control systems for businesses in the North West of England. The sales team wins new customers and sells more to existing ones, the service team handles customer Cases, and customers' staff attend product training sessions. Every piece uses the same people, objects and fields, so the examples connect.</p>
-    <p class="note"><b>How I tested eight people with two licences:</b> a Developer Edition org has two full Salesforce licences, one of them mine. I created all the users inactive and moved the spare licence between them: deactivate one person, activate the next, then test their view with Login As. Inactive users still own records and sit in the role hierarchy, so the sharing and reports stay realistic. For the approval demo, the approvers were inactive, so I set myself as Priya's manager for the test.</p>
+    <p class="note"><b>Testing eight fictional users with two licences:</b> only two active Salesforce user licences were available in the practice environment. Test users were activated and deactivated in turn to check role-based access and each discount approval step. Login As was used to inspect record visibility. Inactive users continued to own records and appear in the role hierarchy, preserving the sharing and reporting scenarios. The manager and Sales VP approval steps were tested separately because not all simulated users could be active simultaneously.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Person</th><th>Role</th><th>Where they appear</th></tr></thead>
         <tbody>
-          <tr><td><strong>Serap Ozturk-Kucuk</strong></td><td>Salesforce Admin (me)</td><td><em>Builds and maintains the org; Managing Director role at the top of the hierarchy; works the Admin Team queue</em></td></tr>
+          <tr><td><strong>Serap Ozturk-Kucuk</strong></td><td>Salesforce Admin (portfolio owner)</td><td><em>Builds and maintains the org; Managing Director role at the top of the hierarchy; works the Admin Team queue</em></td></tr>
           <tr><td><strong>Allison Grant</strong></td><td>Sales VP</td><td><em>Top of the sales role hierarchy; approves discounts over 40%</em></td></tr>
           <tr><td><strong>Marcus Reid</strong></td><td>Sales Manager</td><td><em>Priya's manager; sees his team's deals through the role hierarchy; approves discounts over 15%</em></td></tr>
           <tr><td><strong>Priya Shah</strong></td><td>Sales Rep</td><td><em>Owns her own deals only (Opportunities are Private); submits discount requests; Read/Write on the Northgate account team</em></td></tr>
@@ -203,7 +203,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
           <tr><td><strong>Contact</strong><br><em>standard</em></td><td><code>Legacy_Contact_ID__c</code> text, External ID, unique, optional</td><td>01, 04, 09</td></tr>
           <tr><td><strong>Case</strong><br><em>standard</em></td><td>Origin, Priority, Status; owner set to the Support Queue by the assignment rule</td><td>04, 05, 07, 10</td></tr>
           <tr><td><strong>Lead</strong><br><em>standard</em></td><td>Lead Source = Trade Show; 500 badge scans from the Security Expo 2026 list: 495 created, 5 duplicates not imported</td><td>09</td></tr>
-          <tr><td><strong>Product and price book</strong><br><em>standard</em></td><td>CCTV Camera Kit (£2,400), Access Control Panel (£3,500), Annual Maintenance Plan (£1,800), each in the Standard Price Book</td><td>03</td></tr>
+          <tr><td><strong>Product and price book</strong><br><em>standard</em></td><td>CCTV Camera Kit, Access Control Panel and Annual Maintenance Plan, each in the Standard Price Book</td><td>03</td></tr>
           <tr><td><strong>Admin Request</strong><br><em>custom, <code>Admin_Request__c</code></em></td><td>Name: auto number REQ-{0000}<br>Impact, Urgency, Status picklists; <code>Priority__c</code> formula P1 to P4<br><code>Days_Open__c</code> formula; <code>Requested_By__c</code> lookup to User</td><td>12</td></tr>
         </tbody>
       </table>
@@ -215,7 +215,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Object relationships</h2>
     <div class="brief">
       <div><b>The problem</b>Choosing the wrong relationship is hard to undo. It decides who owns the child record, who can see it, what happens when the parent is deleted, and whether you can total the children.</div>
-      <div><b>What I made</b>A decision map from "how many on each side?" to the right relationship, with a real example for each, and the rules I check before changing a relationship type.</div>
+      <div><b>Documented approach</b>A decision map from "how many on each side?" to the right relationship, with a real example for each, and the checks needed before changing a relationship type.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 522" role="img" aria-labelledby="or-t or-d">
@@ -275,8 +275,8 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <span class="case-num">02 · Security and access</span>
     <h2>Security and sharing</h2>
     <div class="brief">
-      <div><b>The problem</b>"I can't see this record" is the most common ticket an admin gets. The cause can be in three different places, and each is fixed with a different tool.</div>
-      <div><b>What I made</b>A map of the three checks every user must pass, a check order for troubleshooting, and Harbourline's requests matched to the right tool.</div>
+      <div><b>The problem</b>A user unable to access a record is a common admin support issue. The cause can be in three different places, and each is fixed with a different tool.</div>
+      <div><b>Documented approach</b>A map of the three checks every user must pass, a check order for troubleshooting, and Harbourline's requests matched to the right tool.</div>
     </div>
     <div class="built"><b>Built and tested in the org</b><ul>
       <li>Org-wide defaults: Opportunity Private, Account and Case Public Read Only, Contact Controlled by Parent, Training Session Public Read Only</li>
@@ -363,7 +363,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Sales process and path</h2>
     <div class="brief">
       <div><b>The problem</b>Sales teams sell in different ways, and each way needs its own stages. The pieces must be built in a fixed order, or the record type has no process to pick.</div>
-      <div><b>What I made</b>The build order as a map, then a step-by-step guide with the Harbourline build: an External process for new customers (with a Site Survey stage) and an Internal process for existing ones, each with its own path.</div>
+      <div><b>Documented approach</b>The build order as a map, then a step-by-step guide with the Harbourline build: an External process for new customers (with a Site Survey stage) and an Internal process for existing ones, each with its own path.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 310" role="img" aria-labelledby="sp-t sp-d">
@@ -412,12 +412,12 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Case management</h2>
     <div class="brief">
       <div><b>The problem</b>Case management uses many separate features. It is hard to see which one runs when, and what has to be set up first.</div>
-      <div><b>What I made</b>One map of a Case's life: how it arrives, the rules that act on it, what must be built first, and how it is worked and closed.</div>
+      <div><b>Documented approach</b>One map of a Case's life: how it arrives, the rules that act on it, what must be built first, and how it is worked and closed.</div>
     </div>
     <div class="built"><b>Built and tested in the org</b><ul>
       <li>Email-to-Case, Support Queue, assignment rule, auto-response "Case Received", escalation rule after 4 hours, Key Account alert flow</li>
       <li>Tested end to end with a real email: the Case linked to James and Northgate by his email address, went to the queue, the auto-reply arrived, and the escalation flagged it later</li>
-      <li>For the Case import, I set the owner in the file rather than applying an assignment rule. Data Loader can apply assignment rules when configured, so I check the import settings before each load</li>
+      <li>For the Case import, the owner was supplied in the file rather than assigned by a rule. Data Loader can apply assignment rules when configured, so import settings must be checked before each load</li>
       <li>Only the main path is tested so far. Not yet tested: emails from senders who aren't Contacts, replies threading into the same Case, and duplicate Cases from repeated emails</li>
       <li>Shown in the map but studied only: Web-to-Case, entitlements and milestones, knowledge, macros</li>
     </ul></div>
@@ -518,7 +518,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Order of execution</h2>
     <div class="brief">
       <div><b>The problem</b>A rule "doesn't work" and nobody knows why. Usually something earlier in the save stopped it, or it hasn't fired yet. Knowing the order is the first step in troubleshooting.</div>
-      <div><b>What I made</b>The full save order in four phases, followed with one real example: James's new Case, from the first check to the emails going out.</div>
+      <div><b>Documented approach</b>The full save order in four phases, followed with one real example: James's new Case, from the first check to the emails going out.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 1126.0" role="img" aria-labelledby="oe-t oe-d">
@@ -582,7 +582,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Choosing an automation tool</h2>
     <div class="brief">
       <div><b>The problem</b>Flow can do almost anything, so it gets used for jobs a simpler tool does better and that are easier to maintain.</div>
-      <div><b>What I made</b>A check to run before building any flow: match the business need to the simplest tool, using the words people actually say. Every example is built in the Harbourline org.</div>
+      <div><b>Documented approach</b>A check to run before building any flow: match the business need to the simplest tool, using the words people actually say. Every example is built in the Harbourline org.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 530" role="img" aria-labelledby="wt-t wt-d">
@@ -635,7 +635,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Flow design</h2>
     <div class="brief">
       <div><b>The problem</b>A business asks for "something automatic." The admin has to pick the flow type, the save timing and the fewest elements that do the job.</div>
-      <div><b>What I made</b>A four-question decision chart, from the trigger to the extra elements, with practical notes, then worked examples that follow the chart to a finished flow.</div>
+      <div><b>Documented approach</b>A four-question decision chart, from the trigger to the extra elements, with practical notes, then worked examples that follow the chart to a finished flow.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 1028" role="img" aria-labelledby="fc-t fc-d">
@@ -738,7 +738,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Approval process</h2>
     <div class="brief">
       <div><b>The problem</b>An approval process points to users, fields, templates and email alerts. If one is missing, the wizard stops or the process fails later.</div>
-      <div><b>What I made</b>A step-by-step build guide in the order things must exist, as built in the Harbourline org: Priya asks for a discount, Marcus approves over 15% and Allison also over 40%, and a validation rule makes sure no deal skips it.</div>
+      <div><b>Documented approach</b>A step-by-step build guide in the order things must exist, as built in the Harbourline org: Priya asks for a discount, Marcus approves over 15% and Allison also over 40%, and a validation rule makes sure no deal skips it.</div>
     </div>
     <ol class="glance"><li><b>Prepare what the process needs</b><span>Users, manager, fields, email templates</span></li><li><b>Create the process</b><span>Object, entry criteria, approver, submitters</span></li><li><b>Add the steps and actions</b><span>Initial action, approval steps, final actions</span></li><li><b>Go live and enforce</b><span>Button and Home page, validation rule, test every path</span></li></ol>
     <ol class="manual">
@@ -769,9 +769,9 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
         <tbody>
           <tr><td>No Submit for Approval button</td><td>The button isn't on the page layout, or the process isn't active</td></tr>
           <tr><td>"No applicable approval process was found"</td><td>The record doesn't meet the entry criteria, or the user isn't an allowed submitter</td></tr>
-          <tr><td>"The next approver ... is determined by the Manager field. This value is empty."</td><td>The submitter has no Manager on their user record. This was my first test; now I check every manager before building</td></tr>
+          <tr><td>"The next approver ... is determined by the Manager field. This value is empty."</td><td>The submitter has no Manager on their user record. This was found during testing; Manager assignments should be checked before configuring approval steps</td></tr>
           <tr><td>No email arrives</td><td>The template isn't Available for Use, or the email alert has no recipient</td></tr>
-          <tr><td>An approved deal is still locked</td><td>The Final Approval action locks instead of unlocking. I found and fixed this while testing</td></tr>
+          <tr><td>An approved deal is still locked</td><td>The Final Approval action locks instead of unlocking. This was identified and corrected during testing</td></tr>
           <tr><td>A recalled request still shows Pending</td><td>The Recall action has no field update; it should set Approval Status back to Not Submitted</td></tr>
         </tbody>
       </table>
@@ -783,7 +783,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Data import, export and duplicates</h2>
     <div class="brief">
       <div><b>The problem</b>Bad imports are the fastest way to fill an org with wrong or duplicate data, and the wrong tool can't do the job at all.</div>
-      <div><b>What I made</b>A three-question guide to picking the right data tool, linking parent and child records, and stopping duplicates, with the jobs I did for Harbourline.</div>
+      <div><b>Documented approach</b>A three-question guide to picking the right data tool, linking parent and child records, and stopping duplicates, with the Harbourline import and clean-up tasks.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 770" role="img" aria-labelledby="dm-t dm-d">
@@ -840,13 +840,13 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       </table>
     </div>
     <p class="note">Deleted records go to the Recycle Bin for about 15 days. A hard delete in Data Loader skips it.</p>
-    <h3 class="sub">What went wrong, and what I do now</h3>
+    <h3 class="sub">Import problems and corrective actions</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Problem</th><th>Cause</th><th>What I do now</th></tr></thead>
+        <thead><tr><th>Problem</th><th>Cause</th><th>Prevention or fix</th></tr></thead>
         <tbody>
           <tr><td>The Contacts import created a copy of an Account for every Contact</td><td>"Add new records" was chosen instead of "Add new and update existing"</td><td>Test a small file first, match on email, check the Account list after every import</td></tr>
-          <tr><td>The import tool showed none of my new fields</td><td>dataloader.io was logged in to a different org</td><td>Check the username before any import</td></tr>
+          <tr><td>The import tool showed none of the newly created fields</td><td>dataloader.io was logged in to a different org</td><td>Check the username before any import</td></tr>
           <tr><td>Lead conversion failed on Legacy Contact ID</td><td>The legacy field was required, but new records have no legacy ID</td><td>Legacy IDs stay unique External IDs, but optional</td></tr>
           <tr><td>Mass Delete couldn't find "United Oil &amp; Gas, Singapore"</td><td>Commas in Mass Delete criteria mean OR</td><td>Search by a unique field, such as Case Number</td></tr>
           <tr><td>An Account wouldn't delete although it showed no Cases</td><td>Its Cases were linked through its Contacts</td><td>Delete in dependency order: Cases, Entitlements, then Accounts</td></tr>
@@ -860,7 +860,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>One question per report</h2>
     <div class="brief">
       <div><b>The problem</b>Managers ask the same questions every week. If the answers live in spreadsheets, they are late and nobody trusts them.</div>
-      <div><b>What I made</b>Thirteen reports, each answering one question a manager asks, and three dashboards that put the answers on one page.</div>
+      <div><b>Documented approach</b>Thirteen reports, each answering one question a manager asks, and three dashboards that put the answers on one page.</div>
     </div>
     <div class="table-wrap">
       <table class="wide">
@@ -871,21 +871,21 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
           <tr><td>Won by Customer Tier</td><td>Which kind of customer brings the revenue?</td><td><em>Grouped by the custom Customer Tier field</em></td></tr>
           <tr><td>Discounts Awaiting Approval</td><td>Which deals are waiting for a manager?</td><td><em>Dashboard metric: 0 green, 1 to 2 amber, 3 or more red</em></td></tr>
           <tr><td>Deals by Lead Source</td><td>Which channels bring the deals?</td><td><em>Lead Source values cleaned first</em></td></tr>
-          <tr><td>Open Cases by Owner</td><td>Who has the most work right now?</td><td><em>Service dashboard</em></td></tr>
-          <tr><td>Key Account Cases</td><td>Are our biggest customers having problems?</td><td><em>Filter on Customer Tier</em></td></tr>
-          <tr><td>Cases by Origin</td><td>How do customers contact us this month?</td><td><em>Relative date: this month</em></td></tr>
+          <tr><td>Open Cases by Owner</td><td>Which case owners have the highest workload?</td><td><em>Service dashboard</em></td></tr>
+          <tr><td>Key Account Cases</td><td>Are Key Accounts generating support cases?</td><td><em>Filter on Customer Tier</em></td></tr>
+          <tr><td>Cases by Origin</td><td>Which channels generated cases this month?</td><td><em>Relative date: this month</em></td></tr>
           <tr><td>Attendees by Session</td><td>Who came to which training?</td><td><em>Custom report type joining two custom objects</em></td></tr>
           <tr><td>Admin Requests: open by status, open by priority, closed this month, average days open by team</td><td>Is the admin keeping up, and which team waits longest?</td><td><em>Admin Work dashboard</em></td></tr>
         </tbody>
       </table>
     </div>
     <figure class="shot narrow"><img src="/assets/img/harbourline/sales.webp" loading="lazy" decoding="async" alt="Harbourline Sales dashboard showing discounts awaiting approval, open pipeline by stage and won revenue by customer tier"><figcaption>The Harbourline Sales dashboard: discounts waiting for approval, open pipeline by stage, and won revenue by customer tier.</figcaption></figure>
-    <h3 class="sub">Things that caught me out</h3>
+    <h3 class="sub">Reporting issues found during testing</h3>
     <ol class="checks">
       <li><b>Viewer's access</b>A report chart on a Home page runs as the viewer. A rep with Private deals sees an empty chart; a dashboard running as a fixed user shows team totals.</li>
-      <li><b>Folder sharing</b>Users can't see a report in a folder that isn't shared with them. I share by role, and admin reports only with managers.</li>
+      <li><b>Folder sharing</b>Users can't see a report in a folder that isn't shared with them. Report folders were shared by role, with admin-only reports restricted to managers.</li>
       <li><b>The right measure</b>A dashboard chart showed zeros because it used Sum of Days Open instead of Record Count.</li>
-      <li><b>Snapshots</b>Dashboards show the data from their last refresh, so I refresh before I check them.</li>
+      <li><b>Snapshots</b>Dashboards show the data from their last refresh, so dashboards were refreshed before checking results.</li>
     </ol>
   </section>
 
@@ -894,21 +894,21 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Apps and pages for each team</h2>
     <div class="brief">
       <div><b>The problem</b>A busy screen with every tab and field slows people down, and they stop using the system.</div>
-      <div><b>What I made</b>One Lightning app per team, with only the tabs that team uses, and a Home page whose first screen answers the team's first question of the day.</div>
+      <div><b>Documented approach</b>One Lightning app per team, with only the tabs that team uses, and a Home page whose first screen answers the team's first question of the day.</div>
     </div>
     <div class="table-wrap">
       <table class="wide">
         <thead><tr><th>App</th><th>Tabs</th><th>Home page</th></tr></thead>
         <tbody>
-          <tr><td><strong>Harbourline Sales</strong><br><em>Harbourline Sales profile</em></td><td>Home, Leads, Accounts, Contacts, Opportunities, Products, Buildings, Reports, Dashboards, Overview</td><td>Team message, Items to Approve, pipeline chart, my deals</td></tr>
-          <tr><td><strong>Harbourline Service</strong><br><em>Harbourline Service profile</em></td><td>Home, Cases, Accounts, Contacts, Buildings, Training Sessions, Opportunities, Reports, Dashboards, Overview</td><td>Team rule, Support Queue list, my open cases, workload chart</td></tr>
+          <tr><td><strong>Harbourline Sales</strong><br><em>Harbourline Sales profile</em></td><td>Home, Leads, Accounts, Contacts, Opportunities, Products, Buildings, Reports, Dashboards, Overview</td><td>Team message, Items to Approve, pipeline chart, assigned deals</td></tr>
+          <tr><td><strong>Harbourline Service</strong><br><em>Harbourline Service profile</em></td><td>Home, Cases, Accounts, Contacts, Buildings, Training Sessions, Opportunities, Reports, Dashboards, Overview</td><td>Team rule, Support Queue list, open cases, workload chart</td></tr>
           <tr><td><strong>Overview</strong><br><em>app page in both apps</em></td><td>The Sales and Service dashboards side by side</td><td>The company-wide view in one click</td></tr>
         </tbody>
       </table>
     </div>
     <ol class="checks">
       <li><b>Compact layouts</b>Key fields at the top of every record: Customer Tier and Number of Sites on Accounts; Amount, Stage, Discount and Approval Status on deals; Priority, Status and Owner on Cases.</li>
-      <li><b>Page assignment</b>App and profile beats app default, which beats org default. A page assigned to the admin profile hides the team pages from the admin, so I check team pages with Login As.</li>
+      <li><b>Page assignment</b>App and profile beats app default, which beats org default. A page assigned to the admin profile hides the team pages from the admin, so team pages were checked using Login As.</li>
       <li><b>List views on pages</b>A list view on a Home page must be visible to all users, or it is empty for them.</li>
     </ol>
   </section>
@@ -918,7 +918,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Admin Request tracker</h2>
     <div class="brief">
       <div><b>The problem</b>Requests to an admin arrive by email, chat and in the corridor. Without one list, things are lost, priorities depend on who shouts loudest, and nobody can see what the admin is working on.</div>
-      <div><b>What I made</b>A custom object, like GitHub Issues inside Salesforce: anyone raises a request from any page, priority is worked out for them, everyone can see the board, and requesters are emailed when the status changes. I compared Agile Accelerator from AppExchange and built my own, because it was simpler for a one-admin team.</div>
+      <div><b>Documented approach</b>A custom object, like GitHub Issues inside Salesforce: anyone raises a request from any page, priority is worked out for them, everyone can see the board, and requesters are emailed when the status changes. Agile Accelerator from AppExchange was considered, but a custom tracker was simpler for a one-administrator team.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 290" role="img" aria-labelledby="ar-t ar-d">
@@ -1037,7 +1037,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
 
   <section id="topics">
     <span class="case-num">Topics</span>
-    <h2>What I've built, and what I've studied</h2>
+    <h2>Implemented features and study topics</h2>
     <h3 class="sub">Configured and tested in the Harbourline org</h3>
     <ul class="topics">
       <li>Custom objects and object relationships</li><li>Roll-up summary and formula fields</li><li>Record types, sales processes and Path</li><li>Products and price books</li><li>Company settings (currency, locale)</li><li>Users, roles and profiles</li><li>Permission sets</li><li>Org-wide defaults and sharing rules</li><li>Account teams</li><li>Page layouts and compact layouts</li><li>Validation rules</li><li>Data Import Wizard and dataloader.io</li><li>Matching and duplicate rules</li><li>Lead conversion</li><li>Email-to-Case, queues, assignment, auto-response and escalation rules</li><li>Email templates</li><li>Record-triggered flows</li><li>Approval processes</li><li>Reports, custom report types and dashboards</li><li>Lightning apps, Home and app pages</li><li>Field history and feed tracking</li><li>Global actions</li><li>Kanban list views</li><li>Testing with Login As</li><li>Backups and data clean-up</li>
@@ -1054,10 +1054,10 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <p>Salesforce Certified Platform Administrator · Liverpool</p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/serap-ozturk-kucuk-ab6385104">linkedin.com/in/serap-ozturk-kucuk-ab6385104</a></p>
     <p>Trailhead: <a href="https://www.salesforce.com/trailblazer/serapozturkkucuk">salesforce.com/trailblazer/serapozturkkucuk</a></p>
-    <p class="note">I'm happy to show the Harbourline org live and talk through any part of it.</p>
+    <p class="note">A live walkthrough of the Harbourline practice org is available on request.</p>
   </section>
 
-  <footer>Portfolio version 1.1 · November 2026. Harbourline Security is a fictional company. Everything shown was configured and tested by me in a Salesforce Developer Edition org, except items marked "study example".</footer>
+  <footer>Portfolio version 1.1 · November 2026. Harbourline Security is a fictional company. Configuration and tests were completed in Salesforce Developer Edition. Items marked "study example" were studied but not implemented.</footer>
 </div>
 </body>
 </html>
