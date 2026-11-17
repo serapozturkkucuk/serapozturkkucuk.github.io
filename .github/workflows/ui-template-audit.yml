@@ -67,8 +67,10 @@ jobs:
                 const wrappersMatch=wrappers.every(x=>Math.abs(x.left-left)<2&&Math.abs(x.right-right)<2);
                 const textNodes=[...main.querySelectorAll('p')];
                 const proseIssues=textNodes.map(x=>{
-                  const r=x.getBoundingClientRect(),parent=x.parentElement.getBoundingClientRect(),cs=getComputedStyle(x);
-                  return {element:x.className||x.parentElement.className,left:Math.round(r.left-parent.left),right:Math.round(parent.right-r.right),maxWidth:cs.maxWidth,align:cs.textAlign};
+                  const r=x.getBoundingClientRect(),parent=x.parentElement.getBoundingClientRect(),cs=getComputedStyle(x),pcs=getComputedStyle(x.parentElement);
+                  const innerLeft=parent.left+parseFloat(pcs.paddingLeft)+parseFloat(pcs.borderLeftWidth);
+                  const innerRight=parent.right-parseFloat(pcs.paddingRight)-parseFloat(pcs.borderRightWidth);
+                  return {element:x.className||x.parentElement.className,left:Math.round(r.left-innerLeft),right:Math.round(innerRight-r.right),maxWidth:cs.maxWidth,align:cs.textAlign};
                 }).filter(x=>Math.abs(x.left)>2||Math.abs(x.right)>2||x.maxWidth!=='none'||x.align!=='left');
                 return {left:Math.round(left),right:Math.round(right),issues,wrappersMatch,proseIssues};
               });
