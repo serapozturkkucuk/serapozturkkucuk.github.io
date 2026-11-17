@@ -34,6 +34,7 @@ stats:
 
 <p class="case-context">Harbourline Security is a fictional CCTV and access-control business in North West England. The Trailhead Playground (Developer Edition) org uses test users and records. The figures describe practice data, not live business results.</p>
 <p class="case-opening">Configured and tested a Salesforce practice org covering discount approvals, Email-to-Case, customer-site records, admin requests and record access. Documented design decisions, test results and troubleshooting.</p>
+<p style="margin-top:8px;font-size:1rem;font-weight:400"><a href="#testing" style="color:var(--teal-ink);font-weight:400">Jump to Testing &amp; Troubleshooting →</a></p>
 
 <!-- PROJECT SECTION -->
 
