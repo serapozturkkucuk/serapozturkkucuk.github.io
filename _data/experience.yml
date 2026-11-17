@@ -1,4 +1,4 @@
-# Work experience, newest first. Keep it the same as your CV.
+# Professional experience: concise highlights grounded in the linked Salesforce CV.
 
 - company: Puratos UK
   location: Liverpool, UK
@@ -9,12 +9,12 @@
     - title: QA Technician
       dates: 2023 – 2024
   points:
-    - Monitored daily quality and food safety KPIs and produced corrective action reports
-    - Kept data consistent for 100+ active products across SAP, product cards and packaging labels
-    - Improved SOPs and workflows, and trained 20+ permanent and agency staff on them
-    - Delivered £80,000 in annual cost reductions through process improvements
-    - Configured business tools including SinglePoint, Seamcor, Microsoft Planner and Loop
-  for_salesforce: I keep data accurate, document processes, and test changes before they reach people.
+    - Monitored food safety and quality KPIs, investigated issues and prepared corrective action reports
+    - Supported BRCGS AA/AA+ accreditation by improving traceability and maintaining audit-ready records
+    - Maintained accurate records for 100+ active products across SAP, product cards and packaging labels
+    - Improved SOPs and trained 20+ permanent and agency staff on quality processes and standards
+    - Delivered £80,000 in annual cost reductions through sampling schedule optimisation and waste reduction
+    - Configured SinglePoint, Seamcor, Microsoft Planner and Loop to support task and team workflows
 
 - company: Doktar Technologies
   location: Izmir, Turkey
@@ -27,8 +27,9 @@
     - title: Agronomist & Copywriter
       dates: 2011 – 2014
   points:
-    - Built the company's customer database from day one, then helped develop its CRM and product database - data structure, segmentation rules, data-quality controls and reporting
-    - Built Power BI and Looker Studio dashboards and presented findings to senior teams
-    - Ran user acceptance testing (UAT) on the company's app with product and marketing teams
-    - Managed paid campaigns with A/B testing, cutting campaign costs by 50%
-  for_salesforce: I know what sales and marketing teams need from a CRM and its data.
+    - Built the customer database from day one and later helped develop CRM and product database structure, segmentation and reporting
+    - Built Power BI and Looker Studio dashboards and presented performance findings to senior teams
+    - Conducted app UAT, gathered feedback and worked with product and marketing teams on improvements
+    - Worked with IT teams on Adobe Experience Manager website migrations using Jira and GitHub
+    - Managed paid campaigns and A/B testing, reducing campaign costs by 50%
+    - Grew Doktar’s social following by 50,000 in one year, helping establish a paid service
