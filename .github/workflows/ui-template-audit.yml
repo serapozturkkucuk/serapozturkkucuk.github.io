@@ -31,7 +31,7 @@ jobs:
           const {chromium}=require('playwright');
           (async()=>{
             const b=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox']});
-            const pages=['/','/projects/','/about/','/certifications/','/contact/','/projects/harbourline/'];
+            const pages=['/','/projects/','/experience/','/certifications/','/contact/','/projects/harbourline/'];
             const sizes=[375,768,1024,1280,1440];
             let failures=[];
             for(const width of sizes)for(const route of pages){
@@ -87,16 +87,43 @@ jobs:
                 });
                 if(!gallery.order||gallery.shotCount!==3)failures.push(route+' '+width+' gallery after brief before challenge, three images expected: '+JSON.stringify(gallery));
               }
-              if(route==='/about/'){
+              if(route==='/experience/'){
                 const editorial=await page.evaluate(()=>{
                   const titles=[...document.querySelectorAll('main.wrap h2')].map(h=>h.textContent.trim());
                   const jobs=[...document.querySelectorAll('.experience-jobs > li')].length;
                   const skills=[...document.querySelectorAll('.experience-skills dt')].length;
                   return {titles,jobs,skills};
                 });
-                const expected=['Professional experience','Salesforce skills','Education','Languages','Additional details','Full CV'];
+                const expected=['Career Background','Salesforce Experience','Salesforce Skills','What I Bring','Professional Experience','Technology & Tools','Education','Languages','Additional Details','Full CV'];
                 if(editorial.titles.join('|')!==expected.join('|')||editorial.jobs!==2||editorial.skills<5)
                   failures.push(route+' '+width+' Experience page section order or evidence missing '+JSON.stringify(editorial));
+              }
+              const copy=await page.locator('main.wrap').innerText();
+              if(copy.includes('£')||copy.includes('—')||copy.includes('CMS systems'))
+                failures.push(route+' '+width+' unexpected public copy: money, em dash or CMS systems');
+              if(/\\b(?:I|my|mine|me|Serap['’]s)\\b/i.test(copy.replace('What I Bring','')))
+                failures.push(route+' '+width+' first-person or possessive pronoun remains');
+              if(route==='/experience/'){
+                const details=await page.evaluate(()=>({
+                  cvButtons:[...document.querySelectorAll('a')].filter(a=>a.textContent.trim()==='Download CV').length,
+                  schemaImage:document.querySelector('.experience-project-image img')?.getAttribute('src'),
+                  employerNames:[...document.querySelectorAll('.experience-jobs .when b')].map(e=>e.textContent.trim()),
+                  rows:[...document.querySelectorAll('.experience-skills dt')].map(e=>e.textContent.trim())
+                }));
+                if(details.cvButtons!==2||!details.schemaImage?.includes('schema.webp')||
+                   details.employerNames.join('|')!=='Puratos UK|Doktar Technologies'||
+                   !details.rows.includes('Platform Configuration')||!details.rows.includes('Automation'))
+                  failures.push(route+' '+width+' content structure mismatch '+JSON.stringify(details));
+              }
+              if(route==='/contact/'){
+                const count=await page.locator('.contact-link-card').count();
+                if(count!==4)failures.push(route+' '+width+' expected 4 contact cards, found '+count);
+              }
+              if(route==='/'){
+                const a=await page.locator('.home-skill-grid li').nth(1).innerText();
+                const b=await page.locator('#open-roles-heading').innerText();
+                if(!a.includes('schedule-triggered flows')||b!=='Open to New Roles')
+                  failures.push(route+' '+width+' home content mismatch');
               }
               if(result.status()!==200) failures.push(route+' '+width+' HTTP '+result.status());
               if(info.scrollWidth>width+2) failures.push(route+' '+width+' horizontal overflow '+info.scrollWidth);
@@ -111,6 +138,20 @@ jobs:
               }
               await page.close();
             }
+            const old=await b.newPage();
+            await old.goto('http://127.0.0.1:8765/about/',{waitUntil:'domcontentloaded'});
+            try{
+              await old.waitForURL('**/experience/',{timeout:12000});
+              console.log('Legacy /about/ correctly redirects to /experience/');
+            }catch(e){failures.push('Legacy /about/ does not redirect to /experience/ ('+old.url()+')')}
+            await old.close();
+            const docs=await b.newPage();
+            const docResult=await docs.goto('http://127.0.0.1:8765/docs/harbourline/',{waitUntil:'domcontentloaded'});
+            if(docResult?.status()!==200)failures.push('Technical documentation did not load');
+            const textDoc=await docs.locator('body').innerText();
+            if(textDoc.includes('£')||textDoc.includes('—')||textDoc.includes('CMS systems'))
+              failures.push('Technical documentation contains a money figure, em dash or CMS systems');
+            await docs.close();
             await b.close();
             if(failures.length){console.error('AUDIT FAILED:',failures.join(' | '));process.exit(1)}
             console.log('UI AUDIT PASSED: 30 pages/viewports, precise left/right alignment, full-width text bounds, images, nav, h1 and overflow');
