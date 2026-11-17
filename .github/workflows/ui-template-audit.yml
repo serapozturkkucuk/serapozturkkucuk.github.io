@@ -95,3 +95,58 @@ jobs:
             console.log('UI AUDIT PASSED: 30 pages/viewports, precise left/right alignment, full-width text bounds, images, nav, h1 and overflow');
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
+
+
+      - name: Verify actual public website has restored white cards
+        shell: bash
+        run: |
+          node - <<'JS'
+          const {chromium} = require('playwright');
+          const fs = require('fs');
+          const crypto = require('crypto');
+          (async()=>{
+            const origin='https://serapozturkkucuk.github.io';
+            const browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox']});
+            const p=await browser.newPage({viewport:{width:1440,height:900}});
+            const checks=[
+              {path:'/',selectors:['.home-skill-grid li','.hero-proof']},
+              {path:'/certifications/',selectors:['.badge:not(.next)']},
+              {path:'/about/',selectors:['.experience-value','.experience-skills','.experience-project','.experience-detail-card']},
+              {path:'/projects/',selectors:['.project-tile']},
+              {path:'/projects/harbourline/',selectors:['.facts-box','.stats','.showcase-shot']}
+            ];
+            let errors=[];
+            const cssOnDisk=fs.readFileSync('assets/css/style.css','utf8');
+            const hash=t=>crypto.createHash('sha256').update(t).digest('hex');
+            for(const test of checks){
+              const resp=await p.goto(origin+test.path,{waitUntil:'networkidle',timeout:35000});
+              if(!resp||resp.status()!==200) errors.push(test.path+' HTTP '+(resp?.status()));
+              const info=await p.evaluate(selectors=>{
+                const cssLink=document.querySelector('link[href*="style.css"]');
+                const cards=selectors.map(sel=>{
+                  const nodes=[...document.querySelectorAll(sel)];
+                  return {selector:sel,count:nodes.length,styles:nodes.slice(0,4).map(el=>({background:getComputedStyle(el).backgroundColor,color:getComputedStyle(el).color}))};
+                });
+                return {cssLink:cssLink?.href,cards};
+              },test.selectors);
+              console.log(JSON.stringify({path:test.path,cssLink:info.cssLink,cards:info.cards}));
+              if(!info.cssLink?.includes('v=13'))errors.push(test.path+' stale CSS version '+info.cssLink);
+              for(const card of info.cards){
+                if(!card.count)errors.push(test.path+' missing '+card.selector);
+                for(const style of card.styles){
+                  if(style.background!=='rgb(255, 255, 255)')errors.push(test.path+' '+card.selector+' background '+style.background);
+                }
+              }
+            }
+            const response=await p.request.get(origin+'/assets/css/style.css?v=13&public-audit=1',{timeout:35000});
+            if(response.status()!==200)errors.push('live CSS HTTP '+response.status());
+            else{
+              const cssLive=await response.text();
+              console.log('Live stylesheet SHA256='+hash(cssLive)+' local SHA256='+hash(cssOnDisk)+' bytes live='+cssLive.length+' local='+cssOnDisk.length);
+              if(cssLive!==cssOnDisk)errors.push('Live CSS bytes differ from restored repository CSS');
+            }
+            await browser.close();
+            if(errors.length){console.error('PUBLIC WEBSITE AUDIT FAILED '+errors.join(' | '));process.exit(1);}
+            console.log('PUBLIC WEBSITE VERIFIED: restored white cards on all 5 relevant pages; CSS identical to repository.');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
