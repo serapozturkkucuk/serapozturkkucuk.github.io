@@ -168,10 +168,11 @@ main.wrap :is(.page-head > p, .experience-story > p, .case > p, .project-intro-f
 .experience-skills dt,.experience-skills dd {padding:11px 15px;border-bottom:1px solid var(--line)}
 .experience-skills dt {background:var(--teal-soft)}
 .experience-skills dt:nth-last-of-type(1),.experience-skills dd:last-child {border-bottom:0}
-.experience-project {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);overflow:hidden}
+.experience-project {display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);overflow:hidden}
 .experience-project > div {display:grid;justify-items:start;align-content:center;gap:13px;padding:22px}
 .experience-project p {color:var(--ink-soft)}
-.experience-project img {width:100%;height:100%;min-height:210px;object-fit:contain;object-position:center;background:#F3F6F5;border-left:1px solid var(--line)}
+.experience-project-image {display:grid;place-items:center;min-height:320px;background:#F3F6F5;border-left:1px solid var(--line)}
+.experience-project-image img {width:100%;height:auto;max-height:480px;object-fit:contain;object-position:center}
 .jobs {display:grid;gap:15px;list-style:none;margin:0;padding:0}
 .jobs > li {display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px;min-width:0;padding:21px;border-left:3px solid var(--teal)}
 .when,.what {display:grid;align-content:start;gap:9px;min-width:0}
@@ -188,6 +189,21 @@ main.wrap :is(.page-head > p, .experience-story > p, .case > p, .project-intro-f
 .experience-detail-card h2 {font-size:var(--fs-body);margin-bottom:7px}
 .experience-detail-card p {font-size:var(--fs-small)}
 .experience-download-cv .contact-cta {justify-items:start}
+
+/* Requested content layout adjustments */
+.experience-jobs .points {gap:5px}
+.home-end-links .contact-cta {gap:12px;padding:24px}
+.home-end-links .contact-cta h2 {color:var(--ink);font-size:var(--fs-heading)}
+.home-end-links .contact-cta p {color:var(--ink-soft);font-size:var(--fs-body)}
+.contact-link-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.contact-link-card {display:flex;align-items:center;gap:15px;min-width:0;min-height:112px;padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);text-decoration:none}
+.contact-link-card:hover,.contact-link-card:focus-visible {border-color:var(--teal);color:var(--ink)}
+.contact-link-card svg {flex:none;width:23px;height:23px;color:var(--teal-ink)}
+.contact-link-text {display:grid;gap:5px;min-width:0;flex:1}
+.contact-link-text strong {font-weight:730;line-height:1.25}
+.contact-link-text > span {font-size:var(--fs-small);color:var(--ink-soft);overflow-wrap:anywhere}
+.contact-link-arrow {flex:none;color:var(--teal-ink);font-size:1.1rem}
+@media(max-width:650px){.contact-link-grid {grid-template-columns:minmax(0,1fr);gap:12px}.contact-link-card {min-height:90px;padding:17px}}
 
 /* Project detail and evidence */
 .crumb {font-size:var(--fs-small);color:var(--ink-soft)}
@@ -278,7 +294,8 @@ figure.shot figcaption {font-size:var(--fs-small);color:var(--ink-soft)}
   .hero-proof-media {min-height:210px}
   .hero-proof-foot {align-content:center}
   .split,.badges,.experience-project {grid-template-columns:minmax(0,1fr)}
-  .experience-project img {border-left:0;border-top:1px solid var(--line);max-height:310px;min-height:200px}
+  .experience-project-image {border-left:0;border-top:1px solid var(--line);min-height:240px}
+  .experience-project-image img {max-height:410px}
   .jobs > li {grid-template-columns:minmax(0,1fr);gap:15px}
   .experience-detail-row {grid-template-columns:repeat(2,minmax(0,1fr))}
   .showcase-gallery {grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
