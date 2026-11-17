@@ -54,7 +54,7 @@ jobs:
                 const left=mr.left+parseFloat(ms.paddingLeft),right=mr.right-parseFloat(ms.paddingRight);
                 const nodes=[
                   ...main.querySelectorAll(':scope > header, :scope > section, :scope > div, :scope > p.crumb'),
-                  ...main.querySelectorAll('.case-grid > .facts-box, .case-grid > .case, .block > .experience-value, .block > .experience-project, .block > .experience-skills, .block > .experience-detail-row, .block > .jobs, .block > .badges, .block > .contact-list, .block > .home-skill-grid, .case > .stats, .case > .solution-list, .case > .test-grid, .case > .case-decision, .case > figure.shot, .case > .case-next-step, .case > h2')
+                  ...main.querySelectorAll('.project-brief, .project-stats, .block > .experience-value, .block > .experience-project, .block > .experience-skills, .block > .experience-detail-row, .block > .jobs, .block > .badges, .block > .contact-list, .block > .home-skill-grid, .case > .stats, .case > .solution-list, .case > .test-grid, .case > .case-decision, .case > figure.shot, .case > .case-next-step, .case > h2')
                 ];
                 const issues=nodes.filter(x=>getComputedStyle(x).display!=='none').map(x=>{
                   const r=x.getBoundingClientRect();
@@ -78,14 +78,37 @@ jobs:
               if(!geometry.wrappersMatch)failures.push(route+' '+width+' header/footer container mismatch');
               if(geometry.proseIssues.length)failures.push(route+' '+width+' text misalignment: '+JSON.stringify(geometry.proseIssues));
               if(route==='/projects/harbourline/'){
-                const gallery=await page.evaluate(()=>{
-                  const story=document.querySelector('.case');
-                  const brief=story?.querySelector('.case-context');
-                  const gallery=story?.querySelector('.project-showcase');
-                  const challenge=story?.querySelector('#challenge');
-                  return {brief:!!brief,gallery:!!gallery,challenge:!!challenge,order:!!brief&&!!gallery&&!!challenge&&!!(brief.compareDocumentPosition(gallery)&Node.DOCUMENT_POSITION_FOLLOWING)&&!!(gallery.compareDocumentPosition(challenge)&Node.DOCUMENT_POSITION_FOLLOWING),shotCount:gallery?.querySelectorAll('.showcase-shot img').length};
+                const project=await page.evaluate(()=>{
+                  const main=document.querySelector('main.wrap');
+                  const brief=main.querySelector('.project-brief');
+                  const stats=main.querySelector('.project-stats');
+                  const grid=main.querySelector('.case-grid');
+                  const sidebar=grid?.querySelector('.facts-box');
+                  const caseBody=grid?.querySelector('.case');
+                  const sections=[...caseBody.querySelectorAll(':scope > .project-chapter')];
+                  const toc=[...sidebar.querySelectorAll('.toc a')];
+                  const shots=[...caseBody.querySelectorAll('figure.shot img')];
+                  const topActions=[...sidebar.querySelectorAll('.project-document-actions a')].map(a=>({label:a.textContent.trim(),href:a.getAttribute('href'),class:a.className}));
+                  const bottomActions=[...main.querySelectorAll('.project-bottom-actions a')].map(a=>({label:a.textContent.trim(),href:a.getAttribute('href'),class:a.className}));
+                  const expected=['01 The Business Challenge','02 The Solution','03 Design Decisions','04 Testing & Troubleshooting','05 Results, Limitations & Next Steps'];
+                  const headers=sections.map(x=>x.querySelector(':scope > h2')?.textContent.trim());
+                  const sectionShotCounts=sections.map(x=>x.querySelectorAll('figure.shot img').length);
+                  const sideStyle=getComputedStyle(sidebar);
+                  const box=sidebar.getBoundingClientRect();
+                  const projectLeft=grid.getBoundingClientRect().left,projectRight=grid.getBoundingClientRect().right;
+                  return {
+                    inOrder:!!brief&&!!stats&&!!grid&&!!(brief.compareDocumentPosition(stats)&Node.DOCUMENT_POSITION_FOLLOWING)&&!!(stats.compareDocumentPosition(grid)&Node.DOCUMENT_POSITION_FOLLOWING),
+                    headingsCorrect:JSON.stringify(headers)===JSON.stringify(expected),
+                    tocCorrect:toc.length===5&&toc.every((a,i)=>a.textContent.trim()===expected[i]&&a.getAttribute('href')==='#'+sections[i]?.querySelector('h2')?.id),
+                    shotCounts:sectionShotCounts,
+                    shotsOK:shots.length===6&&shots.every((img,i)=>img.src.endsWith('.webp')&&+img.getAttribute('width')>0&&+img.getAttribute('height')>0&&img.closest('a')?.href===img.src&&(i===0?img.loading!=='lazy':img.loading==='lazy')),
+                    actionsOK:topActions.length===2&&JSON.stringify(topActions)===JSON.stringify(bottomActions)&&topActions[0].label==='Technical Documentation'&&topActions[1].label==='Download PDF',
+                    sidebarDesktop:innerWidth>1000?sideStyle.position==='sticky'&&Math.abs(box.width-280)<3&&box.height<=innerHeight-20:sideStyle.position!=='sticky',
+                    gridOK:innerWidth>1000?Math.abs(projectRight-caseBody.getBoundingClientRect().right)<2&&Math.abs(projectLeft-sidebar.getBoundingClientRect().left)<2:Math.abs(projectLeft-sidebar.getBoundingClientRect().left)<2
+                  };
                 });
-                if(!gallery.order||gallery.shotCount!==3)failures.push(route+' '+width+' gallery after brief before challenge, three images expected: '+JSON.stringify(gallery));
+                if(!project.inOrder||!project.headingsCorrect||!project.tocCorrect||!project.shotsOK||!project.actionsOK||!project.sidebarDesktop||!project.gridOK||project.shotCounts.join(',')!=='0,3,2,0,1')
+                  failures.push(route+' '+width+' project layout or content mismatch '+JSON.stringify(project));
               }
               if(route==='/experience/'){
                 const editorial=await page.evaluate(()=>{
