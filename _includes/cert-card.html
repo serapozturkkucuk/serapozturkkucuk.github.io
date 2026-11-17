@@ -2,7 +2,7 @@
 <li class="badge{% if c.status != 'earned' %} next{% endif %}">
   <span class="mark" aria-hidden="true">{{ c.code }}</span>
   <div>
-    {% if c.status == "earned" %}<span class="pill">Earned{% if c.year %} · {{ c.year }}{% endif %}</span>{% elsif c.note %}<span class="pill quiet">{{ c.note }}</span>{% elsif c.status == "studying" %}<span class="pill quiet">Studying now</span>{% else %}<span class="pill quiet">Planned</span>{% endif %}
+    {% if c.status == "earned" %}<span class="pill">Earned{% if c.year %} · {{ c.year }}{% endif %}</span>{% elsif c.note %}<span class="pill quiet">{{ c.note }}</span>{% elsif c.status == "studying" %}<span class="pill quiet">Studying Now</span>{% else %}<span class="pill quiet">Planned</span>{% endif %}
     <h3>{{ c.name }}</h3>
     {% if c.issuer %}<p>{{ c.issuer }}</p>{% endif %}
     {% if c.verify_url %}<a href="{{ c.verify_url }}">{{ c.verify_label | default: "Verify" }} →</a>{% endif %}
