@@ -6,11 +6,13 @@
 <title>{% if page.url == "/projects/" %}Salesforce Projects{% elsif page.url == "/experience/" %}Salesforce Administrator Experience{% elsif page.url == "/certifications/" %}Salesforce Certifications{% elsif page.title and page.url != "/" %}{{ page.title }}{% endif %}{% if page.url != "/" %} · {% endif %}{{ site.author.name }}</title>
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | escape }}{% else %}{{ site.description | escape }}{% endif %}">
 <meta name="theme-color" content="#F7F9FA">
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=22">
+<link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=23">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to Content</a>
 {% include nav.html %}
-<main class="wrap">
+<main id="main" class="wrap">
 {{ content }}
 </main>
 {% include footer.html %}
