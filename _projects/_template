@@ -1,0 +1,50 @@
+---
+title: Project Name
+subtitle: Short Project Subtitle
+summary: One-sentence description of the project and scope.
+status: planned
+published: false
+role: "Salesforce Administrator: requirements, configuration, testing and documentation"
+org: Salesforce Developer Edition · practice org and test data
+period: Project Dates
+tools: Tools Used
+links:
+  - label: Technical Documentation
+    url: /docs/project-name/
+  - label: Download PDF
+    url: /docs/project-name/project.pdf
+stats:
+  - value: "0"
+    label: Example Metric
+---
+
+<p class="case-opening">Brief overview of the problem and the work carried out.</p>
+<p class="case-context">Describe the project setting, data and limitations.</p>
+
+<!-- PROJECT SECTION -->
+
+<p>Describe the business requirements and problems.</p>
+
+<!-- PROJECT SECTION -->
+
+<div class="solution-list">
+  <div class="solution-item">
+    <h3>Solution Name</h3>
+    <p>Describe the configuration and relevant results.</p>
+  </div>
+</div>
+
+<!-- PROJECT SECTION -->
+
+<div class="case-decision">
+  <h3>Design Decision</h3>
+  <p>Explain the choice and alternatives.</p>
+</div>
+
+<!-- PROJECT SECTION -->
+
+<p>Describe tests, exceptions and troubleshooting fixes.</p>
+
+<!-- PROJECT SECTION -->
+
+<p>Summarise verified results, limitations and next steps.</p>
