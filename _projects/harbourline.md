@@ -115,7 +115,7 @@ contents:
 
 <h2 id="testing">04 / Testing and troubleshooting</h2>
 
-<p>Tests covered actions that should succeed, fail or leave records unchanged. The practice org had two full Salesforce licences. Test users were activated and deactivated in turn to check role-based access and the manager and Sales VP discount approval steps. Login As was also used to investigate record visibility.</p>
+<p>Tests covered actions that should succeed, fail or leave records unchanged. Testing was carried out with two active user licences available. Test users were activated and deactivated in turn to check role-based access and the manager and Sales VP discount approval steps. Login As was also used to investigate record visibility.</p>
 
 <div class="test-grid">
   <div><strong>100 cases</strong><span>Bulk test of the Case alert Flow, including records that should not trigger alerts</span></div>
