@@ -41,10 +41,10 @@ languages: English (business level) · Turkish (native) · Right to work in the 
 approach:
   - when: First 30 days
     title: Understand before changing
-    text: Meet the teams and learn their priorities. Map the existing org - users, security, automation, integrations and how changes are released.
+    text: Meet teams and identify operational priorities. Map the existing org - users, security, automation, integrations and how changes are released.
   - when: By 90 days
     title: Agree realistic priorities
-    text: Agree deliverables with my manager. Deliver the first ones through the company's change process, and document as I go.
+    text: Agree priorities and deliverables with the manager. Follow the company's change process and document completed changes.
   - when: By 6 months
     title: Improve with evidence
     text: Measure what changed, keep the request backlog moving, train users, and prepare for each Salesforce release.
