@@ -87,6 +87,17 @@ jobs:
                 });
                 if(!gallery.order||gallery.shotCount!==3)failures.push(route+' '+width+' gallery after brief before challenge, three images expected: '+JSON.stringify(gallery));
               }
+              if(route==='/about/'){
+                const editorial=await page.evaluate(()=>{
+                  const titles=[...document.querySelectorAll('main.wrap h2')].map(h=>h.textContent.trim());
+                  const jobs=[...document.querySelectorAll('.experience-jobs > li')].length;
+                  const skills=[...document.querySelectorAll('.experience-skills dt')].length;
+                  return {titles,jobs,skills};
+                });
+                const expected=['Professional experience','Salesforce skills','Education','Languages','Additional details','Full CV'];
+                if(editorial.titles.join('|')!==expected.join('|')||editorial.jobs!==2||editorial.skills<5)
+                  failures.push(route+' '+width+' Experience page section order or evidence missing '+JSON.stringify(editorial));
+              }
               if(result.status()!==200) failures.push(route+' '+width+' HTTP '+result.status());
               if(info.scrollWidth>width+2) failures.push(route+' '+width+' horizontal overflow '+info.scrollWidth);
               if(info.failedImages.length) failures.push(route+' '+width+' broken image '+info.failedImages.join(','));
