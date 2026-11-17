@@ -146,6 +146,15 @@ figure.shot figcaption { font-size: 0.88rem; color: var(--muted) }
   p { max-width: none }
   @page { size: A4; margin: 14mm }
 }
+#contact a { overflow-wrap: anywhere }
+@media print { header > a { display: none } }
+@media (max-width: 400px) { ol.stats { grid-template-columns: repeat(2, minmax(0, 1fr)) } .status { max-width: 100%; flex-wrap: wrap } }
+/* Spacing: extra room above and below boxes, tables, diagrams and screenshots */
+section > :is(.table-wrap, .figure, ol.stats, ol.checks, ol.glance, ol.manual, ol.timeline, figure.shot, .brief, .built), header > ol.stats { margin-block: 10px }
+@media print { section > * + *, header > * + * { margin-top: 14px } section > :is(.table-wrap, .figure, ol.stats, ol.checks, ol.glance, ol.manual, ol.timeline, figure.shot, .brief, .built), header > ol.stats { margin-top: 22px; margin-bottom: 10px } }
+section > h3.sub, section > .eyebrow:not(:first-child) { margin-top: 18px }
+section > .topics { margin-block: 6px }
+@media print { section > .eyebrow, section > .case-num { display: block } section > h3.sub, section > .eyebrow:not(:first-child) { margin-top: 30px } section > h3.sub + *, section > .eyebrow + * { margin-top: 14px } section > .topics { margin-top: 16px; margin-bottom: 8px } }
 footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px }
 </style>
 
@@ -157,16 +166,16 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <span class="eyebrow">Salesforce Administrator Portfolio</span>
     <h1>Serap Ozturk-Kucuk</h1>
     <span class="status">Salesforce Certified Platform Administrator</span>
-    <p class="note">Portfolio version 1.1 · November 2026</p>
-    <p class="lede">Salesforce Certified Platform Administrator with experience in internally developed CRM/CMS platforms, product and customer data, reporting, UAT and operational process improvement across agri-tech and food manufacturing.</p>
-    <p class="lede">Technical documentation for the fictional Harbourline Security practice org. The guides cover configuration decisions, test evidence and troubleshooting. Implemented features are distinguished from certification-study examples in the final section.</p>
+    <p class="note">Portfolio version 1.2 · November 2026</p>
+    <p class="lede">Salesforce Certified Platform Administrator with experience in custom CRM and CMS platforms, product data, data quality, reporting, UAT and process improvement, now applied to Salesforce configuration, automation and testing.</p>
+    <p class="lede">Technical documentation for Harbourline Security, a fictional company built as a Salesforce practice org in a Trailhead Playground (Developer Edition). The guides cover configuration decisions, test evidence and troubleshooting. Implemented features are distinguished from certification-study examples in the final section.</p>
     <ol class="stats">
-      <li><b>28</b>customer Accounts</li>
-      <li><b>74</b>Contacts</li>
-      <li><b>65</b>customer sites (Buildings)</li>
-      <li><b>40</b>Opportunities migrated</li>
-      <li><b>495</b>trade-show Leads</li>
-      <li><b>4</b>record-triggered flows</li>
+      <li><b>28</b> Accounts</li>
+      <li><b>74</b> Contacts</li>
+      <li><b>65</b> Customer Sites</li>
+      <li><b>40</b> Opportunities</li>
+      <li><b>495</b> Test Leads Imported</li>
+      <li><b>11</b> Automations &amp; Rules</li>
     </ol>
   </header>
 
@@ -202,7 +211,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
           <tr><td><strong>Opportunity</strong><br><em>standard</em></td><td>Record types: External Sale, Internal Sale<br>New stage: Site Survey<br><code>Discount_Percentage__c</code> percent (3, 2)<br><code>Approval_Status__c</code> restricted picklist, read-only for reps: Not Submitted, Pending, Approved, Rejected<br><code>Legacy_Opportunity_ID__c</code> text, External ID, unique</td><td>03, 07, 08, 09, 10</td></tr>
           <tr><td><strong>Contact</strong><br><em>standard</em></td><td><code>Legacy_Contact_ID__c</code> text, External ID, unique, optional</td><td>01, 04, 09</td></tr>
           <tr><td><strong>Case</strong><br><em>standard</em></td><td>Origin, Priority, Status; owner set to the Support Queue by the assignment rule</td><td>04, 05, 07, 10</td></tr>
-          <tr><td><strong>Lead</strong><br><em>standard</em></td><td>Lead Source = Trade Show; 500 badge scans from the Security Expo 2026 list: 495 created, 5 duplicates not imported</td><td>09</td></tr>
+          <tr><td><strong>Lead</strong><br><em>standard</em></td><td>Lead Source = Trade Show; 500 test badge scans from the Security Expo 2026 list: 495 created, 5 duplicates not imported</td><td>09</td></tr>
           <tr><td><strong>Product and Price Book</strong><br><em>standard</em></td><td>CCTV Camera Kit, Access Control Panel and Annual Maintenance Plan, each in the Standard Price Book</td><td>03</td></tr>
           <tr><td><strong>Admin Request</strong><br><em>custom, <code>Admin_Request__c</code></em></td><td>Name: auto number REQ-{0000}<br>Impact, Urgency, Status picklists; <code>Priority__c</code> formula P1 to P4<br><code>Days_Open__c</code> formula; <code>Requested_By__c</code> lookup to User</td><td>12</td></tr>
         </tbody>
@@ -952,7 +961,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <span><i class="sw" style="background:var(--surface);border-color:var(--q-line)"></i>Stopped</span>
       <span><i class="sw" style="background:var(--tip-soft);border-color:var(--tip-line);border-style:dashed"></i>Automation and rules</span>
     </div>
-    <figure class="shot"><img src="/assets/img/harbourline/kanban.webp" loading="lazy" decoding="async" alt="Kanban board of open admin requests grouped by status, each card showing number, subject, priority and team" width="1500" height="260"><figcaption>All Open Requests as a Kanban board: everyone can see it; only the Admin Team can move cards.</figcaption></figure>
+    <figure class="shot"><img src="/assets/img/harbourline/admin-kanban.webp" loading="lazy" decoding="async" alt="Kanban board of open admin requests grouped by status, each card showing number, subject, priority and team" width="1500" height="260"><figcaption>All Open Requests as a Kanban board: everyone can see it; only the Admin Team can move cards.</figcaption></figure>
     <h3 class="sub">Fair Priority: Calculated From Impact and Urgency</h3>
     <p>The requester chooses Impact and Urgency. A formula gives High 3 points, Medium 2 and Low 1, adds them up, and turns the total into a priority.</p>
     <div class="table-wrap">
@@ -1054,10 +1063,11 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <p>Salesforce Certified Platform Administrator · Liverpool</p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/serap-ozturk-kucuk-ab6385104">linkedin.com/in/serap-ozturk-kucuk-ab6385104</a></p>
     <p>Trailhead: <a href="https://www.salesforce.com/trailblazer/serapozturkkucuk">salesforce.com/trailblazer/serapozturkkucuk</a></p>
+    <p>Portfolio website: <a href="https://serapozturkkucuk.github.io/">serapozturkkucuk.github.io</a></p>
     <p class="note">A live walkthrough of the Harbourline practice org is available on request.</p>
   </section>
 
-  <footer>Portfolio version 1.1 · November 2026. Harbourline Security is a fictional company. Configuration and tests were completed in Salesforce Developer Edition. Items marked "study example" were studied but not implemented.</footer>
+  <footer>Portfolio version 1.2 · November 2026. Harbourline Security is a fictional company. Configuration and tests were completed in a Trailhead Playground (Developer Edition) org. Items marked "study example" were studied but not implemented.</footer>
 </div>
 </body>
 </html>
