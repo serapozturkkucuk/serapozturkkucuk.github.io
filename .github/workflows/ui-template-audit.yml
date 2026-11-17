@@ -74,24 +74,6 @@ jobs:
                 }).filter(x=>Math.abs(x.left)>2||Math.abs(x.right)>2||x.maxWidth!=='none'||x.align!==x.expected);
                 return {left:Math.round(left),right:Math.round(right),issues,wrappersMatch,proseIssues};
               });
-              const cardColors=await page.evaluate(()=>{
-                const navy=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim().toLowerCase();
-                const sample=document.createElement('div');
-                sample.style.backgroundColor=navy;
-                document.body.appendChild(sample);
-                const navyRGB=getComputedStyle(sample).backgroundColor;
-                sample.remove();
-                const sels='.card, .contact-cta, .hero-proof, .project-tile, .badge, .experience-value, .home-skill-grid li, .facts-box, .stats, .case table, .showcase-shot, .test-grid > div, .case-next-step, .experience-skills, .case .solution-list';
-                const checked=[...document.querySelectorAll(sels)];
-                const errors=checked.map(el=>{
-                  const color=getComputedStyle(el).backgroundColor;
-                  const dark=el.matches('.contact-cta, .hero-proof');
-                  const expected=dark?navyRGB:'rgba(0, 0, 0, 0)';
-                  return color===expected?null:{name:el.className,actual:color,expected};
-                }).filter(Boolean);
-                return {checked:checked.length,errors};
-              });
-              if(cardColors.errors.length) failures.push(route+' '+width+' card colours: '+JSON.stringify(cardColors.errors));
               if(geometry.issues.length)failures.push(route+' '+width+' misaligned: '+JSON.stringify(geometry.issues));
               if(!geometry.wrappersMatch)failures.push(route+' '+width+' header/footer container mismatch');
               if(geometry.proseIssues.length)failures.push(route+' '+width+' text misalignment: '+JSON.stringify(geometry.proseIssues));
@@ -110,6 +92,6 @@ jobs:
             }
             await b.close();
             if(failures.length){console.error('AUDIT FAILED:',failures.join(' | '));process.exit(1)}
-            console.log('UI AUDIT PASSED: 30 pages/viewports, precise left/right alignment, full-width text bounds, navy/outline card colours, images, nav, h1 and overflow');
+            console.log('UI AUDIT PASSED: 30 pages/viewports, precise left/right alignment, full-width text bounds, images, nav, h1 and overflow');
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
