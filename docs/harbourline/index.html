@@ -783,7 +783,7 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
     <h2>Data import, export and duplicates</h2>
     <div class="brief">
       <div><b>The problem</b>Bad imports are the fastest way to fill an org with wrong or duplicate data, and the wrong tool can't do the job at all.</div>
-      <div><b>Documented approach</b>A three-question guide to picking the right data tool, linking parent and child records, and stopping duplicates, with the jobs I did for Harbourline.</div>
+      <div><b>Documented approach</b>A three-question guide to picking the right data tool, linking parent and child records, and stopping duplicates, with the Harbourline import and clean-up tasks.</div>
     </div>
     <div class="figure">
       <svg viewBox="0 0 680 770" role="img" aria-labelledby="dm-t dm-d">
@@ -871,16 +871,16 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
           <tr><td>Won by Customer Tier</td><td>Which kind of customer brings the revenue?</td><td><em>Grouped by the custom Customer Tier field</em></td></tr>
           <tr><td>Discounts Awaiting Approval</td><td>Which deals are waiting for a manager?</td><td><em>Dashboard metric: 0 green, 1 to 2 amber, 3 or more red</em></td></tr>
           <tr><td>Deals by Lead Source</td><td>Which channels bring the deals?</td><td><em>Lead Source values cleaned first</em></td></tr>
-          <tr><td>Open Cases by Owner</td><td>Who has the most work right now?</td><td><em>Service dashboard</em></td></tr>
-          <tr><td>Key Account Cases</td><td>Are our biggest customers having problems?</td><td><em>Filter on Customer Tier</em></td></tr>
-          <tr><td>Cases by Origin</td><td>How do customers contact us this month?</td><td><em>Relative date: this month</em></td></tr>
+          <tr><td>Open Cases by Owner</td><td>Which case owners have the highest workload?</td><td><em>Service dashboard</em></td></tr>
+          <tr><td>Key Account Cases</td><td>Are Key Accounts generating support cases?</td><td><em>Filter on Customer Tier</em></td></tr>
+          <tr><td>Cases by Origin</td><td>Which channels generated cases this month?</td><td><em>Relative date: this month</em></td></tr>
           <tr><td>Attendees by Session</td><td>Who came to which training?</td><td><em>Custom report type joining two custom objects</em></td></tr>
           <tr><td>Admin Requests: open by status, open by priority, closed this month, average days open by team</td><td>Is the admin keeping up, and which team waits longest?</td><td><em>Admin Work dashboard</em></td></tr>
         </tbody>
       </table>
     </div>
     <figure class="shot narrow"><img src="/assets/img/harbourline/sales.webp" loading="lazy" decoding="async" alt="Harbourline Sales dashboard showing discounts awaiting approval, open pipeline by stage and won revenue by customer tier"><figcaption>The Harbourline Sales dashboard: discounts waiting for approval, open pipeline by stage, and won revenue by customer tier.</figcaption></figure>
-    <h3 class="sub">Things that caught me out</h3>
+    <h3 class="sub">Reporting issues found during testing</h3>
     <ol class="checks">
       <li><b>Viewer's access</b>A report chart on a Home page runs as the viewer. A rep with Private deals sees an empty chart; a dashboard running as a fixed user shows team totals.</li>
       <li><b>Folder sharing</b>Users can't see a report in a folder that isn't shared with them. Report folders were shared by role, with admin-only reports restricted to managers.</li>
@@ -900,8 +900,8 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--li
       <table class="wide">
         <thead><tr><th>App</th><th>Tabs</th><th>Home page</th></tr></thead>
         <tbody>
-          <tr><td><strong>Harbourline Sales</strong><br><em>Harbourline Sales profile</em></td><td>Home, Leads, Accounts, Contacts, Opportunities, Products, Buildings, Reports, Dashboards, Overview</td><td>Team message, Items to Approve, pipeline chart, my deals</td></tr>
-          <tr><td><strong>Harbourline Service</strong><br><em>Harbourline Service profile</em></td><td>Home, Cases, Accounts, Contacts, Buildings, Training Sessions, Opportunities, Reports, Dashboards, Overview</td><td>Team rule, Support Queue list, my open cases, workload chart</td></tr>
+          <tr><td><strong>Harbourline Sales</strong><br><em>Harbourline Sales profile</em></td><td>Home, Leads, Accounts, Contacts, Opportunities, Products, Buildings, Reports, Dashboards, Overview</td><td>Team message, Items to Approve, pipeline chart, assigned deals</td></tr>
+          <tr><td><strong>Harbourline Service</strong><br><em>Harbourline Service profile</em></td><td>Home, Cases, Accounts, Contacts, Buildings, Training Sessions, Opportunities, Reports, Dashboards, Overview</td><td>Team rule, Support Queue list, open cases, workload chart</td></tr>
           <tr><td><strong>Overview</strong><br><em>app page in both apps</em></td><td>The Sales and Service dashboards side by side</td><td>The company-wide view in one click</td></tr>
         </tbody>
       </table>
