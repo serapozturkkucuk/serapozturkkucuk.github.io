@@ -67,30 +67,40 @@ main.wrap {min-height:65vh;display:flex;flex-direction:column;align-items:stretc
 .page-head {display:grid;width:100%;gap:16px;padding:0 0 30px;border-bottom:1px solid var(--line)}
 /* Full-width structural blocks; only prose uses a reading measure */
 main.wrap > :is(header,section,article,div,p.crumb) {width:100%;min-width:0}
-main.wrap p {max-width:75ch;text-align:left}
+main.wrap p {width:100%;max-width:none;text-align:left;text-wrap:pretty}
 main.wrap p.crumb {max-width:none;width:100%}
 main.wrap :is(.page-head,.project-showcase,.project-gallery,.case-grid,.case,.stats,.showcase-gallery,.solution-list,.test-grid,.experience-value,.experience-project,.experience-skills,.experience-detail-row,.contact-list,.badges,.home-skill-grid,.jobs) {width:100%;max-width:none}
+/* Prose boxes share their section edges. On wide screens, justify long-form
+   paragraphs for a clean right edge; never justify compact card descriptions. */
+main.wrap :is(.page-head > p, .experience-story > p, .case > p, .project-intro-followup, .home-end-links > p) {width:100%;max-width:none}
+@media(min-width:901px){
+  main.wrap :is(.page-head > p, .experience-story > p, .case > p, .project-intro-followup) {
+    text-align:justify;
+    text-align-last:left;
+    hyphens:auto;
+  }
+}
 .page-head .subtitle {color:var(--teal-ink);font-size:var(--fs-body);font-weight:700}
-.lede {max-width:75ch;color:var(--ink-soft);font-size:var(--fs-body);line-height:1.7;font-weight:500}
+.lede {width:100%;max-width:none;color:var(--ink-soft);font-size:var(--fs-body);line-height:1.7;font-weight:500}
 .block {display:grid;width:100%;gap:18px;min-width:0}
 .block-head {display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px 22px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .see-all {font-size:var(--fs-small);font-weight:700;text-decoration:none}
 .split {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
 .split > div {display:grid;align-content:start;gap:13px;min-width:0}
-.prose {max-width:75ch}
+.prose {width:100%;max-width:none}
 .card,.contact-cta {border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
 .contact-cta {display:grid;align-content:start;gap:13px;padding:20px}
 .contact-cta .btn {justify-self:start}
 .notice {padding:18px}
 .note-strong {color:var(--teal-ink);font-weight:700}
-.project-intro-followup {max-width:74ch;color:var(--ink-soft);line-height:1.7}
+.project-intro-followup {width:100%;max-width:none;color:var(--ink-soft);line-height:1.7}
 
 /* Homepage */
 .hero {position:relative;display:grid;gap:28px;border-bottom:1px solid var(--line);padding:22px 0 38px}
 .home-hero {grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;gap:clamp(22px,4vw,48px)}
 .hero-copy {min-width:0;display:grid;justify-items:start;align-content:center;gap:17px}
 .hero-copy h1 {max-width:15ch}
-.hero-copy .lede {max-width:65ch;line-height:1.6}
+.hero-copy .lede {width:100%;max-width:none;line-height:1.6}
 .home-location {font-size:var(--fs-small)}
 .hero-copy .actions {margin-top:6px}
 .hero-proof {align-self:stretch;display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);text-decoration:none}
@@ -185,7 +195,7 @@ main.wrap :is(.page-head,.project-showcase,.project-gallery,.case-grid,.case,.st
 .project-showcase {display:grid;gap:18px;min-width:0}
 .showcase-heading {display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:14px 24px}
 .showcase-heading > div {display:grid;gap:8px}
-.showcase-heading > p {max-width:38ch;color:var(--ink-soft);font-size:var(--fs-small)}
+.showcase-heading > p {color:var(--ink-soft);font-size:var(--fs-small)}
 .showcase-gallery {display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:13px}
 .showcase-shot {display:grid;grid-template-rows:minmax(0,1fr) auto;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);text-decoration:none}
 .showcase-shot:hover {color:var(--ink);border-color:var(--teal)}
