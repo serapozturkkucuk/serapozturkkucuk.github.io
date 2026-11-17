@@ -11,7 +11,7 @@
 {% else %}
 <a class="project-tile" href="{{ p.url | relative_url }}" aria-label="View {{ p.title }} case study">
   <div class="project-tile-media">
-    {% if p.card_image %}<img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt | default: p.title | escape }}" loading="lazy" decoding="async">{% endif %}
+    {% if p.card_image %}<img src="{{ p.card_image | relative_url }}" alt="{{ p.card_alt | default: p.title | escape }}" width="{{ p.card_image_width | default: 1400 }}" height="{{ p.card_image_height | default: 1249 }}" loading="{% if p.featured %}eager{% else %}lazy{% endif %}" decoding="async">{% endif %}
   </div>
   <div class="project-tile-body">
     <h3>{{ p.title }}</h3>

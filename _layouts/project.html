@@ -1,18 +1,30 @@
 ---
 layout: default
 ---
+{% assign project_sections = content | split: '<!-- PROJECT SECTION -->' %}
+{% assign section_ids = 'challenge|solutions|decisions|testing|outcome' | split: '|' %}
 <p class="crumb"><a href="{{ '/projects/' | relative_url }}">Projects</a> <span aria-hidden="true">/</span> {{ page.title }}</p>
 
 <header class="page-head">
   <span class="pill">{{ page.status_label }}</span>
   <h1>{{ page.title }}</h1>
   {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
-  <p class="lede">{{ page.summary }}</p>
   {% if page.tags %}<ul class="tags">{% for t in page.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
 </header>
 
+<section class="project-brief" aria-labelledby="project-brief-heading">
+  <h2 id="project-brief-heading">The Project in Brief</h2>
+  {{ project_sections[0] }}
+</section>
+
+{% if page.stats %}
+<ul class="stats project-stats" aria-label="Project Numbers">
+  {% for s in page.stats %}<li><b>{{ s.value }}</b>{{ s.label }}</li>{% endfor %}
+</ul>
+{% endif %}
+
 <div class="case-grid">
-  <aside class="facts-box" aria-label="Project facts">
+  <aside class="facts-box" aria-label="Project Facts">
     <dl>
       {% if page.role %}<dt>Role</dt><dd>{{ page.role }}</dd>{% endif %}
       {% if page.org %}<dt>Org</dt><dd>{{ page.org }}</dd>{% endif %}
@@ -20,22 +32,42 @@ layout: default
       {% if page.tools %}<dt>Tools</dt><dd>{{ page.tools }}</dd>{% endif %}
     </dl>
     {% if page.links %}
-    <div class="stack">
+    <div class="stack project-document-actions">
       {% for l in page.links %}<a class="btn{% if forloop.first %} primary{% endif %}" href="{{ l.url | relative_url }}">{{ l.label }}</a>{% endfor %}
     </div>
     {% endif %}
-    {% if page.contents %}
     <nav class="toc" aria-label="On This Page">
-      <p class="label">On this page</p>
-      <ol>{% for s in page.contents %}<li><a href="#{{ s.id }}">{{ s.title }}</a></li>{% endfor %}</ol>
+      <p class="label">On This Page</p>
+      <ol>
+        <li><a href="#challenge">01 The Business Challenge</a></li>
+        <li><a href="#solutions">02 The Solution</a></li>
+        <li><a href="#decisions">03 Design Decisions</a></li>
+        <li><a href="#testing">04 Testing &amp; Troubleshooting</a></li>
+        <li><a href="#outcome">05 Results, Limitations &amp; Next Steps</a></li>
+      </ol>
     </nav>
-    {% endif %}
   </aside>
 
   <article class="case">
-    {% if page.stats %}
-    <ul class="stats">{% for s in page.stats %}<li><b>{{ s.value }}</b>{{ s.label }}</li>{% endfor %}</ul>
-    {% endif %}
-    {{ content }}
+    {% for section_key in section_ids %}
+      {% assign section_markup = project_sections[forloop.index] %}
+      {% case section_key %}
+        {% when 'challenge' %}{% assign section_title = '01 The Business Challenge' %}
+        {% when 'solutions' %}{% assign section_title = '02 The Solution' %}
+        {% when 'decisions' %}{% assign section_title = '03 Design Decisions' %}
+        {% when 'testing' %}{% assign section_title = '04 Testing & Troubleshooting' %}
+        {% when 'outcome' %}{% assign section_title = '05 Results, Limitations & Next Steps' %}
+      {% endcase %}
+      <section class="project-chapter" aria-labelledby="{{ section_key }}">
+        <h2 id="{{ section_key }}">{{ section_title }}</h2>
+        {{ section_markup }}
+      </section>
+    {% endfor %}
   </article>
 </div>
+
+{% if page.links %}
+<div class="project-bottom-actions" aria-label="Project Documents">
+  {% for l in page.links %}<a class="btn{% if forloop.first %} primary{% endif %}" href="{{ l.url | relative_url }}">{{ l.label }}</a>{% endfor %}
+</div>
+{% endif %}

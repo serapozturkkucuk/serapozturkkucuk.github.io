@@ -1,7 +1,7 @@
 ---
 title: Harbourline Security
 subtitle: Sales, Service and Access Controls in a Salesforce Practice Org
-summary: A Salesforce Developer Edition project covering discount approvals, customer-site records, service cases and admin requests for a fictional security business.
+summary: A Salesforce Developer Edition project covering discount approvals, customer-site records, service cases and admin requests for a security business.
 status: completed
 status_label: Self-Directed Practice Org · 2026
 featured: true
@@ -12,138 +12,103 @@ card_date: August 2026
 card_date_label: Started
 card_description: A tested Salesforce practice org for sales approvals, case management, customer sites and admin requests.
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
-role: Salesforce Administrator, requirements, configuration, testing and documentation
-org: Salesforce Developer Edition · fictional business and test data
+role: "Salesforce Administrator: requirements, configuration, testing and documentation"
+org: Salesforce Developer Edition · practice org and test data
 period: August 2026 – present
 tools: Flow Builder, Schema Builder, Lightning App Builder, Data Loader, dataloader.io
-showcase_images:
-  - image: /assets/img/harbourline/flow.webp
-    alt: Create HQ Building Flow showing Get Records, a decision, and Create Records in Salesforce Flow Builder
-    title: Preventing Duplicate Site Records
-    caption: Check whether a Headquarters Building exists before creating one
-    anchor: "#decisions"
-  - image: /assets/img/harbourline/validation.webp
-    alt: Salesforce validation error preventing an unapproved discount from advancing to Proposal
-    title: Blocking Unapproved Discounts
-    caption: Unapproved discounts cannot move into price stages
-    anchor: "#solutions"
-  - image: /assets/img/harbourline/kanban.webp
-    alt: Harbourline Admin Request tracker Kanban board grouped by status
-    title: Tracking Admin Requests
-    caption: Admin work tracked by priority and status
-    anchor: "#solutions"
 links:
-  - label: Explore Technical Evidence
+  - label: Technical Documentation
     url: /docs/harbourline/
-  - label: Download Full Portfolio PDF
+  - label: Download PDF
     url: /docs/harbourline/Serap_Ozturk-Kucuk_Salesforce_Admin_Portfolio_v1.1.pdf
 stats:
   - value: "28"
-    label: Customer Accounts
+    label: Accounts
   - value: "65"
     label: Customer Sites
   - value: "40"
-    label: Opportunities Migrated
+    label: Opportunities
   - value: "4"
     label: Record-Triggered Flows
-contents:
-  - id: challenge
-    title: The Challenge
-  - id: solutions
-    title: Solution Overview
-  - id: decisions
-    title: Design Decisions
-  - id: testing
-    title: Testing and Fixes
-  - id: outcome
-    title: Results and Next Steps
 ---
 
-<p class="case-kicker">The Project in Brief</p>
-<p class="case-opening">The project applies Salesforce configuration to four business needs: controlled discounts, owned support cases, connected customer-site records and a trackable admin request backlog. Testing covered expected behaviour, exceptions and access restrictions.</p>
-<p class="case-context">Harbourline Security is a fictional CCTV and access-control business in North West England. The org was built in Salesforce Developer Edition using fictional users and records. All figures describe practice data and testing, not live business results.</p>
+<p class="case-opening">Salesforce configuration addresses controlled discounts, support case ownership, customer-site records, admin requests and access to reporting. Testing covers expected behaviour, exceptions and permissions.</p>
+<p class="case-context">Harbourline Security is a fictional CCTV and access-control business in North West England. The Salesforce Developer Edition org uses test users and records. The figures describe practice data, not live business results.</p>
 
-{% include project-showcase.html %}
+<!-- PROJECT SECTION -->
 
-<h2 id="challenge">01 / The Challenge</h2>
+<p>Discounts were agreed by email, support messages lacked clear ownership, customer-site records were scattered, and admin requests had no shared priority or status. Sales managers also needed visibility without giving every sales rep access to every Opportunity.</p>
 
-<p>Four problems shaped the build: discounts were agreed by email, support messages had no reliable ownership, information about customer sites was scattered, and requests to the Salesforce admin had no shared priority or status. Sales managers also needed visibility without giving every rep access to every deal.</p>
-
-<h2 id="solutions">02 / Solution Overview</h2>
+<!-- PROJECT SECTION -->
 
 <div class="solution-list">
   <div class="solution-item">
-    <span class="solution-index">01</span>
-    <div><h3>Sales Approvals With a Clear Stopping Point</h3><p>Two Opportunity sales processes support different types of deals. Discounts above 15% require manager approval; those above 40% require a second approval step. A validation rule prevents a deal with an unapproved discount from progressing into price stages.</p></div>
+    <h3>Sales Approvals With a Clear Stopping Point</h3>
+    <p>Two Opportunity sales processes support different types of deals. Discounts above 15% require manager approval; discounts above 40% require a second approval step. A validation rule blocks unapproved discounts from progressing into price stages.</p>
+    {% include project-showcase.html src="/assets/img/harbourline/validation.webp" width="1500" height="204" loading="eager" alt="Salesforce validation rule error preventing an unapproved Opportunity discount" caption="Validation rule blocks a discount until the required approval is complete." %}
   </div>
   <div class="solution-item">
-    <span class="solution-index">02</span>
-    <div><h3>Support Cases Routed to the Right Place</h3><p>Email-to-Case creates cases from incoming messages. A Support Queue, assignment and auto-response rules establish ownership and acknowledgement; an escalation rule addresses cases after four hours. A Flow alerts the service manager to cases from Key Accounts.</p></div>
+    <h3>Support Cases Routed to the Right Place</h3>
+    <p>Email-to-Case creates cases from incoming messages. A Support Queue, assignment rules and auto-response rules establish ownership and acknowledgement; an escalation rule notifies the service manager about cases still open after four hours. A record-triggered Flow alerts the service manager about Key Account cases.</p>
+    {% include project-showcase.html src="/assets/img/harbourline/service.webp" width="1500" height="712" alt="Harbourline Service Home with Support Queue and open Cases" caption="Service Home shows the Support Queue and the open case workload." %}
   </div>
   <div class="solution-item">
-    <span class="solution-index">03</span>
-    <div><h3>Linking Accounts to Customer Sites</h3><p>A custom Building object links each site to an Account, with an optional lookup to the site Contact. External IDs support upsert during migration. Of 500 trade-show lead scans imported, 495 were created and five duplicates were not imported.</p></div>
+    <h3>Linking Accounts to Customer Sites</h3>
+    <p>A custom Building object links sites to Accounts, with an optional lookup to a site Contact. External IDs support upsert during data migration.</p>
   </div>
   <div class="solution-item">
-    <span class="solution-index">04</span>
-    <div><h3>Admin Requests People Can Track</h3><p>A custom Admin Request object provides a Kanban view, P1–P4 priority based on Impact and Urgency, status validation and notification Flows. The result is a visible backlog instead of informal requests.</p></div>
+    <h3>Admin Requests People Can Track</h3>
+    <p>A custom Admin Request object provides a Kanban view, P1–P4 priority based on Impact and Urgency, status validation and notification Flows. A shared backlog replaces informal requests.</p>
+    {% include project-showcase.html src="/assets/img/harbourline/kanban.webp" width="1500" height="260" alt="Admin Request Kanban board grouped by status and priority" caption="Kanban view tracks the status and priority of admin requests." %}
+  </div>
+  <div class="solution-item">
+    <h3>Access and Reporting</h3>
+    <p>Private Opportunities opened through the role hierarchy, a sharing rule and an account team, with 13 reports on three dashboards.</p>
   </div>
 </div>
 
-<h2 id="decisions">03 / Decisions Behind the Build</h2>
+<!-- PROJECT SECTION -->
 
-<p>Declarative options were compared before adding automation. Formulas and roll-ups calculate values, validation rules enforce requirements, approval processes manage sign-off, and record-triggered Flows handle actions that need additional logic.</p>
+<p>Declarative options were compared before adding automation. Formulas and roll-ups calculate values, validation rules enforce requirements, approval processes manage sign-off, and record-triggered Flows handle actions requiring additional logic.</p>
 
 <div class="case-decision">
   <h3>Why Building Is a Child of Account</h3>
-  <p>A Building record depends on its customer, so the relationship to Account uses master-detail. This also allows the site count to roll up to Account. Site Contact uses a lookup because a building does not always have a named contact.</p>
-  <figure class="shot">
-    <img src="{{ '/assets/img/harbourline/schema.webp' | relative_url }}" alt="Salesforce Schema Builder showing Account, Building, Contact and Training Session object relationships" loading="lazy" width="1000" height="650">
-    <figcaption>Actual Schema Builder view from the practice org, including the Building relationship and Session Attendee junction.</figcaption>
-  </figure>
+  <p>The Building-to-Account relationship uses master-detail, allowing site counts to roll up to Account. Site Contact uses a lookup because a site may have no named contact.</p>
+  {% include project-showcase.html src="/assets/img/harbourline/schema.webp" width="895" height="817" alt="Schema Builder showing Account, Building, Contact and Training Session relationships" caption="Schema Builder shows Account, Building and the Training Session junction." %}
 </div>
 
 <div class="case-decision">
   <h3>Why the HQ Building Flow Checks Before Creating</h3>
-  <p>When an Opportunity is won, an after-save Flow checks for an existing Headquarters Building before creating a new record. Testing covered both the creation path and the existing-building path to check that duplicates were not created.</p>
+  <p>An after-save Flow checks for an existing Headquarters Building when an Opportunity is won. Tests covered both the creation path and the existing-building path to prevent duplicate records.</p>
+  {% include project-showcase.html src="/assets/img/harbourline/flow.webp" width="1400" height="1249" alt="Record-triggered Create HQ Building Flow with Get Records, Decision and Create Records" caption="The Flow checks for an existing Headquarters Building before creating a new record." %}
 </div>
 
 <div class="case-decision">
   <h3>Why Sharing Rules Were Not Enough on Their Own</h3>
-  <p>Opportunities are Private, with access opened through the role hierarchy and specific sharing. During testing, one user still saw no deals because the profile lacked Read permission on Opportunity. Fixing the object permission made the distinction between object access and record sharing very clear.</p>
+  <p>Opportunities are Private, with access opened through the role hierarchy and specific sharing. One test user could not view Opportunities because the profile lacked object-level Read permission. Lesson: sharing opens records, but the profile must first give access to the object.</p>
 </div>
 
-<h2 id="testing">04 / Testing and Troubleshooting</h2>
+<!-- PROJECT SECTION -->
 
-<p>Tests covered actions that should succeed, fail or leave records unchanged. Testing was carried out with two active user licences available. Test users were activated and deactivated in turn to check role-based access and the manager and Sales VP discount approval steps. Login As was also used to investigate record visibility.</p>
+<p>Tests covered actions that should succeed, fail or leave records unchanged. With two user licences, test users were activated in turn, and Login As was used to check each user’s access and both discount approval steps.</p>
 
 <div class="test-grid">
-  <div><strong>100 Cases</strong><span>Bulk test of the Case alert Flow, including records that should not trigger alerts</span></div>
-  <div><strong>500 Lead Scans</strong><span>495 imported and five duplicates not imported; smaller four-row trials were used before larger data loads</span></div>
+  <div><strong>100 Cases</strong><span>Bulk-tested the Case alert Flow, including records that should not trigger alerts</span></div>
+  <div><strong>500 Lead Scans</strong><span>495 imported, five duplicates not imported; small four-row trials preceded larger loads</span></div>
   <div><strong>Real Email</strong><span>Email-to-Case tested end to end on the primary incoming-email path</span></div>
-  <div><strong>Approval Levels</strong><span>Manager and Sales VP steps tested using users activated and deactivated in turn</span></div>
+  <div><strong>Approval Levels</strong><span>Manager and Sales VP steps tested by activating users in turn</span></div>
 </div>
 
-<p><strong>Two Instructive Fixes:</strong></p>
+<h3>Key Fixes</h3>
 <ul>
-  <li><strong>No Opportunity visibility despite sharing:</strong> the user lacked object-level Read permission. The permission was corrected and access retested.</li>
-  <li><strong>Approval failed because Manager was empty:</strong> the submitting user had no Manager assigned. Manager assignment became part of the new-user setup checklist.</li>
+  <li><strong>Missing Opportunity visibility:</strong> Object-level Read permission was added, then record access was retested.</li>
+  <li><strong>Missing approval manager:</strong> The submitter's Manager field was empty. Manager assignment was added to the user setup checklist.</li>
 </ul>
 
-<p class="case-footnote">The detailed documentation includes other troubleshooting cases, data import decisions, security tables and test scenarios.</p>
+<!-- PROJECT SECTION -->
 
-<h2 id="outcome">05 / Results, Limitations and Next Steps</h2>
+<p>The practice org includes discount approvals, Email-to-Case, customer-site relationships, access controls and an Admin Request tracker, with 13 reports and three dashboards. Configuration decisions, test outcomes and troubleshooting fixes are documented.</p>
+{% include project-showcase.html src="/assets/img/harbourline/sales.webp" width="785" height="896" alt="Harbourline Sales dashboard showing discount approvals, pipeline by stage and won revenue by customer tier" caption="Sales dashboard showing pending discount approvals, pipeline stages and customer tiers." %}
 
-<p>The practice org includes sales approval controls, Email-to-Case, customer-site relationships, security settings and an Admin Request tracker, supported by 13 reports and three dashboards. Test records, configuration decisions and troubleshooting fixes are documented.</p>
-
-<p><strong>Project Scope:</strong> This is a fictional, non-production org. No live customer outcomes were measured. Email-to-Case testing did not cover unknown senders or reply threading; Web-to-Case, entitlements and sandbox deployment were not implemented.</p>
-
-<p>Potential next steps include deployment between orgs, Screen Flows and Permission Set Groups, with the same emphasis on design choices and testing.</p>
-
-<div class="case-next-step">
-  <div><span class="label">Technical Documentation</span><h3>Configuration, Diagrams and Test Evidence</h3><p>The supporting documentation includes field decisions, security settings, test cases and troubleshooting notes.</p></div>
-  <div class="case-next-actions">
-    <a class="btn primary" href="{{ '/docs/harbourline/' | relative_url }}">Read Technical Documentation</a>
-    <a class="btn" href="{{ '/docs/harbourline/Serap_Ozturk-Kucuk_Salesforce_Admin_Portfolio_v1.1.pdf' | relative_url }}">Download Full PDF</a>
-  </div>
-</div>
+<p><strong>Project Scope:</strong> No live customer outcomes were measured. Email-to-Case testing did not cover unknown senders or reply threading; Web-to-Case, entitlements and sandbox deployment were not implemented.</p>
+<p><strong>Next Steps:</strong> Deployment between orgs with GitHub version control, a fuller service process (entitlements, Web-to-Case, Omni-Channel), and an Agentforce agent.</p>
