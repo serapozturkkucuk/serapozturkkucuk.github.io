@@ -374,6 +374,10 @@ figure.shot figcaption {font-size:var(--fs-small);color:var(--ink-soft)}
   .case .solution-list .solution-item {padding:15px}
   .project-tile-footer {flex-wrap:wrap}
 }
+.solution-list > .solution-item:last-child,
+.case-fixes > .case-fix:last-child,
+.project-chapter > .case-decision:last-child {border-bottom:0}
+
 @media(prefers-reduced-motion:reduce){
   html {scroll-behavior:auto}
   .btn,.project-tile {transition:none}
