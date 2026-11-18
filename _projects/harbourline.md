@@ -134,7 +134,7 @@ stats:
 
 <!-- PROJECT SECTION -->
 
-<p>The practice org includes discount approvals, Email-to-Case, customer-site relationships, access controls and an Admin Request tracker, with 13 reports and three dashboards. Configuration decisions, test outcomes and troubleshooting fixes are documented.</p>
+<p>Each problem in Section 01 now has a configured and tested process. Discounts need approval before a price is sent, every support email becomes a case with an owner, customer sites sit under their Account, admin requests have a priority and status, and sales reps see only their own deals. Managers follow this through 13 reports on three dashboards.</p>
 {% include project-showcase.html src="/assets/img/harbourline/sales.webp" width="785" height="896" alt="Harbourline Sales dashboard showing discount approvals, pipeline by stage and won revenue by customer tier" caption="Sales dashboard showing pending discount approvals, pipeline stages and customer tiers." %}
 
 <p><strong>Limitations:</strong> No live customer outcomes were measured. Email-to-Case testing did not cover unknown senders or reply threading; Web-to-Case, entitlements and sandbox deployment were not implemented.</p>
