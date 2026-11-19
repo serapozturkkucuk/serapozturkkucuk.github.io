@@ -14,7 +14,7 @@ card_description: A tested Salesforce practice org for sales approvals, case man
 tags: [Salesforce Admin, Sales & Service, Flow, Security, Data Quality, Testing]
 role: "Salesforce Administrator: requirements, configuration, testing and documentation"
 org: Trailhead Playground (Developer Edition) · practice org and test data
-period: August 2026 – present
+period: September 2026 – present
 tools: Flow Builder, Schema Builder, Lightning App Builder, Data Import Wizard, dataloader.io
 links:
   - label: Technical Documentation
