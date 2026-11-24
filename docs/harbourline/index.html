@@ -157,11 +157,14 @@ section > h3.sub, section > .eyebrow:not(:first-child) { margin-top: 18px }
 section > .topics { margin-block: 6px }
 @media print { section > .eyebrow, section > .case-num { display: block } section > h3.sub, section > .eyebrow:not(:first-child) { margin-top: 30px } section > h3.sub + *, section > .eyebrow + * { margin-top: 14px } section > .topics { margin-top: 16px; margin-bottom: 8px } }
 footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px }
+a.skip-link { position: fixed; top: 12px; left: 12px; z-index: 1000; padding: 10px 16px; background: #FFFFFF; color: #203348; text-decoration: none; transform: translateY(-200%); }
+a.skip-link:focus, a.skip-link:focus-visible { transform: translateY(0); }
 </style>
 
 </head>
 <body>
-<div class="wrap">
+<a class="skip-link" href="#main">Skip to Content</a>
+<div class="wrap" id="main" role="main">
   <header>
     <a href="../../projects/harbourline/" style="font-size:0.9rem;text-decoration:none">← Back to the Harbourline Case Study</a>
     <span class="eyebrow">Salesforce Administrator Portfolio</span>
