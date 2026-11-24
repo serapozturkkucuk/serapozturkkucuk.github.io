@@ -21,9 +21,9 @@ author:
   # Add a job-search email address between the quotes, or leave it empty to hide it.
   email: "serap.uk@outlook.com"
   # Put your CV PDF in the cv/ folder and write its path, for example:
-  # cv_file: /cv/SerapKucuk_CV_SalesforceAdmin_v0.8_Portfolio.pdf
+  # cv_file: /cv/SerapKucuk_CV_SalesforceAdmin_v0.9_Portfolio.pdf
   # While it is empty, the Download CV buttons are hidden.
-  cv_file: "/cv/SerapKucuk_CV_SalesforceAdmin_v0.8_Portfolio.pdf"
+  cv_file: "/cv/SerapKucuk_CV_SalesforceAdmin_v0.9_Portfolio.pdf"
 
 collections:
   projects:
